@@ -1,0 +1,12 @@
+
+textarea{
+    width: 31%;
+}
+button
+{
+  float: right;
+  position: relative;
+  right: 69%;
+  top: 24px;
+  background-color: black;
+  color: #88ea88; }

@@ -1,0 +1,119 @@
+
+  <!-- <button type="submit" class="btn btn-default float-center" [routerLink]="'/adminlayout/addadmin'" >Add New Admin</button> -->
+
+ <!-- ............................................   -->
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <label>Show</label>
+      <select>
+        <option *ngFor="let show of shows" [ngValue]="show">{{show.number}}</option>
+      </select>
+      </div>
+      <div class="col-lg-4">
+        
+        <select class="custom-select">
+          <option *ngFor="let number of numbers" [ngValue]="number">{{number.id}}</option>
+    
+        </select>
+        </div>
+        <div class="col-lg-4">
+          
+          <form class="form-inline">
+            <input   [(ngModel)]="Search" class="form-control serchId" type="search" placeholder="Search" aria-label="Search" >
+            <button class="btn btn-outline-success" type="submit" (click)="search()">Search</button>
+          </form>
+          </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Number</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Details</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th  [(ngModel)]="id"scope="row"></th>
+      <td [(ngModel)]="levelname"></td>
+      <td  class="disable">
+        <input type="checkbox" aria-label="Checkbox for following text input"></td>
+      <td><a  href="#" [routerLink]="'/adminlayout/admindetails'"><i class="fas fa-info"></i></a></td>
+      <td><a href="#"><i class="far fa-trash-alt"></i></a></td>
+    </tr>
+    <tr>
+      <th  [(ngModel)]="id"scope="row"></th>
+      <td [(ngModel)]="levelname"></td>
+      <td  class="disable">
+         <input type="checkbox" aria-label="Checkbox for following text input"></td>
+
+      <td><a  href="#" [routerLink]="'/adminlayout/admindetails'"><i class="fas fa-info"></i></a></td>
+      <td><a href="#"><i class="far fa-trash-alt"></i></a></td>
+    </tr>
+    <tr>
+      <th [(ngModel)]="id" scope="row"></th>
+      <td [(ngModel)]="levelname"></td>
+      <td  class="enable">  <input type="checkbox" aria-label="Checkbox for following text input">
+      </td>
+      
+      <td><a  href="#" [routerLink]="'/adminlayout/admindetails'"><i class="fas fa-info"></i></a></td>
+      <td><a href="#"><i class="far fa-trash-alt"></i></a></td>
+    </tr>
+    <tr>
+      <th [(ngModel)]="id" scope="row"></th>
+      <td [(ngModel)]="levelname"></td>
+      <td class="disable">
+         <input type="checkbox" aria-label="Checkbox for following text input">
+      </td>
+     
+      <td><a  href="#" [routerLink]="'/adminlayout/admindetails'"><i class="fas fa-info"></i></a></td>
+      <td><a href="#"><i class="far fa-trash-alt"></i></a></td>
+    </tr>
+    <tr>
+      <th  [(ngModel)]="id" scope="row"></th>
+      <td [(ngModel)]="levelname"></td>
+      <td  class="enable"> 
+         <input type="checkbox" aria-label="Checkbox for following text input">
+      </td>  
+      
+      <td><a  href="#" [routerLink]="'/adminlayout/admindetails'"><i class="fas fa-info"></i></a></td>
+      <td><a href="#"><i class="far fa-trash-alt"></i></a></td>
+    </tr>
+    <tr>
+      <th [(ngModel)]="id" scope="row"></th>
+      <td [(ngModel)]="levelname"></td>
+      <td  class="disable">
+         <input type="checkbox" aria-label="Checkbox for following text input">
+      </td>
+      
+      <td><a  href="#" [routerLink]="'/adminlayout/admindetails'"><i class="fas fa-info"></i></a></td>
+      <td><a href="#"><i class="far fa-trash-alt"></i></a></td>
+    </tr>
+    <tr>
+      <th [(ngModel)]="id" scope="row"></th>
+      <td [(ngModel)]="levelname"></td>
+      <td  class="enable">
+        <input type="checkbox" aria-label="Checkbox for following text input">
+      </td>
+      
+      <td><a  href="#" [routerLink]="'/adminlayout/admindetails'"><i class="fas fa-info"></i></a></td>
+      <td><a href="#"><i class="far fa-trash-alt"></i></a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+

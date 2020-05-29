@@ -1,0 +1,18 @@
+form
+ {
+     width:60%;
+     height: 700px;
+     margin:20px auto;
+     border:1px solid #AAA;
+     padding: 12px;
+     color: #86c232 !important;
+     border-radius: 15px;
+     background-color: #e3e3e3;
+ } 
+ .btn
+{
+    background-color: #222629  !important;
+    color: #86c232 !important;
+    border-radius: 20px;
+}
+ 
