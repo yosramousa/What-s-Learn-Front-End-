@@ -1,0 +1,26 @@
+.form-group button{
+    background-color: #222629  !important;
+    color: #86c232 !important;
+    border-radius: 20px;
+    position: relative;
+    top: 26px;
+}
+.search
+{
+    background-color: #222629  !important;
+    color: #86c232 !important;
+    border-radius: 20px;
+
+}
+nav{
+
+    /* float: right; */
+    display: inline-block;
+    position: relative;
+    left: 721px;
+
+    
+}
+.page-link{
+    color:  #86c232 !important;  
+}

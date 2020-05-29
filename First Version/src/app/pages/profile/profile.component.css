@@ -1,0 +1,59 @@
+.edit{
+    position: relative;
+    top: 41px;
+    width: 45%;
+    margin: 5px auto;
+    height: 150px;
+}
+
+
+
+
+
+
+.card{
+       text-align: center;
+    /* background-color: #222629  !important; */
+
+}
+
+.form{
+    color: #86c232 !important;
+
+}
+.btn
+{
+   
+    color: #86c232 !important;
+ 
+    position: absolute;
+    top: 0px;
+    left: 327px;
+    background: transparent;
+    font-size: 20px;
+
+
+}
+form
+{
+    width:60%;
+    height: 800px;
+    margin:20px auto;
+    border:1px solid #AAA;
+    padding: 12px;
+    color: darkgrey;
+    border-radius: 15px;
+    background-color: #e3e3e3;
+} 
+
+
+select{
+    height: 38px;
+    border-radius: 12px;
+    padding: 8px;
+    font-size: 17px;
+
+
+}
+
+
