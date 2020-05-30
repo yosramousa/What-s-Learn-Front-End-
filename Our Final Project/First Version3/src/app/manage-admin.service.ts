@@ -1,30 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions , Headers } from '@angular/http';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ManageAdminService {
 
-  private url:String="https://localhost:44319/ManageUsers";
-  constructor(private myhttp:Http) { }
+  
+  constructor(private apiService:ApiService) { }
+  
   GetAllUsers(Pageindex,pagesize){
-    return this.myhttp.get(this.url+"/GetList/"+Pageindex+"/"+pagesize);
+    return this.apiService.get(`MangeAdmins/GetList?pageIndex=${Pageindex}&pageSize=${pagesize}`);
    }
    ChangeStatus(id){
-
-    return this.myhttp.get(this.url+"/ChangeStatus/"+id);
+    return this.apiService.get(`MangeAdmins/ChangeStatus/${id}`);
    }
-
-   GetByID(id){
-     return this.myhttp.get(this.url+"/Details/"+id);
-   }
-
    Delete(id){
-     return  this.myhttp.get(this.url+"/Delete/"+id);
+     return  this.apiService.get(`MangeAdmins/Delete/${id}`);
    }
-   Search(SearchOp,SearchText,Pagnum,PageSize)
+   Search(SearchOp,SearchText,PageIndex,PageSize) : any
    {
-     return this.myhttp.get(this.url+"/Search/"+SearchOp+"/"+SearchText+"/"+Pagnum+"/"+PageSize);
+     return this.apiService
+     .get(`MangeAdmins/Search?SearchOp=${SearchOp}&SearchText=${SearchText}&PageIndex=${PageIndex}&PageSize=${PageSize}`);
+   }
+
+   Add(Admin): any{
+     return  this.apiService.post("MangeAdmins/Post", JSON.stringify(Admin));
    }
 }
+

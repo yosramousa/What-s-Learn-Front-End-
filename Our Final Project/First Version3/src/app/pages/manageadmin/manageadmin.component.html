@@ -1,28 +1,34 @@
-<!-- <button type="submit" class="btn btn-default float-center" [routerLink]="'/adminlayout/addadmin'" >Add New Admin</button> -->
 
 <!-- ............................................   -->
 <div class="container">
   <div class="row">
+    
     <div class="col-lg-4">
       <label>Show</label>
       <select>
-        <option *ngFor="let show of shows" [ngValue]="show">{{show.number}}</option>
+        <option *ngFor="let show of shows" [ngValue]="show" >{{show.number}}</option>
       </select>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-2">
+      <button type="submit" class="btn btn-default float-center" [routerLink]="'/adminlayout/addadmin'" >Add New Admin</button>
+      
+          </div>
+    <div class="col-lg-3">
 
       <select class="custom-select">
         <option *ngFor="let number of numbers" [ngValue]="number">{{number.id}}</option>
 
       </select>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
 
       <form class="form-inline">
-        <input [(ngModel)]="Search" class="form-control serchId" type="search" placeholder="Search" aria-label="Search">
+        <input name="Search" [(ngModel)]="SaerchText" class="form-control serchId" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit" (click)="search()">Search</button>
       </form>
+
     </div>
+   
   </div>
 </div>
 
@@ -44,6 +50,7 @@
     </tr>
   </thead>
   <tbody>
+    <div *ngIf ="admins">
     <tr *ngFor="let admin of admins">
       <th scope="row">{{admin.Number}}</th>
       <td>{{admin.Name}}</td>
@@ -83,6 +90,6 @@
 
       <td><a (click)="Delete(admin.ID)"><i class="far fa-trash-alt"></i></a></td>
     </tr>
-
+    </div>
   </tbody>
 </table>

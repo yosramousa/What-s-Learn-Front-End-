@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router, private adminProfileService: ProfileAdminService) { }
 
   ngOnInit(): void {
-    this.subscribtion = this.adminProfileService.GetByID(this.id).subscribe(response =>
+    this.subscribtion = this.adminProfileService.GetAdminProfile().subscribe(response =>
     {
       if (response.json().Successed == true) 
       {
@@ -24,9 +24,11 @@ export class ProfileComponent implements OnInit {
         this.Admin = response.json().Data;
 
         console.log(this.Admin)
+
       }
     });
   }
+
   EditAdminProfile(){
       this.router.navigate(['/editadmin'])
     }

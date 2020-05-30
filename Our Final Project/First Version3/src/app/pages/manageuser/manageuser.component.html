@@ -6,9 +6,9 @@
         <label for="cars">show</label>
      
 
-     <select  name="Numbers" [(ngModel)]="pageSize" class="custom-select"  (select)="Filter()" >
+     <select  name="Numbers" [(ngModel)]="pageSize" class="custom-select"  (change)="Filter()" >
           
-          <option  *ngFor="let show of shows" [ngValue]="show">{{show}}</option>
+          <option  *ngFor="let show of shows" [ngValue]="show" >{{show}}</option>
         </select>
       </form>
     </div>
@@ -59,23 +59,21 @@
       <td >{{user.Name}}</td>
       <td scope="col">{{user.TracksName}} </td> 
      
-      <td>
-        {{user.Status}}
-
-      </td>
+      <td>{{user.Status}}</td>
       <td>
         
         <input (click)="Change(user.ID)"  type="button" class="btn btn-success ml-1 p-2"
-          [disabled]="item.checked" value="Change">
+          value="Change">
       </td>
      
-      <td><a (click)="details(1)"><i class="fas fa-info"></i></a></td>
+      <td><a (click)="details(user.ID)"><i class="fas fa-info"></i></a></td>
       
       <td> <button (click)="Delete(user.ID)"><i class="far fa-trash-alt"></i></button></td>
     </tr>
   </tbody>
 
 </table>
+
 <div style="visibility: hidden;" id="delalert" class=" alert alert-success" role="alert">
   Delete Successfully
 </div>

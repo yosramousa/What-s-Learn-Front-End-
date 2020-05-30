@@ -33,6 +33,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { DetailsComponent } from './pages/details/details.component';
 import { EdituserdetailsComponent } from './pages/edituserdetails/edituserdetails.component';
 import { MangeUsersService } from './mange-users.service';
+import { ApiService } from './api.service';
 
 
 
@@ -86,7 +87,8 @@ import { MangeUsersService } from './mange-users.service';
    
   ],
   providers: [
-    MangeUsersService
+    MangeUsersService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

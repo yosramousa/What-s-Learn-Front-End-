@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MessageserviceService } from 'app/messageservice.service';
 import { Router } from '@angular/router';
+import { MangeUsersService } from 'app/mange-users.service';
+import { ManageAdminService } from 'app/manage-admin.service';
 
 @Component({
   selector: 'app-addadmin',
@@ -8,39 +10,54 @@ import { Router } from '@angular/router';
   styleUrls: ['./addadmin.component.css']
 })
 export class AddadminComponent implements OnInit {
-  subsciption: any;
-  name :string  ;
-  password :string;
-  email: string;
-  phone: string;
-  address: string;
-  image: string;
-  age: number;
 
-  constructor(private router: Router, private msg: MessageserviceService) { }
+  constructor(private router: Router, private manageAdminService: ManageAdminService) { }
 
   ngOnInit(): void {
   }
   Genders = [
-    {id: 1, name: "Male"},
-    {id: 2, name: "Female"}]
+    { value: "m", name: "Male" },
+    { value: "f", name: "Female" }
+  ]
+  Subscribe
 
-  @Output() add = new EventEmitter()
-  AddAdmin(){
-    let admin = {
-      username: this.name,
-      password: this.password,
-      age: this.age,
-      email: this.email,
-      address: this.address,
-      phone:this.phone,
-      image:this.image,
-     
-    };
-    this.add.emit(admin);
-    if(!admin==null)
-    this.router.navigate(['/addadmin'])
+  ID
+  Name
+  Password
+  Age
+  Email
+  Adress
+  Phone
+  Gender
+
+
+  ConfirmedPassword
+
+  AddAdmin() {
+    let Admin = {
+      ID: 0,
+      Name: "Salah",
+      Password: this.Password,
+      Age: this.Age,
+      Email: this.Email,
+      Adress: this.Adress,
+      Phone: this.Phone,
+      Gender: this.Gender
+    }
+
+    this.Subscribe = this.manageAdminService.Add(Admin).subscribe(
+      res => {
+        if (res.Successed) {
+          console.log("Done")
+        }
+      }
+      ,
+      err => {
+        console.log(err);
+      }
+
+    );
+
   }
 
-  }
-
+}

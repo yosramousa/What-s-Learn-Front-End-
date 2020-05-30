@@ -5,13 +5,12 @@ import { Http } from '@angular/http';
   providedIn: 'root'
 })
 export class ProfileAdminService {
-  private url:String="https://localhost:44319/MangeAdmins";
+  private url:String="https://localhost:44319/AdminProfile";
   constructor(private myhttp:Http) { }
 
 
 
-  GetByID(id)
-  {
-    return this.myhttp.get(this.url+"/Details/"+id);
+  GetAdminProfile(){
+    return this.myhttp.get(this.url+"/GetProfile");
   }
 }

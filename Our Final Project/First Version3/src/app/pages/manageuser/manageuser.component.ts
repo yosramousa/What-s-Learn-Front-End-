@@ -21,7 +21,7 @@ export class ManageuserComponent implements OnInit {
     {ID: 2, name: "Track Name"},
   
   ];
-  SaerchText:String=""
+  SaerchText:String=" "
   SearchOp:number=0
 
 
@@ -36,9 +36,12 @@ export class ManageuserComponent implements OnInit {
         //Message
         //response.json().Message
        this.Users = response.json().Data;
-       
+       console.log("this.Users")
+
        console.log(this.Users)
-      }
+      }(err=>
+        console.log(err)
+        )
 
 
 
@@ -57,32 +60,30 @@ export class ManageuserComponent implements OnInit {
        console.log(response)
        this.GetAllsubscribe = this.mangeUsersService.Search(0," ",this.pageNumber, this.pageSize).subscribe(response => {
         if (response.json().Successed == true) {
-          //Data
-          //Successed
-          //Message
-          //response.json().Message
+          
           this.Users = response.json().Data;
           console.log(this.Users)
         }
-  
-  
-  
       })
       
-
        })
 
      
   }
+
   Delete(id){
 
     this.mangeUsersService.Delete(id).subscribe(res=>{
       if(res)
       {
         document.getElementById("delalert").style.visibility="visible";
+        this.Filter()
+
       }
 
     });
+
+
   }
 
   Search()
@@ -91,14 +92,13 @@ export class ManageuserComponent implements OnInit {
     this.mangeUsersService.Search(this.SearchOp,this.SaerchText,this.pageNumber,this.pageSize).subscribe(res=>{
 
       if (res.json().Successed == true) {
-        //Data
-        //Successed
-        //Message
-        //response.json().Message
+       
         this.Users = res.json().Data;
 
         console.log(this.Users)
-      }
+      } else console.log("False")
+
+
 
     });
 
@@ -139,7 +139,6 @@ export class ManageuserComponent implements OnInit {
 
   }
   details(id){
-    alert("User Details")
     this.router.navigate(['/adminlayout/details/' + id]);
   }
 }
