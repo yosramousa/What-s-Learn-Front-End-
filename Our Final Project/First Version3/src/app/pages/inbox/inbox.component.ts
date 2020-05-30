@@ -12,4 +12,5 @@ export class InboxComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  InboxMessages:{}
 }
