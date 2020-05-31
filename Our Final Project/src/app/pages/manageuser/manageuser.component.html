@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-6">
+      <form>
+        <label for="cars">show</label>
+
+
+        <select name="Numbers" [(ngModel)]="pageSize" class="custom-select" (change)="Filter()">
+
+          <option *ngFor="let show of shows" [ngValue]="show">{{show}}</option>
+        </select>
+      </form>
+    </div>
+
+
+    <div class="col-lg-6">
+      <form>
+        <input name="SaerchText" type="text" [(ngModel)]="SaerchText" class="form-controle">
+
+
+        <select name="SearchOp" [(ngModel)]="SearchOp" class="custom-select">
+          <option value="" disabled>Choose Search Option</option>
+          <option *ngFor="let op of SerachOpts" [ngValue]="op.ID">{{op.name}}</option>
+        </select>
+
+        <button (click)="Search()" type="submit" class="btn btn-default float-center search">Search</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Tracks</th>
+
+      <th scope="col">Status</th>
+      <th scope="col">Chage Status</th>
+
+      <th scope="col">Details</th>
+      <th scope="col">Delete</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let user of Users">
+      <td>{{user.Name}}</td>
+      <td scope="col">{{user.TracksName}} </td>
+
+      <td>{{user.Status}}</td>
+      <td>
+
+        <input (click)="Change(user.ID)" type="button" class="btn btn-success ml-1 p-2" value="Change">
+      </td>
+
+      <td><a (click)="details(user.ID)"><i class="fas fa-info"></i></a></td>
+
+      <td> <button (click)="Delete(user.ID)"><i class="far fa-trash-alt"></i></button></td>
+    </tr>
+  </tbody>
+
+</table>
+
+<div style="visibility: hidden;" id="delalert" class=" alert alert-success" role="alert">
+  Delete Successfully
+</div>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a (click)="Prev()" class="page-link">Previous</a></li>
+    <li class="page-item "><a (click)="Next()" class="page-link">Next</a></li>
+  </ul>
+</nav>

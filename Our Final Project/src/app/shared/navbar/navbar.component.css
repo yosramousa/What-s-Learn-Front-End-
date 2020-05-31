@@ -1,0 +1,38 @@
+
+.navbar
+{
+    background-color: #222629 !important;
+    color: #86c232 !important;
+}
+.btn
+{
+    background-color: #222629  !important;
+    color: #86c232 !important;
+    border-radius: 20px;
+}
+
+.navbar-nav{
+    /* margin-left: 598px; */
+    color: #86c232 !important;
+}
+.input-group{
+    color: #86c232 !important;
+}
+.navbar.navbar-transparent a:not(.dropdown-item):not(.btn) {
+    color: #86c232 !important;
+
+}
+.navbar .input-group.no-border .form-control {
+    color: #86c232 !important;  
+}
+.input-group input{
+background-color: #222629;
+}
+.nc-icon nc-zoom-split{
+
+    color: #86c232;
+}
+.form-control + .input-group-append .input-group-text {
+    background-color: #222629;
+
+}

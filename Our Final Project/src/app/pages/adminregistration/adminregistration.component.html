@@ -1,0 +1,21 @@
+<div class="box">
+  <h2>Log In </h2>
+  <!-- icon: 'nc-lock-circle-open' -->
+  <form>
+    <div class="inputbox">
+      <input name="email" [(ngModel)]="Email" type="text" required="">
+      <label>Email</label>
+    </div>
+
+    <div class="inputbox">
+      <input name="password" [(ngModel)]="Password" type="password" required="">
+      <label>Password</label>
+    </div>
+
+    <input class="submit" type="submit" value="Log In" (click)="AdminLogin() ">
+
+  </form>
+<div *ngIf ="IsValid" class="alert alert-danger mt-5">
+  InValid Email and/or Password
+</div>
+</div>
