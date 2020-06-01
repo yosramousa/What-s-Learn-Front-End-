@@ -81,7 +81,7 @@ export class ManageCategoryService {
    }
 
    
-   Ad(level,Data):any
+   Add(level,Data):any
    {
      if(level==0)
      {
@@ -117,6 +117,10 @@ export class ManageCategoryService {
     .post(`TrackCourse/Post`,JSON.stringify({ID:0,TrackID:TrackID,CourseID:CourseID}));
   
 
+   }
+
+   upload(files):any{
+    return this.apiService.upload("File/Upload",files);
    }
 
 

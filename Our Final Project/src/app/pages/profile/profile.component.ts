@@ -22,10 +22,6 @@ export class ProfileComponent implements OnInit {
       if (response.Successed ) 
       {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
         this.Admin = response.Data;
 
         console.log(this.Admin)

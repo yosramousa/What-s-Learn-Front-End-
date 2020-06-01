@@ -25,7 +25,7 @@ export class ApiService {
 		};
 		return new HttpHeaders(headersConfig);
   }
-  
+ 
 	get(path: string, params?: HttpParams){
 		return this.http.get(`${environment.api_url}${path}`, { headers: this.setHeaders(), params });
 	}

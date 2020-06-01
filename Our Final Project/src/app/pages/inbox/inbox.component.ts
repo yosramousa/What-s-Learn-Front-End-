@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { InboxService } from 'Services/inbox.service';
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 
 @Component({
   selector: 'app-inbox',
@@ -11,15 +8,6 @@ import { InboxService } from 'Services/inbox.service';
 })
 export class InboxComponent implements OnInit {
 
-<<<<<<< HEAD
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  InboxMessages:{}
-}
-=======
   constructor(private inboxService: InboxService) { }
 
   PageSize = 10
@@ -110,14 +98,13 @@ export class InboxComponent implements OnInit {
     })
   }
 
-  messageDatail :any
-  MessageDetails(id){
-   this.inboxService.GetByID(id).subscribe(res=>{
-      this.messageDatail =res.Data
+  messageDatail: any
+  MessageDetails(id) {
+    this.inboxService.GetByID(id).subscribe(res => {
+      this.messageDatail = res.Data
       console.log(this.messageDatail)
-   }) 
+    })
   }
 }
 
 
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329

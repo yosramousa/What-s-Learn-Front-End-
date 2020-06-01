@@ -16,7 +16,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ManagecategoryComponent } from './pages/managecategory/managecategory.component';
 import { SidebarModule } from './sidebar/sidebar.module';
-import { NavbarModule} from './shared/navbar/navbar.module';
+import { NavbarModule } from './shared/navbar/navbar.module';
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -25,10 +25,7 @@ import { EditcategoryComponent } from './pages/editcategory/editcategory.compone
 import { AddchildcategoryComponent } from './pages/addchildcategory/addchildcategory.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { InboxComponent } from './pages/inbox/inbox.component';
-<<<<<<< HEAD
 import { UserdetailComponent } from './pages/userdetail/userdetail.component';
-=======
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 import { ManageadminComponent } from './pages/manageadmin/manageadmin.component';
 import { AdmindetailsComponent } from './pages/admindetails/admindetails.component';
 import { AddcategoryComponent } from './pages/addcategory/addcategory.component';
@@ -51,10 +48,7 @@ import { ApiService } from './api.service';
     EditcategoryComponent,
     AddchildcategoryComponent,
     InboxComponent,
-<<<<<<< HEAD
     UserdetailComponent,
-=======
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
     ManagecategoryComponent,
     AddadminComponent,
     EnrollmentrequestComponent,
@@ -67,10 +61,10 @@ import { ApiService } from './api.service';
     AddcategoryComponent,
     DetailsComponent,
     EdituserdetailsComponent,
-   
 
 
-    
+
+
   ],
   imports: [
     BrowserAnimationsModule,
@@ -82,15 +76,15 @@ import { ApiService } from './api.service';
     NgxPaginationModule,
     HttpModule,
     ReactiveFormsModule,
-  
-    RouterModule.forRoot(AppRoutes,{
+
+    RouterModule.forRoot(AppRoutes, {
       useHash: true
     }),
     SidebarModule,
     NavbarModule,
     ToastrModule.forRoot()
- 
-   
+
+
   ],
   providers: [
     MangeUsersService,

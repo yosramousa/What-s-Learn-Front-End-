@@ -4,19 +4,11 @@
     <div class="col-lg-6">
       <form>
         <label for="cars">show</label>
-<<<<<<< HEAD
-     
-
-     <select  name="Numbers" [(ngModel)]="pageSize" class="custom-select"  (change)="Filter()" >
-          
-          <option  *ngFor="let show of shows" [ngValue]="show" >{{show}}</option>
-=======
 
 
         <select name="Numbers" [(ngModel)]="pageSize" class="custom-select" (change)="Filter()">
 
           <option *ngFor="let show of shows" [ngValue]="show">{{show}}</option>
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
         </select>
       </form>
     </div>
@@ -24,17 +16,10 @@
 
     <div class="col-lg-6">
       <form>
-<<<<<<< HEAD
-        <input  name="SaerchText" type="text" [(ngModel)]="SaerchText" class="form-controle">
-
-
-        <select  name="SearchOp" [(ngModel)]="SearchOp" class="custom-select" >
-=======
         <input name="SaerchText" type="text" [(ngModel)]="SaerchText" class="form-controle">
 
 
         <select name="SearchOp" [(ngModel)]="SearchOp" class="custom-select">
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
           <option value="" disabled>Choose Search Option</option>
           <option *ngFor="let op of SerachOpts" [ngValue]="op.ID">{{op.name}}</option>
         </select>
@@ -45,11 +30,7 @@
 
     </div>
   </div>
-<<<<<<< HEAD
-</div> 
-=======
 </div>
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 
 
 
@@ -75,20 +56,6 @@
   <tbody>
 
     <tr *ngFor="let user of Users">
-<<<<<<< HEAD
-      <td >{{user.Name}}</td>
-      <td scope="col">{{user.TracksName}} </td> 
-     
-      <td>{{user.Status}}</td>
-      <td>
-        
-        <input (click)="Change(user.ID)"  type="button" class="btn btn-success ml-1 p-2"
-          value="Change">
-      </td>
-     
-      <td><a (click)="details(user.ID)"><i class="fas fa-info"></i></a></td>
-      
-=======
       <td>{{user.Name}}</td>
       <td scope="col">{{user.TracksName}} </td>
 
@@ -100,7 +67,6 @@
 
       <td><a (click)="details(user.ID)"><i class="fas fa-info"></i></a></td>
 
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
       <td> <button (click)="Delete(user.ID)"><i class="far fa-trash-alt"></i></button></td>
     </tr>
   </tbody>
@@ -114,14 +80,7 @@
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">
-<<<<<<< HEAD
-    <li  class="page-item"><a (click)="Prev()" class="page-link" >Previous</a></li>
-    <li class="page-item "><a (click)="Next()" class="page-link" >Next</a></li>
-  </ul>
-</nav>
-=======
     <li class="page-item"><a (click)="Prev()" class="page-link">Previous</a></li>
     <li class="page-item "><a (click)="Next()" class="page-link">Next</a></li>
   </ul>
 </nav>
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329

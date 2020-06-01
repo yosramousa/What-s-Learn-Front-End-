@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageserviceService } from 'app/messageservice.service';
 import { ManageCategoryService } from 'Services/manage-category.service';
-=======
-import { Router } from '@angular/router';
-import { MessageserviceService } from 'app/messageservice.service';
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
-
+import { environment } from  './../../../environments/environment'
 @Component({
   selector: 'app-addcategory',
   templateUrl: './addcategory.component.html',
   styleUrls: ['./addcategory.component.css']
 })
 export class AddcategoryComponent implements OnInit {
-<<<<<<< HEAD
-  ID:number
+  files: FileList;
+  Images: FileList;
+  ImageSrc
+  File:string
+  ID: number
   ParentId: number
   level: number
   Name: string
@@ -31,7 +29,7 @@ export class AddcategoryComponent implements OnInit {
   Documents: {
     Description: string, File: string, ParentID: number
   }[] = new Array()
- 
+
   Data: {}
   NewDocDesc: string
   NewDocfile
@@ -45,6 +43,7 @@ export class AddcategoryComponent implements OnInit {
 
   ngOnInit(): void {
 
+   
 
     this.ParentId = this.myActivatedRoute.snapshot.params['ID'];
     this.level = this.myActivatedRoute.snapshot.params['Level'];
@@ -87,26 +86,83 @@ export class AddcategoryComponent implements OnInit {
 
   }
   Adddoc() {
-     console.log(this.NewDocDesc);
-     var NewDoc = { ID: 0, Description: this.NewDocDesc, File: "File", ParentID: 0 };
+    console.log(this.NewDocDesc);
+    var NewDoc = { ID: 0, Description: this.NewDocDesc, File: this.File, ParentID: 0 };
     this.Documents.push(NewDoc)
-     console.log(this.Documents)
+    console.log(this.Documents)
   }
   AddLInk() {
     console.log(this.NewLinkText);
     var NewLink = { ID: 0, link: this.NewLinkText, Description: this.NewLinkDescription, ParentID: 0 };
-   this.links.push(NewLink)
+    this.links.push(NewLink)
     console.log(this.links)
- }
- AddVedio(){
-   let vedio={
-     ID:0,
-   Vedio: this.NewVedioLink, Description: this.NewVedioDescription, ParentID: 0
- }
- this.Vedios.push(vedio)
- console.log(this.Vedios)
+  }
+  AddVedio() {
+    let vedio = {
+      ID: 0,
+      Vedio: this.NewVedioLink, Description: this.NewVedioDescription, ParentID: 0
+    }
+    this.Vedios.push(vedio)
+    console.log(this.Vedios)
 
- }
+  }
+
+  onImageFileChange(event) {
+    this.Images = event.target.files;
+  }
+  onDocFileChange(event) {
+    this.files = event.target.files;
+  }
+
+  uploadImage() {
+
+    if (this.Images.length > 0) {
+      let formData: FormData = new FormData();
+      for (var j = 0; j < this.Images.length; j++) {
+        formData.append("file[]", this.Images[j], this.Images[j].name);
+      }
+      this.manageCategoryService
+        .upload(formData).subscribe(
+          res => { 
+            if(res.Successed){
+                this.image = res.Data[0].Path ;
+                console.log('DDSDSDSDSDSDSSDS',res.Data)
+                this.ImageSrc=`${environment.api_url}Uploads/${this.image}`
+            }
+          },
+          err => { }
+        );
+
+    }
+  }
+  uploadFile(doc) {
+  
+    if (this.files.length > 0) {
+      let formData: FormData = new FormData();
+      for (var j = 0; j < this.files.length; j++) {
+        formData.append("file[]", this.files[j], this.files[j].name);
+      }
+      this.manageCategoryService
+        .upload(formData).subscribe(
+          res => { 
+            if(res.Successed){
+              if(doc)
+              doc.File = res.Data[0].Path ;
+              else
+                this.File = res.Data[0].Path ;
+                console.log('DDSDSDSDSDSDSSDS',res.Data)
+               
+            }
+          },
+          err => { }
+        );
+
+    }
+  }
+  downloadFile(url) {
+   window.open(`${environment.api_url}Uploads/${url}`);
+  }
+
   SaveLink(link) {
 
     this.links[this.links.indexOf(link)] = link
@@ -115,7 +171,7 @@ export class AddcategoryComponent implements OnInit {
 
 
   }
-  Savedoc(doc) {
+  Savedoc(doc) { 
 
     this.Documents[this.Documents.indexOf(doc)] = doc
     alert("Document Saved Sucessfully")
@@ -136,17 +192,17 @@ export class AddcategoryComponent implements OnInit {
       Discription: this.Description,
       Links: this.links,
       Documents: this.Documents,
-      Vedios: this.Vedios 
+      Vedios: this.Vedios,
+      Image:this.image
     }
     console.log(this.Data)
 
-    this.manageCategoryService.Ad(this.level, this.Data).subscribe(res => {
+    this.manageCategoryService.Add(this.level, this.Data).subscribe(res => {
       if (res.Successed) {
         console.log("Ok1")
         console.log(res.Data)
         if (Number(this.level) == 3) {
-          console.log("level=", this.level)
-
+          //Add Course To To Track
           this.manageCategoryService.AddTrackCourse(res.Data.ID, this.ParentId).subscribe(res => {
             if (res.Successed) {
               console.log("Ok2")
@@ -183,29 +239,3 @@ export class AddcategoryComponent implements OnInit {
 
   }
 }
-=======
-  description :string ;
-  image : string ;
-  link :string ;
-  video:string ;
-  file:string ;
-  subsciption;
-  constructor(private router: Router, private msg: MessageserviceService) { }
-
-  ngOnInit(): void {
-  }
-  saveDescribtion() {
-    console.log("any thing")
-
-    let admin= {
-      description : this.description,
-      image :this.image,
-      link :this.link,
-    video :this.video,
-      file :this.file,
-    };
-
-    this.router.navigate(['managecategory'])}
-    funsubmit(){}
-}
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329

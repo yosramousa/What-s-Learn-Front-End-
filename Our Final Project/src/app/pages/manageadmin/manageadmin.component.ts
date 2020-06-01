@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ManageAdminService } from 'app/manage-admin.service';
+import { environment } from  './../../../environments/environment'
 
 @Component({
   selector: 'app-manageadmin',
@@ -8,21 +9,19 @@ import { ManageAdminService } from 'app/manage-admin.service';
   styleUrls: ['./manageadmin.component.css']
 })
 export class ManageadminComponent implements OnInit {
+  
   [x: string]: any;
   name: string;
   shows: number[] = [10, 15, 20, 25]
   pageSize = 10
   pageNumber = 0
-<<<<<<< HEAD
-  Admins: []
-=======
   Admins: any[]
+  Url=environment.api_url
   // : [{
   //   ID :number,
   //   Name : string,
   //   Status : string
   // }]
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
   GetAllsubscribe;
   Changesubscribe
   SerachOpts = [
@@ -31,11 +30,7 @@ export class ManageadminComponent implements OnInit {
     // {ID: 2, name: "Track Name"},
 
   ];
-<<<<<<< HEAD
-  SaerchText: String = " "
-=======
-  SaerchText: String 
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
+  SaerchText: String
   SearchOp: number = 0
 
 
@@ -49,10 +44,7 @@ export class ManageadminComponent implements OnInit {
           console.log(response)
           if (response.Successed) {
             this.Admins = response.Data;
-<<<<<<< HEAD
-=======
             console.log(this.Admins)
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
           } else {
 
           }
@@ -69,13 +61,8 @@ export class ManageadminComponent implements OnInit {
     this.Changesubscribe = this.manageAdminService.ChangeStatus(id).subscribe(response => {
       console.log(response)
       this.GetAllsubscribe = this.manageAdminService.Search(0, " ", this.pageNumber, this.pageSize).subscribe(response => {
-<<<<<<< HEAD
-        if (response.json().Successed == true) {
-          this.Admins = response.json().Data;
-=======
         if (response.Successed == true) {
           this.Admins = response.Data;
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
           console.log(this.Admins)
         }
       })
@@ -86,10 +73,6 @@ export class ManageadminComponent implements OnInit {
   Delete(id) {
     this.manageAdminService.Delete(id).subscribe(res => {
       if (res) {
-<<<<<<< HEAD
-        this.Filter()
-        document.getElementById("delalert").style.visibility = "visible";
-=======
         console.log("Deleted")
         this.GetAllsubscribe = this.manageAdminService.Search(0, " ", this.pageNumber, this.pageSize).subscribe(response => {
           if (response.Successed == true) {
@@ -97,43 +80,28 @@ export class ManageadminComponent implements OnInit {
             console.log(this.Admins)
           }
         })
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
       }
     });
   }
 
   Search() {
-<<<<<<< HEAD
+    if (!this.SaerchText) this.SaerchText = " ";
     console.log(this.SaerchText, this.SearchOp)
     this.manageAdminService.Search(this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(res => {
-      if (res.json().Successed == true) {
-        this.Filter();
-        this.Users = res.json().Data;
-=======
-    if(!this.SaerchText) this.SaerchText=" ";
-    console.log(this.SaerchText, this.SearchOp)
-    this.manageAdminService.Search(this.SearchOp,this.SaerchText, this.pageNumber, this.pageSize).subscribe(res => {
       if (res.Successed == true) {
         this.Filter();
         this.Users = res.Data;
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
         console.log(this.Users)
       }
     });
   }
 
   Filter() {
-<<<<<<< HEAD
-    this.GetAllsubscribe = this.manageAdminService.Search(this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(response => {
-      if (response.json().Successed == true) {
-        this.Users = response.json().Data;
-=======
-    if(!this.SaerchText) this.SaerchText=" ";
+    if (!this.SaerchText) this.SaerchText = " ";
     console.log(this.pageSize)
     this.GetAllsubscribe = this.manageAdminService.Search(this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(response => {
       if (response.Successed == true) {
         this.Users = response.Data;
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
         console.log(this.Users)
       }
     })
@@ -142,24 +110,13 @@ export class ManageadminComponent implements OnInit {
   Next() {
     this.pageNumber++;
     console.log(this.pageNumber);
-<<<<<<< HEAD
-    this.Filter()
-  }
-  Prev() {
-    this.pageNumber--;
-    console.log(this.pageNumber);
-    this.Filter()
-  }
-  admindetails(id) {
-    this.router.navigate(['/adminlayout/editadminprofile/' + id]);
-=======
     this.GetAllsubscribe = this.manageAdminService.Search(0, " ", this.pageNumber, this.pageSize).subscribe(response => {
       if (response.Successed == true) {
         this.Admins = response.Data;
         console.log(this.Admins)
       }
     })
-    }
+  }
   Prev() {
     this.pageNumber--;
     console.log(this.pageNumber);
@@ -169,9 +126,8 @@ export class ManageadminComponent implements OnInit {
         console.log(this.Admins)
       }
     })
-    }
-    adminDetails(id) {
+  }
+  adminDetails(id) {
     this.router.navigate(['/adminlayout/admindetails/' + id]);
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
   }
 }

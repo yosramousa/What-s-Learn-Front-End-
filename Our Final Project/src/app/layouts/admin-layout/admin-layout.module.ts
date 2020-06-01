@@ -15,10 +15,7 @@ import { AdminregistrationComponent } from '../../pages/adminregistration/adminr
 import { EditcategoryComponent } from '../../pages/editcategory/editcategory.component';
 import { AddchildcategoryComponent } from '../../pages/addchildcategory/addchildcategory.component';
 import { InboxComponent } from '../../pages/inbox/inbox.component';
-<<<<<<< HEAD
 import { UserdetailComponent } from '../../pages/userdetail/userdetail.component';
-=======
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 import { AdminLayoutComponent } from './admin-layout.component';
 import { ManageadminComponent } from '../../pages/manageadmin/manageadmin.component';
 import { AdmindetailsComponent } from '../../pages/admindetails/admindetails.component';
@@ -27,16 +24,19 @@ import { DetailsComponent } from '../../pages/details/details.component';
 import { EdituserdetailsComponent } from '../../pages/edituserdetails/edituserdetails.component';
 
 export const AppRoutes: Routes = [
-  
-  {path: 'adminregistration',component: AdminregistrationComponent },
-  {path: 'adminLayout',component: AdminLayoutComponent,
+
+  { path: 'adminregistration', component: AdminregistrationComponent },
+  {
+    path: 'adminLayout', component: AdminLayoutComponent,
     children: [
-        {
-          path: '',redirectTo: 'adminregistratin',pathMatch: 'full'},
-          { path: 'dashboard', component: DashboardComponent, },
-           ]},
-           { path: '**', redirectTo: '/adminregistration',}
-          ];
+      {
+        path: '', redirectTo: 'adminregistratin', pathMatch: 'full'
+      },
+      { path: 'dashboard', component: DashboardComponent, },
+    ]
+  },
+  { path: '**', redirectTo: '/adminregistration', }
+];
 
 
 
@@ -62,18 +62,15 @@ export const AppRoutes: Routes = [
     EditcategoryComponent,
     AddchildcategoryComponent,
     InboxComponent,
-<<<<<<< HEAD
     UserdetailComponent,
-=======
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
     ManageadminComponent,
     AdmindetailsComponent,
     AddcategoryComponent,
     DetailsComponent,
     EdituserdetailsComponent
-   
-  
-  
+
+
+
   ]
 })
 

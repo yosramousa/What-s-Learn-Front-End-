@@ -12,10 +12,7 @@ import { EditadminprofileComponent } from './pages/editadminprofile/editadminpro
 import { EditcategoryComponent } from './pages/editcategory/editcategory.component';
 import { AddchildcategoryComponent } from './pages/addchildcategory/addchildcategory.component';
 import { InboxComponent } from './pages/inbox/inbox.component';
-<<<<<<< HEAD
 import { UserdetailComponent } from './pages/userdetail/userdetail.component';
-=======
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 import { AdminregistrationComponent } from './pages/adminregistration/adminregistration.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AppComponent } from './app.component';
@@ -36,93 +33,6 @@ import { EdituserdetailsComponent } from './pages/edituserdetails/edituserdetail
 
 
 export const AppRoutes: Routes = [
-<<<<<<< HEAD
-  
-    {path: 'adminregistration',component: AdminregistrationComponent },
-      {path: 'dashboard',component: DashboardComponent },
-
-    {path: 'adminlayout',component: AdminLayoutComponent,
-      children: [
-          
-         
-            { path: 'dashboard', component: DashboardComponent, },
-
-
-                {
-                      path: 'managecategory',
-                      component: ManagecategoryComponent,
-                      
-                      },
-                      {
-                        path: 'addcategory/:ID/:Level',
-                        component: AddcategoryComponent,
-                        },
-                        {
-                          path: 'editcategory/:ID/:Level',
-                          component: EditcategoryComponent,
-                          },
-                      {
-                      path: 'inbox',
-                            component:InboxComponent,
-                            },
-                            {
-                      path: 'userdetail',
-                             component:UserdetailComponent,
-                                    },
-                                    {
-                                    path: 'details/:ID',
-                              component:DetailsComponent,
-                              
-                               
-                                    },
-                           
-                              {
-                       path: 'editadminprofile', 
-                              component: EditadminprofileComponent },
-
-          
-                               { 
-
-                                path: 'manageuser', 
-                                component: ManageuserComponent},
-                        
-                        { path: 'details', component: DetailsComponent },
-                               
-                        {
-                      path: 'profile', 
-                                component: ProfileComponent,
-                        children: [
-                        { path: 'editadminprofile', component: EditadminprofileComponent },]},
-                        {
-                          path: 'manageuser', 
-                                    component: ManageuserComponent,
-                            children: [
-                            { path: 'details/:id', component: DetailsComponent },]},
-
-  
-    { path: 'managecategory', component: ManagecategoryComponent },
-    { path: 'manageadmin', component: ManageadminComponent },
-    { path: 'addadmin', component: AddadminComponent },
-    { path: 'manageuser', component: ManageuserComponent },
-    { path: 'enrollmentrequest', component: EnrollmentrequestComponent },
-    { path: 'manageskill', component: ManageskillComponent },
-    { path: 'adminregistration', component: AdminregistrationComponent },
-    { path: 'admindetails', component: AdmindetailsComponent },
-    { path: 'Editcategory', component: EditcategoryComponent },
-    { path: 'Addcategory', component: AddcategoryComponent },
-    { path: 'Inbox', component: InboxComponent },
-    { path: 'userdetail/:id', component: UserdetailComponent },
-    { path: 'details', component: DetailsComponent },
-    { path: 'edituserdetails', component: EdituserdetailsComponent },
-    {path: '',redirectTo: 'adminregistratin',pathMatch: 'full'},
-    
-             ]
-            },
-             { path: '**', redirectTo: '/adminregistration',}
-            ];
-
-            
-=======
 
   { path: 'adminregistration', component: AdminregistrationComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -141,18 +51,19 @@ export const AppRoutes: Routes = [
 
       },
       {
-        path: 'addcategory/:id',
+        path: 'addcategory/:ID/:Level',
         component: AddcategoryComponent,
       },
       {
-        path: 'editcategory/:id',
+        path: 'editcategory/:ID/:Level',
         component: EditcategoryComponent,
       },
+
       {
         path: 'inbox',
         component: InboxComponent,
       },
-    
+
       {
         path: 'details/:ID',
         component: DetailsComponent,
@@ -181,13 +92,13 @@ export const AppRoutes: Routes = [
           { path: 'editadminprofile/:ID', component: EditadminprofileComponent },]
       },
       {
-        path: 'manageuser',component: ManageuserComponent,
+        path: 'manageuser', component: ManageuserComponent,
         children: [{ path: 'details/:id', component: DetailsComponent },]
       },
 
 
-      { path: 'managecategory', component: ManagecategoryComponent},
-      { path: 'manageadmin', component: ManageadminComponent},
+      { path: 'managecategory', component: ManagecategoryComponent },
+      { path: 'manageadmin', component: ManageadminComponent },
       { path: 'addadmin', component: AddadminComponent },
       { path: 'manageuser', component: ManageuserComponent },
       { path: 'enrollmentrequest', component: EnrollmentrequestComponent },
@@ -207,7 +118,6 @@ export const AppRoutes: Routes = [
 ];
 
 
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 @NgModule({
   declarations: [
     AppComponent,
@@ -217,46 +127,13 @@ export const AppRoutes: Routes = [
     EditcategoryComponent,
     AddchildcategoryComponent,
     InboxComponent,
-<<<<<<< HEAD
     UserdetailComponent,
-=======
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
     DashboardComponent,
     ProfileComponent,
     ManageadminComponent,
     AddcategoryComponent,
     DetailsComponent,
     EdituserdetailsComponent
-<<<<<<< HEAD
-   
-  ],
-
-            imports: [
-              BrowserAnimationsModule,
-              BrowserModule,
-              HttpClientModule,
-              NgbModule,
-              FormsModule,
-              CommonModule,
-              RouterModule.forRoot(AppRoutes,{
-                useHash: true
-              }),
-              SidebarModule,
-              NavbarModule,
-              ToastrModule.forRoot()
-           
-             
-            ],
-            providers: [],
-            bootstrap: [AppComponent]
-          })
-          export class AppModule { }
-          
-
-            
-    
- 
-=======
 
   ],
 
@@ -285,7 +162,6 @@ export class AppModule { }
 
 
 
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
   // // {
   // //   path: '',
   // //   component: AdminLayoutComponent,
@@ -294,22 +170,12 @@ export class AppModule { }
   // //     path: '',
   // //     loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
   // // }]},
-<<<<<<< HEAD
- 
-=======
 
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
   // {
   //   path: '**',
   //   redirectTo: '/adminregistration',pathMatch:'full'
   // }
-<<<<<<< HEAD
-            
-
-
-  
-=======
 
 
 
->>>>>>> d4b0febf2047281da60591fd7230203cbb880329
+

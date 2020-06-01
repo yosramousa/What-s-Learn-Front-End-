@@ -3,7 +3,7 @@ import { MessageserviceService } from 'app/messageservice.service';
 import { Router } from '@angular/router';
 import { MangeUsersService } from 'app/mange-users.service';
 import { ManageAdminService } from 'app/manage-admin.service';
-
+import { environment } from  './../../../environments/environment'
 @Component({
   selector: 'app-addadmin',
   templateUrl: './addadmin.component.html',
@@ -23,6 +23,7 @@ export class AddadminComponent implements OnInit {
 
   ID
   Name
+  Image
   Password
   Age
   Email
@@ -30,13 +31,15 @@ export class AddadminComponent implements OnInit {
   Phone
   Gender
 
-
+  Images: FileList;
+  ImageSrc
   ConfirmedPassword
 
   AddAdmin() {
     let Admin = {
       ID: 0,
-      Name: "Salah",
+      Name: this.Name,
+      Image:this.Image,
       Password: this.Password,
       Age: this.Age,
       Email: this.Email,
@@ -49,6 +52,9 @@ export class AddadminComponent implements OnInit {
       res => {
         if (res.Successed) {
           console.log("Done")
+          console.log(res)
+          this.router.navigate(['/adminlayout/manageadmin'])
+
         }
       }
       ,
@@ -59,5 +65,30 @@ export class AddadminComponent implements OnInit {
     );
 
   }
+  onImageFileChange(event) {
+    this.Images = event.target.files;
+  }
+ 
 
+  uploadImage() {
+
+    if (this.Images.length > 0) {
+      let formData: FormData = new FormData();
+      for (var j = 0; j < this.Images.length; j++) {
+        formData.append("file[]", this.Images[j], this.Images[j].name);
+      }
+      this.manageAdminService
+        .upload(formData).subscribe(
+          res => { 
+            if(res.Successed){
+                this.Image = res.Data[0].Path ;
+                console.log('DDSDSDSDSDSDSSDS',res.Data)
+                this.ImageSrc=`${environment.api_url}Uploads/${this.Image}`
+            }
+          },
+          err => { }
+        );
+
+    }
+  }
 }
