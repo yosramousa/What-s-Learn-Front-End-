@@ -1,0 +1,119 @@
+<!--manage category-->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <h3>Choose Level</h3>
+    </div>
+    <div class="col-lg-6">
+      <div class="input-group">
+        <select (change)="GetData()" [(ngModel)]="Level" class="custom-select" id="inputGroupSelect04"
+          aria-label="Example select with button addon">
+          <option *ngFor="let Level of Levels" [ngValue]="Level.id" selected>{{Level.name}} </option>
+
+        </select>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button">Choose</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <form>
+        <label for="cars">show</label>
+        <select (change)="GetData()" name="Numbers" [(ngModel)]="PageSize">
+          <option *ngFor="let show of shows" [ngValue]="show">{{show}}</option>
+
+        </select>
+      </form>
+    </div>
+
+
+    <div class="col-lg-6">
+      <form>
+        <input name="searchText" [(ngModel)]="searchText" [formControl]="CategoryFormControl" type="text"
+          class="form-control by" id="inputusername" placeholder="Search By..">
+        <select  name="SearchOption" [(ngModel)]="searchOption" class="custom-select selection"
+          id="inputGroupSelect04" aria-label="Example select with button addon">
+          <option value="0">Select Search Option</option>
+          <option *ngFor="let option of SearcheOptions" [ngValue]="option.id" selected>{{option.name}} </option>
+
+        </select>
+        <button  (click)="GetData()" type="submit" class="btn btn-default float-center search">Search</button>
+
+      </form>
+
+    </div>
+
+
+
+
+
+
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Childs</th>
+          <th scope="col">Parent</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let cat of Data">
+
+          <td>{{cat.ID}}</td>
+          <td>{{cat.Name}}</td>
+          <select name="example">
+            <option *ngFor="let child of cat.Child">{{child}}</option>
+
+          </select>
+          <td *ngIf="cat.Parent">{{cat.Parent}}</td>
+          <td *ngIf="!cat.Parent">Main Category Parent</td>
+          <td><a   [routerLink]="['/adminlayout/editcategory', cat.ID,Level]" (click)="editcategory(Cat.ID)"><i class="far fa-edit"></i></a></td>
+          <!-- 
+      <td >
+        <a href="#"  data-toggle="modal" data-target="#exampleModal">
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Are Yoy Sure You Want To Delet This Row?
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <td> <a   (click)="Remove(cat.ID)"> <i class="fas fa-trash-alt"></i></a></td>
+
+         
+
+
+          <td><a  [routerLink]="['/adminlayout/addcategory', cat.ID,Level]" (click)="addcategory(cat.ID)"><i class="fas fa-plus"></i></a></td>
+        </tr>
+
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li  class="page-item"><a (click)="Prev()" class="page-link" >Previous</a></li>
+        <li class="page-item "><a (click)="Next()" class="page-link" >Next</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</div>
