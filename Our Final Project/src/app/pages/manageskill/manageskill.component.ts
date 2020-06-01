@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { ManageSillService } from './../../../Services/manage-sill.service';
+=======
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 import { Component, OnInit } from '@angular/core';
 import { MessageserviceService } from 'app/messageservice.service';
 import { Router } from '@angular/router';
@@ -9,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./manageskill.component.css']
 })
 export class ManageskillComponent implements OnInit {
+<<<<<<< HEAD
 
   PageIndex: number = 0
   PageSize: number = 10
@@ -124,3 +128,13 @@ export class ManageskillComponent implements OnInit {
 }
 
 
+=======
+   skill:string ;
+   skillname:string;
+  constructor(private router: Router, private msg: MessageserviceService) { }
+
+  ngOnInit(): void {
+  }
+
+}
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329

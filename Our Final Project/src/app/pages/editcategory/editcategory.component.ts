@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import { ManageCategoryService } from './../../../Services/manage-category.service';
 import { Component, OnInit } from '@angular/core';
 import { MessageserviceService } from 'app/messageservice.service';
 import { Router, ActivatedRoute } from '@angular/router';
+=======
+import { Component, OnInit } from '@angular/core';
+import { MessageserviceService } from 'app/messageservice.service';
+import { Router } from '@angular/router';
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 
 @Component({
   selector: 'app-editcategory',
@@ -9,6 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./editcategory.component.css']
 })
 export class EditcategoryComponent implements OnInit {
+<<<<<<< HEAD
   ID: number
   level: number
   Name: string
@@ -146,3 +153,28 @@ alert("Link Saved Sucessfully")
   }
  
 }
+=======
+    description : string ;
+    image : string;
+    link :string;
+    video:string;
+    file:string;
+    subsciption;
+  constructor(private router: Router, private msg: MessageserviceService) { }
+
+  ngOnInit(): void {
+  }
+  savedescribtion() {
+    console.log("any thing")
+
+    let admin= {
+      description : this.description,
+      image :this.image,
+      link :this.link,
+    video :this.video,
+      file :this.file,
+    };
+
+    this.router.navigate(['managecategory'])
+}}
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329

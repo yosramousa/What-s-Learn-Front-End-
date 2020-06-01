@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <label for="cars">show</label>
 <select (change)="GetAll()" name="Numbers" [(ngModel)]="PageSize">
   <option *ngFor="let show of shows" [ngValue]="show">{{show}}</option>
@@ -78,3 +79,93 @@
     <li class="page-item"><a class="page-link" (click)="Next()">Next</a></li>
   </ul>
 </nav>
+=======
+ <div class="form-group row">
+  <div class ="col-lg-6">
+    
+  
+            <input [(ngModel)]="skill"  type="search" class="form-control" id="inputsearch" placeholder="Add New Skill" >
+  </div>
+  <div class="col-lg-6">
+               <button type="submit" class="btn btn-success">Add</button>
+              
+   </div>
+        <div class="col-lg-12">
+        <div class="card-body">
+          <div class="table">
+            <table class="table table-striped">
+              <thead >
+                <tr >
+                <th>
+               Skills
+                </th>
+                <th>
+                </th>
+                <th >
+                </th>
+              </tr>
+              </thead>
+              <tbody>
+            
+                <tr *ngFor="let item of collection.data | paginate: config">
+                  <th scope="row">{{item.id}}</th>
+                  <td>{{item.value}}</td>
+                  <td [(ngModel)]="skillname">
+                   
+                  </td>
+    <td><a href="#"><i class="far fa-edit"></i></a></td>
+    <td><a href="#"><i class="far fa-trash-alt"></i></a></td>  
+                </tr>
+                <tr>
+                   <td [(ngModel)]="skillname">
+                   
+                   </td>
+     <td><a href="#"><i class="far fa-edit"></i></a></td>
+     <td><a href="#"><i class="far fa-trash-alt"></i></a></td>  
+                </tr>
+            <tr>
+                  <td [(ngModel)]="skillname"> </td>
+                  <td><a href="#"><i class="far fa-edit"></i></a></td>
+                   <td><a href="#"><i class="far fa-trash-alt"></i></a></td>  
+            </tr>
+            <tr>
+              <td [(ngModel)]="skillname"> </td>
+              <td><a href="#"><i class="far fa-edit"></i></a></td>
+               <td><a href="#"><i class="far fa-trash-alt"></i></a></td>  
+            </tr>
+            <tr>
+              <td [(ngModel)]="skillname"> </td>
+              <td><a href="#"><i class="far fa-edit"></i></a></td>
+               <td><a href="#"><i class="far fa-trash-alt"></i></a></td>  
+            </tr>
+            <tr>
+              <td [(ngModel)]="skillname"> </td>
+              <td><a href="#"><i class="far fa-edit"></i></a></td>
+               <td><a href="#"><i class="far fa-trash-alt"></i></a></td>  
+            </tr>
+            <tr>
+              <td [(ngModel)]="skillname"> </td>
+              <td><a href="#"><i class="far fa-edit"></i></a></td>
+               <td><a href="#"><i class="far fa-trash-alt"></i></a></td>  
+            </tr>
+              </tbody>
+            </table>
+          
+            
+          </div>
+        </div>
+      </div>
+    
+
+  
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329

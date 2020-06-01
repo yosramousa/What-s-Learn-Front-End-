@@ -14,10 +14,17 @@ export class ManageAdminService {
     return this.apiService.get(`MangeAdmins/GetList?pageIndex=${Pageindex}&pageSize=${pagesize}`);
    }
    ChangeStatus(id){
+<<<<<<< HEAD
     return this.apiService.get(`MangeAdmins/ChangeStatus/${id}`);
    }
    Delete(id){
      return  this.apiService.get(`MangeAdmins/Delete/${id}`);
+=======
+    return this.apiService.get(`MangeAdmins/ChangeStatus?id=${id}`);
+   }
+   Delete(id){
+     return  this.apiService.get(`MangeAdmins/Delete?id=${id}`);
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
    }
    Search(SearchOp,SearchText,PageIndex,PageSize) : any
    {
@@ -28,5 +35,13 @@ export class ManageAdminService {
    Add(Admin): any{
      return  this.apiService.post("MangeAdmins/Post", JSON.stringify(Admin));
    }
+<<<<<<< HEAD
+=======
+   
+   GetByID(id) : any
+   {
+     return this.apiService.get(`MangeAdmins/GetByID?id=${id}`);
+   }
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 }
 

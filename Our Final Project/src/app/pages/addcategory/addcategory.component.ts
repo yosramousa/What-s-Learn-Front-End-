@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { Router, ActivatedRoute } from '@angular/router';
 import { MessageserviceService } from 'app/messageservice.service';
 import { ManageCategoryService } from 'Services/manage-category.service';
+=======
+import { Router } from '@angular/router';
+import { MessageserviceService } from 'app/messageservice.service';
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 
 @Component({
   selector: 'app-addcategory',
@@ -9,6 +14,7 @@ import { ManageCategoryService } from 'Services/manage-category.service';
   styleUrls: ['./addcategory.component.css']
 })
 export class AddcategoryComponent implements OnInit {
+<<<<<<< HEAD
   ID:number
   ParentId: number
   level: number
@@ -177,3 +183,29 @@ export class AddcategoryComponent implements OnInit {
 
   }
 }
+=======
+  description :string ;
+  image : string ;
+  link :string ;
+  video:string ;
+  file:string ;
+  subsciption;
+  constructor(private router: Router, private msg: MessageserviceService) { }
+
+  ngOnInit(): void {
+  }
+  saveDescribtion() {
+    console.log("any thing")
+
+    let admin= {
+      description : this.description,
+      image :this.image,
+      link :this.link,
+    video :this.video,
+      file :this.file,
+    };
+
+    this.router.navigate(['managecategory'])}
+    funsubmit(){}
+}
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329

@@ -25,7 +25,10 @@ import { EditcategoryComponent } from './pages/editcategory/editcategory.compone
 import { AddchildcategoryComponent } from './pages/addchildcategory/addchildcategory.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { InboxComponent } from './pages/inbox/inbox.component';
+<<<<<<< HEAD
 import { UserdetailComponent } from './pages/userdetail/userdetail.component';
+=======
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 import { ManageadminComponent } from './pages/manageadmin/manageadmin.component';
 import { AdmindetailsComponent } from './pages/admindetails/admindetails.component';
 import { AddcategoryComponent } from './pages/addcategory/addcategory.component';
@@ -48,7 +51,10 @@ import { ApiService } from './api.service';
     EditcategoryComponent,
     AddchildcategoryComponent,
     InboxComponent,
+<<<<<<< HEAD
     UserdetailComponent,
+=======
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
     ManagecategoryComponent,
     AddadminComponent,
     EnrollmentrequestComponent,

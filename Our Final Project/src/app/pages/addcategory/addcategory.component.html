@@ -1,4 +1,5 @@
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+<<<<<<< HEAD
   <li class="nav-item" role="presentation">
     <a class="nav-link active " id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab"
       aria-controls="pills-description" aria-selected="true">General Data</a>
@@ -205,3 +206,90 @@
       </div>
     </div>
   </div>
+=======
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active " id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab"
+        aria-controls="pills-description" aria-selected="true">General Data</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link " id="pills-Documents-tab" data-toggle="pill" href="#pills-Documents" role="tab"
+        aria-controls="pills-Documents" aria-selected="true">Documents</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link " id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+        aria-controls="pills-profile" aria-selected="true">Links</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link " id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+        aria-controls="pills-contact" aria-selected="true">Videos</a>
+    </li>
+    <li>
+      <button class="btn ">Submit</button>
+    </li>
+  
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+  
+      <div class="form-group">
+        <label for="comment-des">Discription:</label>
+        <textarea [(ngModel)]="Describtion"  class="form-control" rows="5" id="comment-des"></textarea>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label class="text-muted">Add Image</label>
+              <div class="custom-file">
+                <input [(ngModel)]="image"  type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+          </div>
+          </div>
+          
+        </div>
+  
+        <button class="btn " (click)="saveDescribtion()">Save</button>
+      </div>
+    </div>
+  
+    <div class="tab-pane fade show active" id="pills-Documents" role="tabpanel" aria-labelledby="pills-Documents-tab">
+  
+      <div class="form-group">
+        <label for="comment">Discription:</label>
+        <textarea  [(ngModel)]="Describtion"class="form-control" rows="5" id="comment"></textarea>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label class="text-muted">Add File</label>
+            <div class="custom-file">
+              <input [(ngModel)]="file" type="file" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+          </div>
+        </div>
+  
+        <button class="btn " (click)="saveDescribtion()">Save</button>
+      </div>
+    </div>
+  
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <div class="form-group">
+        <label for="comment">Discription:</label>
+        <textarea [(ngModel)]="Describtion" class="form-control" rows="5" id="comment"></textarea>
+        <div class="form-group col-md-4">
+          <label for="inputaddlink"> Add Link:</label>
+          <input [(ngModel)]="link" type="Link" class="form-control" id="inputaddlink"required>
+        </div>
+  
+        <button class="btn " (click)="saveDescribtion()">Save</button>
+  
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <div class="form-group">
+        <label for="comment">Discription:</label>
+        <textarea   [(ngModel)]="Describtion"class="form-control" rows="5" id="comment"></textarea>
+         <div class="form-group col-md-4">
+          <label for="inputaddlink"> Add Video Link:</label>
+          <input [(ngModel)]="link" type="Link" class="form-control" id="inputaddlink"required>
+        </div>
+        <button class="btn" (click)="saveDescribtion()">Save</button>
+      </div>
+    </div>
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329

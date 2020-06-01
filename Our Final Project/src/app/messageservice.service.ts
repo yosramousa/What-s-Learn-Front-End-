@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 
+<<<<<<< HEAD
 import { HttpClient} from '@angular/common/http';
+=======
+import { ApiService } from './api.service';
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageserviceService {
+<<<<<<< HEAD
   [x: string]: any;
   readonly URL = "http://localhost:3000/";
   constructor(private myHttp :HttpClient) { }
@@ -32,4 +37,20 @@ export class MessageserviceService {
     
  
   AdminLogin(){}
+=======
+  
+  constructor(private apiService:ApiService) { }
+
+
+  ChangeStatus(id){
+
+    return this.apiService.get(`Inbox/ChangeStatus?id=${id}`);
+   }
+
+   GetMessages(pageIndex,pageSize) :any{
+    console.log("OnGetMessages")
+
+     this.apiService.get(`Inbox/GetAll?pageIndex=${pageIndex}&pageSize${pageSize}`)
+   }
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 }

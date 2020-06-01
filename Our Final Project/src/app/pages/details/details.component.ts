@@ -44,7 +44,11 @@ export class DetailsComponent implements OnInit {
     this.ID = this.myActivatedRoute.snapshot.params['ID'];
     this.subscripber = this.mangeUsersService.GetByID(this.ID = this.myActivatedRoute.snapshot.params['ID'])
       .subscribe(res => {
+<<<<<<< HEAD
         this.Response = res.json().Data
+=======
+        this.Response = res.Data
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
         this.User=this.Response
         // this.User.name = this.Response.Name
         // this.User.email = this.Response.Email

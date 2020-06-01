@@ -34,6 +34,10 @@ this.subsciption = this.authService.LogIn(admin).subscribe(res=>
       localStorage.setItem("AdminEmail", res.Data.Email)
       this.IsValid=false;
       this.router.navigate(['adminlayout/profile'])
+<<<<<<< HEAD
+=======
+localStorage.getItem("AdminName")
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
     } else{
       this.IsValid=true
     }

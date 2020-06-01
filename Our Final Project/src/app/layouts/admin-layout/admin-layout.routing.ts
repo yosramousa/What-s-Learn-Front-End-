@@ -11,7 +11,10 @@ import { AdminregistrationComponent } from '../../pages/adminregistration/adminr
 import { EditcategoryComponent } from '../../pages/editcategory/editcategory.component';
 import { AddchildcategoryComponent } from '../../pages/addchildcategory/addchildcategory.component';
 import { InboxComponent } from '../../pages/inbox/inbox.component';
+<<<<<<< HEAD
 import { UserdetailComponent } from '../../pages/userdetail/userdetail.component';
+=======
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 import { ManageadminComponent } from '../../pages/manageadmin/manageadmin.component';
 import { AdmindetailsComponent } from '../../pages/admindetails/admindetails.component';
 import { AddcategoryComponent } from '../../pages/addcategory/addcategory.component';
@@ -33,7 +36,10 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'Editcategory', component: EditcategoryComponent },
     { path: 'Addchildcategory', component: AddchildcategoryComponent },
     { path: 'Inbox', component: InboxComponent },
+<<<<<<< HEAD
     { path: 'userdetail', component: UserdetailComponent },
+=======
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
     { path: 'Admindetails', component: AdmindetailsComponent },
     { path: 'Addcategory', component: AddcategoryComponent },
     { path: 'details/:ID', component: DetailsComponent},

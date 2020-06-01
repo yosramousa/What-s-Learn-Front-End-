@@ -30,6 +30,7 @@ export class ManageuserComponent implements OnInit {
   ngOnInit(): void {
    // console.log(this.pageNumber,this.pageSize)
     this.GetAllsubscribe = this.mangeUsersService.Search(0," ",this.pageNumber, this.pageSize).subscribe(response => {
+<<<<<<< HEAD
       if (response.json().Successed == true) {
         //Data
         //Successed
@@ -38,6 +39,11 @@ export class ManageuserComponent implements OnInit {
        this.Users = response.json().Data;
        console.log("this.Users")
 
+=======
+      if (response.Successed == true) {
+        
+       this.Users = response.Data;
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
        console.log(this.Users)
       }(err=>
         console.log(err)
@@ -91,9 +97,15 @@ export class ManageuserComponent implements OnInit {
     console.log(this.SaerchText,this.SearchOp)
     this.mangeUsersService.Search(this.SearchOp,this.SaerchText,this.pageNumber,this.pageSize).subscribe(res=>{
 
+<<<<<<< HEAD
       if (res.json().Successed == true) {
        
         this.Users = res.json().Data;
+=======
+      if (res.Successed == true) {
+       
+        this.Users = res.Data;
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
 
         console.log(this.Users)
       } else console.log("False")
@@ -107,12 +119,20 @@ export class ManageuserComponent implements OnInit {
   Filter()
   {
     this.GetAllsubscribe = this.mangeUsersService.Search(this.SearchOp,this.SaerchText,this.pageNumber, this.pageSize).subscribe(response => {
+<<<<<<< HEAD
       if (response.json().Successed == true) {
+=======
+      if (response.Successed == true) {
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
         //Data
         //Successed
         //Message
         //response.json().Message
+<<<<<<< HEAD
        this.Users = response.json().Data;
+=======
+       this.Users = response.Data;
+>>>>>>> d4b0febf2047281da60591fd7230203cbb880329
        
        console.log(this.Users)
       }
