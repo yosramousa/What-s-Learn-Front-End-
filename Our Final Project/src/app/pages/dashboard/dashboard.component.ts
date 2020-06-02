@@ -12,13 +12,13 @@ import { DashBordService } from 'Services/dash-bord.service';
   styleUrls: ['./dashboard.component.css']
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit  {
   
     Users: number
     visitors: number;
     Roadmap: number;
     Maincategory: number;
-  
+    Test:string="#"
   Data:number[]
   PieChaertTracks:string[]
   PieChaertNums:number[]
@@ -31,7 +31,10 @@ export class DashboardComponent implements OnInit {
   public chartEmail;
   public chartHours;
 
-  constructor(private router: Router, private dashBordService: DashBordService) { }
+  constructor(private router: Router, private dashBordService: DashBordService) { 
+    
+  }
+ 
   ngOnInit() {
     
     this.dashBordService.GetALLData().subscribe(res=>{
@@ -41,9 +44,11 @@ export class DashboardComponent implements OnInit {
 
       this.Roadmap=res.Statistic.trackCount
      this.Maincategory=res.Statistic.MainCategoryCount
-    //this.PieChaertNums=Object.values(res.PiChart)
-     //this.PieChaertTracks=Object.keys(res.PiChart)
-    // this.DateChartNums=Object.values(res.MonthlyChart)
+   // this.PieChaertNums=Object.values(res.PiChart)
+    this.PieChaertNums=Object.keys(res.PiChart).map(key => res.PiChart[key]);
+     this.PieChaertTracks=Object.keys(res.PiChart)
+    // this.DateChartNums=Object.values(res.MonthlyChart
+    this.DateChartNums= Object.keys(res.MonthlyChart).map(key => res.MonthlyChart[key])
     console.log(res)
     
          
@@ -59,7 +64,7 @@ export class DashboardComponent implements OnInit {
    
  DrowChart()
  {
-  this.chartColor = "#FFFFFF";
+  this.chartColor = "#11111";
 
   this.canvas = document.getElementById("chartHours");
   this.ctx = this.canvas.getContext("2d");
@@ -130,6 +135,7 @@ export class DashboardComponent implements OnInit {
   this.chartEmail = new Chart(this.ctx, {
     type: 'pie',
     data: {
+      
       labels: [1, 2, 3],
       datasets: [{
         label: "Emails",

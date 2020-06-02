@@ -1,3 +1,4 @@
+import { ApiService } from 'app/api.service';
 import { ManageCategoryService } from './../../../Services/manage-category.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -85,7 +86,32 @@ export class ManagecategoryComponent implements OnInit {
     }
   }
 
+  SortBYNameAsc(Icon)
+  {
+    document.getElementById("desc").style.color="gainsboro";
+    document.getElementById("Asc").style.color="black";
+    this.manageCategoryService.SortByNameASc(this.Level,this.PageNumber,this.PageSize).subscribe(res => {
+      if (res.Successed == true) {
+        this.Data = res.Data;
+        console.log("numes",res.Data)
+      }
+    });
+  }
+  SortBYNameDesc()
+  {
+   
 
+    document.getElementById("Asc").style.color="gainsboro";
+    document.getElementById("desc").style.color="black";
+    //console.log( Icon)
+    this.manageCategoryService.SortByNameDesc(this.Level,this.PageNumber,this.PageSize).subscribe(res => {
+      if (res.Successed == true) {
+        this.Data = res.Data;
+
+        console.log("numes",res)
+      }
+    });
+  }
   // editcategory(id) {
   //   alert("edit");
   //   this.router.navigate(['/adminlayout/editcategory/' + id])

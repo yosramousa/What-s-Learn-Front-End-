@@ -123,5 +123,12 @@ export class ManageCategoryService {
     return this.apiService.upload("File/Upload",files);
    }
 
+   SortByNameDesc(level,Pageindex, pagesize):any{
 
+    
+    return this.apiService.get(`ManageCategory/SortByNameDesc?level=${level}&PageIndex=${Pageindex}&PageSize=${pagesize}`)
+  }
+  SortByNameASc(Level,Pageindex, pagesize):any{
+    return this.apiService.get(`ManageCategory/SortByNameAsc?level=${Level}&PageIndex=${Pageindex}&PageSize=${pagesize}`)
+  }
 }

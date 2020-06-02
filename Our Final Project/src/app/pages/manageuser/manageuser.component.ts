@@ -81,6 +81,13 @@ export class ManageuserComponent implements OnInit {
   }
 
   Search() {
+    this.SaerchText=this.SaerchText.trim();
+    if (!this.SaerchText) 
+    {
+      this.SaerchText = " ";
+      this.SearchOp=0;
+    }
+ 
     console.log(this.SaerchText, this.SearchOp)
     this.mangeUsersService.Search(this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(res => {
 
@@ -130,6 +137,63 @@ export class ManageuserComponent implements OnInit {
   }
   details(id) {
     this.router.navigate(['/adminlayout/details/' + id]);
+  }
+
+  SortBYNameAsc(Icon)
+  {
+    document.getElementById("desc").style.color="gainsboro";
+    document.getElementById("Asc").style.color="black";
+    this.mangeUsersService.SortByNameASc(this.pageNumber,this.pageSize).subscribe(res => {
+      if (res.Successed == true) {
+      
+        this.Users = res.Data;
+        console.log(this.Users)
+        
+      //  this.count=res.Count
+       // this.NumOfPages=Math.ceil( this.count/this.pageSize)
+        
+       //this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
+        console.log("numes",res.Data)
+      }
+    });
+  }
+  SortBYNameDesc(Icon)
+  {
+   
+
+    document.getElementById("Asc").style.color="gainsboro";
+    document.getElementById("desc").style.color="black";
+    //console.log( Icon)
+    this.mangeUsersService.SortByNameDesc(this.pageNumber,this.pageSize).subscribe(res => {
+      if (res.Successed == true) {
+      
+        this.Users = res.Data;
+        console.log(this.Users)
+        
+       // this.count=res.Count
+        //this.NumOfPages=Math.ceil( this.count/this.pageSize)
+        
+      // this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
+        console.log("numes",res.Data)
+      }
+    });
+  }
+  SortBYStatus(Icon)
+  {
+    Icon.target.style.color="black"
+    this.mangeUsersService.SortByStatus(this.pageNumber,this.pageSize).subscribe(res => {
+      if (res.Successed == true) {
+      
+        this.Users = res.Data;
+        console.log(this.Users)
+        
+       // this.count=res.Count
+       // this.NumOfPages=Math.ceil( this.count/this.pageSize)
+        
+       //this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
+        console.log("numes",res.Data)
+      }
+    });
   }
 }
 

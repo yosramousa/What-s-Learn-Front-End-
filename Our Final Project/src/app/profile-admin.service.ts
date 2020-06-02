@@ -17,4 +17,7 @@ export class ProfileAdminService {
   Update(Admin): any{
     return  this.apiService.post("AdminProfile/Update", JSON.stringify(Admin));
   }
+  upload(files):any{
+    return this.apiService.upload("File/Upload",files);
+   }
 }

@@ -34,5 +34,14 @@ export class ManageAdminService {
   upload(files):any{
     return this.apiService.upload("File/Upload",files);
    }
+   SortByNameASc(Pageindex, pagesize):any{
+     return this.apiService.get(`MangeAdmins/SortByNameAsc?pageIndex=${Pageindex}&pageSize=${pagesize}`)
+   }
+   SortByNameDesc(Pageindex, pagesize):any{
+    return this.apiService.get(`MangeAdmins/SortByNameDesc?pageIndex=${Pageindex}&pageSize=${pagesize}`)
+  }
+  SortByStatus(Pageindex, pagesize):any{
+    return this.apiService.get(`MangeAdmins/SortByStatus?pageIndex=${Pageindex}&pageSize=${pagesize}`)
+  }
 }
 

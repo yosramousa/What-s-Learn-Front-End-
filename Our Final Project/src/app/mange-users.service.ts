@@ -27,6 +27,15 @@ export class MangeUsersService {
   Search(SerachOption, SerachText, Pageindex, pagesize): any {
     return this.apiService.get(`ManageUsers/Search?SerachOption=${SerachOption}&SerachText=${SerachText}&PageIndex=${Pageindex}&PageSize=${pagesize}`);
   }
+  SortByNameASc(Pageindex, pagesize):any{
+    return this.apiService.get(`ManageUsers/SortByNameAsc?pageIndex=${Pageindex}&pageSize=${pagesize}`)
+  }
+  SortByNameDesc(Pageindex, pagesize):any{
+   return this.apiService.get(`ManageUsers/SortByNameDesc?pageIndex=${Pageindex}&pageSize=${pagesize}`)
+ }
+ SortByStatus(Pageindex, pagesize):any{
+   return this.apiService.get(`ManageUsers/SortByStatus?pageIndex=${Pageindex}&pageSize=${pagesize}`)
+ }
 }
 
 

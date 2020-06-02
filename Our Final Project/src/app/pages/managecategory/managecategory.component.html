@@ -53,9 +53,21 @@
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">{{Level==4?"Tracks":"Childs"}}</th>
+          <th scope="col">
+            <a (click)="SortBYNameAsc()"> <i id="Asc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+              <a (click)="SortBYNameDesc()"><i id="desc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>Name
+            </th>                    <th  *ngIf="Level ==1"scope="col">SubCategories</th>
+
+          <th  *ngIf="Level==4 || Level==2"scope="col">Tracks</th>
+          <th  *ngIf="Level==3"scope="col">Courses</th>
+
+
+          <th  *ngIf="Level==3"scope="col">Users</th>
+          <th  *ngIf="Level==0"scope="col">Childs</th>
+
+
           <th scope="col">Parent</th>
+          
           <th>Image</th>
           <th scope="col"></th>
           <th scope="col"></th>
@@ -69,13 +81,23 @@
 
           <td>{{cat.ID}}</td>
           <td>{{cat.Name}}</td>
+          <td>
           <select  name="example">
             <option  *ngFor="let child of cat.Childs">{{child}}</option>
 
           </select>
+          </td>
+          <td  *ngIf="Level==3"scope="col">
+
+            <select  name="example">
+              <option  *ngFor="let User of cat.Users">{{User}}</option>
+  
+            </select>
+          </td>
+
           <td >{{cat.Parent?cat.Parent:""}}</td>
           <td><img width="80" height="80" src="{{Url}}/Uploads/{{cat.Image}}" /></td>
-          <td *ngIf="!cat.Parent">Main Category Parent</td>
+          <td *ngIf="(!cat.Parent && Level==1)">Main Category Parent</td>
           <td><a [routerLink]="['/adminlayout/editcategory', cat.ID,Level]" (click)="editcategory(Cat.ID)"><i
                 class="far fa-edit"></i></a></td>
           <!--  

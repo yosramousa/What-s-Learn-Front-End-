@@ -41,10 +41,15 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Name</th>
+      <a (click)="SortBYNameAsc($event)"> <i id="Asc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+      <a (click)="SortBYNameDesc($event)"><i id="desc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>Name
       <th scope="col">Tracks</th>
 
-      <th scope="col">Status</th>
+      <th scope="col">
+        <a (click)="SortBYStatus($event)"> <i style="font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+        Status
+
+      </th>
       <th scope="col">Chage Status</th>
 
       <th scope="col">Details</th>

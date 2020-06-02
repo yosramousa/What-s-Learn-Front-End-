@@ -93,6 +93,7 @@ export class ManageadminComponent implements OnInit {
   }
 
   Search() {
+    
     if (!this.SaerchText) 
     {
       this.SaerchText = " ";
@@ -101,7 +102,7 @@ export class ManageadminComponent implements OnInit {
     console.log(this.SaerchText, this.SearchOp)
     this.manageAdminService.Search(this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(res => {
       if (res.Successed == true) {
-        this.Filter();
+       // this.Filter();
         this.Admins = res.Data;
         console.log(this.Admins)
         
@@ -137,5 +138,62 @@ export class ManageadminComponent implements OnInit {
     this.Search();
   
   }
+  SortBYNameAsc()
+  {
+    document.getElementById("desc").style.color="gainsboro";
+    document.getElementById("Asc").style.color="black";
+
+    this.manageAdminService.SortByNameASc(this.pageNumber,this.pageSize).subscribe(res => {
+      if (res.Successed == true) {
+      
+        this.Admins = res.Data;
+        console.log(this.Admins)
+        
+        this.count=res.Count
+        this.NumOfPages=Math.ceil( this.count/this.pageSize)
+        
+       this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
+        console.log("numes",res.Data)
+      }
+    });
+  }
+  SortBYNameDesc()
+  {
+   
+    document.getElementById("Asc").style.color="gainsboro";
+    document.getElementById("desc").style.color="black";
+
+    this.manageAdminService.SortByNameDesc(this.pageNumber,this.pageSize).subscribe(res => {
+      if (res.Successed == true) {
+      
+        this.Admins = res.Data;
+        console.log(this.Admins)
+        
+        this.count=res.Count
+        this.NumOfPages=Math.ceil( this.count/this.pageSize)
+        
+       this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
+        console.log("numes",res.Data)
+      }
+    });
+  }
+  SortBYStatus(Icon)
+  {
+    Icon.target.style.color="black"
+    this.manageAdminService.SortByStatus(this.pageNumber,this.pageSize).subscribe(res => {
+      if (res.Successed == true) {
+      
+        this.Admins = res.Data;
+        console.log(this.Admins)
+        
+        this.count=res.Count
+        this.NumOfPages=Math.ceil( this.count/this.pageSize)
+        
+       this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
+        console.log("numes",res.Data)
+      }
+    });
+  }
+
 }
 
