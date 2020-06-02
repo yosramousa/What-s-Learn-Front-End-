@@ -1,0 +1,55 @@
+.content{
+    overflow:hidden !important;
+    width:300px;
+    height:180px;
+    margin:auto;
+}
+
+button
+{
+   
+    background-color: #86c232 !important;
+    position: relative;
+    border-radius: 5px;
+    width: 100px;
+    left: 179px;
+    top: 30px;
+  
+  
+   
+}
+
+label{
+   
+   
+    position: relative;
+    bottom: 29px;
+    font-size: 25px;
+   
+    left: 0px;
+}
+
+input{
+    bottom: 20px;
+    left: 0px;
+    position: relative;
+    height: 42px;
+    width: 226px;
+}
+.save{
+  
+    font-size: 23px;
+    height:41px;
+    position: relative;
+    
+
+}
+.cancel{
+       color:red !important;
+       font-size: 25px;
+       position: relative;
+        left: 520px;
+         bottom: 26px;
+      
+    }
+    
