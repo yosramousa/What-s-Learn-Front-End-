@@ -1,0 +1,26 @@
+
+              <div class="box">
+                <h2>Log In </h2>
+                <!-- icon: 'nc-lock-circle-open' -->
+                <form>
+                    <div class="inputbox">
+                      <input  [(ngModel)]="name" [ngModelOptions]="{standalone:
+                        true}" name ="name"
+                      type="text" required="">
+                      <label>userName</label>
+                    </div>
+              
+                    <div class="inputbox">
+                      <input   [(ngModel)]="password"  name ="password" [ngModelOptions]="{standalone:
+                        true}"
+                      type="password" required="">
+                      <label>Password</label>
+                    </div>
+              
+                    <input class="submit" type="submit"  value ="Log In" (click)="AdminLogin() ">
+                  </form>
+              </div>
+              
+  
+           
+

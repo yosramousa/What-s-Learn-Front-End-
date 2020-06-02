@@ -1,0 +1,33 @@
+
+textarea{
+    width: 31%;
+}
+/* button
+{
+  float: right;
+
+  right: 69%;
+  top: 24px;
+
+} */
+
+  button
+{
+    background-color: #222629  !important;
+    color: #86c232 !important;
+    border-radius: 20px;
+    position: relative;
+}
+.nav-link {
+  color: #86c232 !important;
+
+}
+
+.ancor:active{
+  background-color:  #86c232 !important;
+  text-decoration: none;
+  /* border: none; */
+  border-radius: 10px;
+  /* background-color: transparent; */
+  cursor: pointer;
+}

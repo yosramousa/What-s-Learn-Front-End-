@@ -1,0 +1,81 @@
+<div class="form-group row">
+  <div class="col-lg-4">
+
+
+    <input [(ngModel)]="skill" type="search" class="form-control styleinput" id="inputsearch" placeholder="Add New Skill">
+
+  </div>
+  <div class="col-lg-4 m-auto">
+
+
+    <button type="submit" class="btn btn-success">Add</button>
+
+  </div>
+
+  <div class="col-lg-12">
+    <div class="card-body">
+      <div class="table">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>
+                Skills
+              </th>
+              <th>
+              </th>
+              <th>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+
+           
+           
+            <tr>
+              <td >
+                html
+              </td>
+              <td><a class="edit" (click)="editskill(1)"><i class="far fa-edit"></i></a></td>
+
+              <td><a  class="delete"
+                mwlConfirmationPopover
+                [popoverTitle]="popoverTitle"
+                [popoverMessage]="popoverMessage"
+                placement="top"
+                (confirm)="delete()"
+                (cancel)="cancelClicked = true">
+                <i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+            <tr>
+              <td >css </td>
+              <td><a  class="edit" (click)="editskill(2)"><i class="far fa-edit"></i></a></td>
+              
+              <td><a class="delete"
+                mwlConfirmationPopover
+                [popoverTitle]="popoverTitle"
+                [popoverMessage]="popoverMessage"
+                placement="top"
+                (confirm)="delete()"
+                (cancel)="cancelClicked = true"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+
+
+
+
+          </tbody>
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>

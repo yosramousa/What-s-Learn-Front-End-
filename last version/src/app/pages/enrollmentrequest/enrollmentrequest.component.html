@@ -1,0 +1,106 @@
+
+   <div class="container">
+
+    <div class="row">
+      <div class="text-left">
+      <div class="col-lg-2">
+        <form>
+          <label for="cars">show</label>
+        
+        </form>
+      </div>
+    </div>
+    <div class="text-left">
+      <div class="col-lg-2">
+        <form>
+          <select class="custom-select"  name="Numbers">
+            <option  *ngFor="let display of displaying" [ngValue]="show">{{show.number}}</option>
+  
+          </select>
+        </form>
+      </div>
+    </div>
+ 
+ <!------------>
+
+
+  <!------------>
+  
+    <div class="col-lg-4">
+      <select class="custom-select selection" id="inputGroupSelect04" aria-label="Example select with button addon">
+        <option *ngFor="let search of searches" [ngValue]="show" selected>{{search.name}} </option>
+    
+      </select>
+      <!-- <button type="submit" class="btn btn-default float-center search" >Search</button> -->
+    </div>
+
+    
+
+    <div class="col-lg-4">
+
+      <div class="input-group">
+       
+
+        <input name="Search"  [(ngModel)]="SaerchText" type="text" class="form-control" placeholder="Search">
+        <div class="input-group-append">
+          <button  (click)="search()" class="btn btn-secondary" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+    </div>
+   
+
+
+     <!---begin the enrollment request--->
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Number</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Track</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of collection.data | paginate: config">
+        <th scope="row">{{item.id}}</th>
+      <td>{{item.value}}</td>
+        <th [(ngModel)]="id"scope="row"></th>
+        <td [(ngModel)]="name"></td>
+        <td [(ngModel)]="track"></td>
+       
+      
+
+       <!-- <td><button class="btn btn-success approve"> Approve</button></td> 
+       <td><button class="btn btn-danger cancel" > Cancel</button></td>  -->
+       <td><a class="approve">  <i class="fas fa-check"></i></a></td>
+        <td><a class="cancel">  <i class="fas fa-times"></i></a></td>
+      </tr>
+      <tr>
+        <th [(ngModel)]="id"scope="row"></th>
+        <td [(ngModel)]="name"></td>
+        <td [(ngModel)]="track"></td>
+        <td><a class="approve">  <i class=""  class="fas fa-check"></i></a></td>
+        <td><a class="cancel">  <i class="" class="fas fa-times"></i></a></td>
+        <!-- <td><button class="btn btn-success approve"> Approve</button></td>
+        <td><button class="btn btn-danger cancel" > Cancel</button></td> -->
+      </tr>
+     
+    </tbody>
+  </table> 
+  <!---end the enrolment request- -->
+
+ <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
