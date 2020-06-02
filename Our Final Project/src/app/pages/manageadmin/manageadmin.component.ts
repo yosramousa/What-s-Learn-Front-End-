@@ -12,6 +12,9 @@ export class ManageadminComponent implements OnInit {
   
   [x: string]: any;
   name: string;
+  NumOfPages=9;
+  count:number
+  numbers
   shows: number[] = [10, 15, 20, 25]
   pageSize = 10
   pageNumber = 0
@@ -45,6 +48,11 @@ export class ManageadminComponent implements OnInit {
           if (response.Successed) {
             this.Admins = response.Data;
             console.log(this.Admins)
+             this.count=response.Count
+             this.NumOfPages=Math.round( this.count/this.pageSize)
+            this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
+             console.log(this.numbers)
+
           } else {
 
           }
@@ -85,49 +93,49 @@ export class ManageadminComponent implements OnInit {
   }
 
   Search() {
-    if (!this.SaerchText) this.SaerchText = " ";
+    if (!this.SaerchText) 
+    {
+      this.SaerchText = " ";
+      this.SearchOp=0;
+    }
     console.log(this.SaerchText, this.SearchOp)
     this.manageAdminService.Search(this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(res => {
       if (res.Successed == true) {
         this.Filter();
-        this.Users = res.Data;
-        console.log(this.Users)
+        this.Admins = res.Data;
+        console.log(this.Admins)
+        
+        this.count=res.Count
+        this.NumOfPages=Math.ceil( this.count/this.pageSize)
+        
+       this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
+        console.log("numes",this.NumOfPages)
       }
     });
   }
 
   Filter() {
-    if (!this.SaerchText) this.SaerchText = " ";
-    console.log(this.pageSize)
-    this.GetAllsubscribe = this.manageAdminService.Search(this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(response => {
-      if (response.Successed == true) {
-        this.Users = response.Data;
-        console.log(this.Users)
-      }
-    })
+    this.Search()
   }
 
   Next() {
     this.pageNumber++;
     console.log(this.pageNumber);
-    this.GetAllsubscribe = this.manageAdminService.Search(0, " ", this.pageNumber, this.pageSize).subscribe(response => {
-      if (response.Successed == true) {
-        this.Admins = response.Data;
-        console.log(this.Admins)
-      }
-    })
+    this.Search()
+    
   }
   Prev() {
     this.pageNumber--;
-    console.log(this.pageNumber);
-    this.GetAllsubscribe = this.manageAdminService.Search(0, " ", this.pageNumber, this.pageSize).subscribe(response => {
-      if (response.Successed == true) {
-        this.Admins = response.Data;
-        console.log(this.Admins)
-      }
-    })
+   this.Search()
   }
   adminDetails(id) {
     this.router.navigate(['/adminlayout/admindetails/' + id]);
   }
+  MoveTo(num)
+  {
+    this.pageNumber=num;
+    this.Search();
+  
+  }
 }
+

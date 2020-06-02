@@ -73,6 +73,9 @@
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="page-item"><a (click)="Prev()" class="page-link">Previous</a></li>
+      <li   *ngFor="let key of  numbers"  class="page-item"  >
+      <a (click)="MoveTo(key)" class="page-link">  {{key+1}}</a>
+      </li>
       <li class="page-item "><a (click)="Next()" class="page-link">Next</a></li>
     </ul>
   </nav>
