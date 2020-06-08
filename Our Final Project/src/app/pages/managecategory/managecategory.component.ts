@@ -17,6 +17,7 @@ export class ManagecategoryComponent implements OnInit {
   searchOption: number = 0;
   Level: number = 1;
   Data: []
+  SortBy = 0;
   Levels = [
     { id: 1, name: "Main Category" },
     { id: 2, name: "Sub Category" },
@@ -34,6 +35,9 @@ export class ManagecategoryComponent implements OnInit {
 
 
   ]
+  count
+  NumOfPages
+  numbers
   public CategoryFormControl = new FormControl("");
   constructor(private manageCategoryService: ManageCategoryService) { }
   ngOnInit(): void {
@@ -45,12 +49,16 @@ export class ManagecategoryComponent implements OnInit {
     if (this.searchText.trim() == "") {
       this.searchOption = 0;
     }
-    this.manageCategoryService.Search(this.Level, this.searchOption, this.searchText, this.PageNumber, this.PageSize)
+    this.manageCategoryService.Search(this.SortBy,this.Level, this.searchOption, this.searchText, this.PageNumber, this.PageSize)
       .subscribe(res => {
         if (res.Successed) {
           console.log("Ok")
           this.Data = res.Data
           console.log(this.Data)
+         this.count = res.Count
+        this.NumOfPages = Math.round( this.count / this.PageSize)
+        this.numbers = Array(this.NumOfPages).fill(1).map((x, i) => i);
+
         }
         else {
           console.log("No")
@@ -86,32 +94,6 @@ export class ManagecategoryComponent implements OnInit {
     }
   }
 
-  SortBYNameAsc(Icon)
-  {
-    document.getElementById("desc").style.color="gainsboro";
-    document.getElementById("Asc").style.color="black";
-    this.manageCategoryService.SortByNameASc(this.Level,this.PageNumber,this.PageSize).subscribe(res => {
-      if (res.Successed == true) {
-        this.Data = res.Data;
-        console.log("numes",res.Data)
-      }
-    });
-  }
-  SortBYNameDesc()
-  {
-   
-
-    document.getElementById("Asc").style.color="gainsboro";
-    document.getElementById("desc").style.color="black";
-    //console.log( Icon)
-    this.manageCategoryService.SortByNameDesc(this.Level,this.PageNumber,this.PageSize).subscribe(res => {
-      if (res.Successed == true) {
-        this.Data = res.Data;
-
-        console.log("numes",res)
-      }
-    });
-  }
   // editcategory(id) {
   //   alert("edit");
   //   this.router.navigate(['/adminlayout/editcategory/' + id])
@@ -123,4 +105,63 @@ export class ManagecategoryComponent implements OnInit {
 
 
   // }
+
+  SortBYNameAsc() {
+    this.PageNumber = 0;
+
+    document.getElementById("NameAsc").style.color = "black";
+    document.getElementById("NameDesc").style.color = "gainsboro";
+    this.SortBy = 2;
+    this.GetData()
+  }
+  SortBYNameDesc() {
+    this.PageNumber = 0;
+
+    document.getElementById("NameAsc").style.color = "gainsboro";
+    document.getElementById("NameDesc").style.color = "black";
+    this.SortBy = 3
+    this.GetData()
+
+
+  }
+  SortBYParentAsc() {
+    this.PageNumber = 0;
+
+    document.getElementById("ParentAsc").style.color = "black";
+    document.getElementById("Parentdesc").style.color = "gainsboro";
+    this.SortBy = 4
+    this.GetData()
+
+  }
+  SortBYPartntDesc() {
+    this.PageNumber = 0;
+
+    document.getElementById("ParentAsc").style.color = "gainsboro";
+    document.getElementById("Parentdesc").style.color = "black";
+    this.SortBy = 5
+    this.GetData()
+
+  }
+  SortBYIDAsc() {
+    this.PageNumber = 0;
+    document.getElementById("IDAsc").style.color = "black";
+    document.getElementById("IDdesc").style.color = "gainsboro";
+    this.SortBy = 0
+    this.GetData()
+
+  }
+  SortBYIDDesc() {
+    this.PageNumber = 0;
+
+    document.getElementById("IDAsc").style.color = "gainsboro";
+    document.getElementById("IDdesc").style.color = "black";
+    this.SortBy = 1
+    this.GetData()
+
+  }
+  MoveTo(num) {
+    this.PageNumber = num;
+    this.GetData()
+
+  }
 } 

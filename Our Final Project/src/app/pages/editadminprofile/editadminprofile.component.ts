@@ -18,7 +18,7 @@ export class EditadminprofileComponent implements OnInit {
   ngOnInit(): void {
 
     this.profileAdminService.GetAdminProfile().subscribe(res => {
-
+ 
       this.Name = res.Data.Name;
       this.ID = res.Data.ID;
       this.Email = res.Data.Email;
@@ -27,7 +27,7 @@ export class EditadminprofileComponent implements OnInit {
       this.Phone = res.Data.Phone;
       this.Age = res.Data.Age;
       this.Image = res.Data.Image
-      console.log(this.Image)
+      console.log("res",res)
 
       if (res.Data.Gender == "\u0000") {
         this.Gender = "m"

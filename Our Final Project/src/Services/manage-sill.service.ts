@@ -8,9 +8,9 @@ export class ManageSillService {
 
   constructor(private apiService:ApiService) { }
 
-  GetAll(PageIndex,PageSize):any{
+  GetAll(SortBy,PageIndex,PageSize):any{
 
-    return this.apiService.get(`ManageSkills/GetList?PageIndex=${PageIndex}&PageSize=${PageSize}`);
+    return this.apiService.get(`ManageSkills/GetList?SortBy=${SortBy}&PageIndex=${PageIndex}&PageSize=${PageSize}`);
 
 
   }

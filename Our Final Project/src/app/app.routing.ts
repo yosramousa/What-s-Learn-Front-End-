@@ -105,7 +105,7 @@ export const AppRoutes: Routes = [
       { path: 'manageskill', component: ManageskillComponent },
       { path: 'adminregistration', component: AdminregistrationComponent },
       { path: 'admindetails/:ID', component: AdmindetailsComponent },
-      { path: 'Editcategory', component: EditcategoryComponent },
+//      { path: 'Editcategory', component: EditcategoryComponent },
       { path: 'Addcategory', component: AddcategoryComponent },
       { path: 'Inbox', component: InboxComponent },
       { path: 'details', component: DetailsComponent },

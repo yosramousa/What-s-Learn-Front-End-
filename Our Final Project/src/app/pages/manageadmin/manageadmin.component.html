@@ -39,14 +39,21 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">ID</th>
+         <!-- <th><a (click)="SortBYIDAsc()"> <i id="IDAsc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+          <a (click)="SortBYIDDesc()"><i id="IDdesc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>ID
+          </th> -->
           <th scope="col">
-          <a (click)="SortBYNameAsc($event)"> <i id="Asc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
-            <a (click)="SortBYNameDesc($event)"><i id="desc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>Name
+          <a (click)="SortBYNameAsc()"> <i id="NamAsc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+            <a (click)="SortBYNameDesc()"><i id="namedesc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>Name
           </th>
+          <th>
+                      <a (click)="SortBYEmailAsc()"> <i id="emAsc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+          <a (click)="SortBYEmailDesc()"><i id="emdesc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>Email
+        </th>
+       
           <th>Image</th>
           <th scope="col">
-            <a (click)="SortBYStatus($event)"> <i style="font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+  
             Status
 
           </th>  
@@ -59,16 +66,19 @@
       <tbody>
 
         <tr *ngFor="let admin of Admins">
-          <td>{{admin.ID}}</td>
+          <!-- <td>{{admin.ID}}</td> -->
           <td>{{admin.Name}}</td>
+          <td>{{admin.Email}}</td>
           <td><img width="80" height="80" src="{{Url}}/Uploads/{{admin.Image}}" /></td>
           <td>{{admin.Status}}</td>
 
           <td>
-            <input (click)="Change(admin.ID)" type="button" class="btn btn-success ml-1 p-2" value="Change">
+            <input *ngIf="!(adminID==admin.ID)"  (click)="Change(admin.ID)" type="button" class="btn btn-success ml-1 p-2" value="Change">
           </td>
-          <td><a (click)="adminDetails(admin.ID)"><i class="fas fa-info"></i></a></td>
-          <td><a (click)="Delete(admin.ID)"><i class="far fa-trash-alt"></i></a></td>
+          <td><a *ngIf="!(adminID==admin.ID)" class="not-active" (click)="adminDetails(admin.ID)"><i
+                class="fas fa-info"></i></a></td>
+          <td><a *ngIf="!(adminID==admin.ID)" class="not-active" (click)="Delete(admin.ID)"><i
+                class="far fa-trash-alt "></i></a></td>
         </tr>
 
 

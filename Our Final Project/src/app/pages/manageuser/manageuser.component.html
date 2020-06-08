@@ -41,17 +41,24 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <a (click)="SortBYNameAsc($event)"> <i id="Asc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
-      <a (click)="SortBYNameDesc($event)"><i id="desc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>Name
-      <th scope="col">Tracks</th>
+      <th scope="col">
+        <a (click)="SortBYIDAsc()"> <i id="IDAsc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+          <a (click)="SortBYIDDesc()"><i id="IDdesc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>ID
+        </th>
 
       <th scope="col">
-        <a (click)="SortBYStatus($event)"> <i style="font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
-        Status
-
-      </th>
+        <a (click)="SortBYNameAsc()"> <i id="NameAsc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+          <a (click)="SortBYNameDesc()"><i id="NameDesc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>Name
+        </th>
+        
+        <th scope="col">Track Name</th>
+     
+        <th scope="col">
+          <a (click)="SortBYStatusAsc()"> <i id="StatusAsc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+            <a (click)="SortBYStatusDesc()"><i id="Statusdesc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>Sratus
+          </th>
+    
       <th scope="col">Chage Status</th>
-
       <th scope="col">Details</th>
       <th scope="col">Delete</th>
 
@@ -61,12 +68,12 @@
   <tbody>
 
     <tr *ngFor="let user of Users">
+      <td>{{user.ID}}</td>
       <td>{{user.Name}}</td>
       <td scope="col">{{user.TracksName}} </td>
 
       <td>{{user.Status}}</td>
       <td>
-
         <input (click)="Change(user.ID)" type="button" class="btn btn-success ml-1 p-2" value="Change">
       </td>
 
@@ -82,10 +89,12 @@
   Delete Successfully
 </div>
 
-
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item"><a (click)="Prev()" class="page-link">Previous</a></li>
+    <li *ngFor="let key of  numbers" class="page-item">
+      <a (click)="MoveTo(key)" class="page-link"> {{key+1}}</a>
+    </li>
     <li class="page-item "><a (click)="Next()" class="page-link">Next</a></li>
   </ul>
 </nav>

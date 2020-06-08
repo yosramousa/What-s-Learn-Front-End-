@@ -13,8 +13,8 @@ export class InboxService {
 
   }
 
-  Search(SearchOption,SearchText,pageIndex,pageSize):any{
-    return this.apiService.get(`Inbox/Search?SearchOption=${SearchOption}&SearchText=${SearchText}&pageIndex=${pageIndex}&pageSize=${pageSize}`)
+  Search(SortBy,SearchOption,SearchText,pageIndex,pageSize):any{
+    return this.apiService.get(`Inbox/Search?SortBy=${SortBy}&SearchOption=${SearchOption}&SearchText=${SearchText}&pageIndex=${pageIndex}&pageSize=${pageSize}`)
   }
 
   Delete(id){

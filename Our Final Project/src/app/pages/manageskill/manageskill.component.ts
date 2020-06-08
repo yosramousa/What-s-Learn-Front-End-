@@ -24,6 +24,8 @@ export class ManageskillComponent implements OnInit {
     { ID: 0, Name: "ID" },
     { ID: 1, Name: "Skill" }
   ]
+  SortBy = 0;
+  PageNumber
   constructor(private router: Router, private ManagSkillServis: ManageSillService) { }
 
   ngOnInit(): void {
@@ -50,16 +52,22 @@ export class ManageskillComponent implements OnInit {
 
       })
   }
-
+  count
+  NumOfPages
+  numbers
   GetAll() {
 
-    this.ManagSkillServis.GetAll(this.PageIndex, this.PageSize).subscribe(res => {
+    this.ManagSkillServis.GetAll(this.SortBy,this.PageIndex, this.PageSize).subscribe(res => {
       if (res.Successed) {
         //  this.IsDeleted = false
 
         console.log("Ok")
         console.log(res)
         this.Skills = res.Data
+        this.count = res.Count
+        this.NumOfPages = Math.round(this.count / this.PageSize)
+        this.numbers = Array(this.NumOfPages).fill(1).map((x, i) => i);
+
       }
       else {
         console.log("No")
@@ -80,7 +88,6 @@ export class ManageskillComponent implements OnInit {
         }, 1000);
         this.Skills.push(res.Data)
         this.Skill = ""
-        // this.GetAll();
       }
     }, err => {
 
@@ -118,9 +125,50 @@ export class ManageskillComponent implements OnInit {
     }, err => {
 
     })
-
-
   }
+    SortBYNameAsc() {
+      this.PageNumber = 0;
+  
+      document.getElementById("NameAsc").style.color = "black";
+      document.getElementById("NameDesc").style.color = "gainsboro";
+      this.SortBy = 2;
+      this. GetAll()
+    }
+    SortBYNameDesc() {
+      this.PageNumber = 0;
+  
+      document.getElementById("NameAsc").style.color = "gainsboro";
+      document.getElementById("NameDesc").style.color = "black";
+      this.SortBy = 3
+      this. GetAll()
+  
+  
+    }
+   
+    SortBYIDAsc() {
+      this.PageNumber = 0;
+      document.getElementById("IDAsc").style.color = "black";
+      document.getElementById("IDdesc").style.color = "gainsboro";
+      this.SortBy = 0
+      this. GetAll()
+  
+    }
+    SortBYIDDesc() {
+      this.PageNumber = 0;
+  
+      document.getElementById("IDAsc").style.color = "gainsboro";
+      document.getElementById("IDdesc").style.color = "black";
+      this.SortBy = 1
+      this. GetAll()
+  
+    }
+    MoveTo(num) {
+      this.PageNumber = num;
+      this. GetAll()
+  
+    }
+
 }
+
 
 

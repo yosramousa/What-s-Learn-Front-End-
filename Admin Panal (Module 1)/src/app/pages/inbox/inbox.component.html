@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2">
+      <form>
+        <label for="cars">show</label>
+        <select (change)="Search()" class="custom-select " name="Numbers" [(ngModel)]="PageSize">
+          <option *ngFor="let show of shows" [ngValue]="show">{{show}}</option>
+
+        </select>
+      </form>
+    </div>
+    <div class="col-lg-5 text-left">
+      <div class="input-group ">
+        <select (change)="Search()" name="SearchOption" [(ngModel)]="SearchOption" class="custom-select " id="SearchBy"
+          aria-label="Example select with button addon">
+          <option *ngFor="let option of SerachOptions" [ngValue]="option.ID " selected>{{option.name}} </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-5">
+
+      <div class="input-group">
+        <input name="searchText" [(ngModel)]="SearchText" type="text" class="form-control" placeholder="Search">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" (click)="Search()" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<div *ngIf="Messages">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">
+          <a (click)="SortBYIDAsc()"> <i id="IDAsc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+          <a (click)="SortBYIDDesc()"><i id="IDdesc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>ID
+        </th>
+        <th scope="col">
+          <a (click)="SortBYNameAsc()"> <i id="NameAsc" style="  font-size: 20px;   "
+              class="fas fa-caret-up mr-1"></i></a>
+          <a (click)="SortBYNameDesc()"><i id="NameDesc" style="font-size: 20px; "
+              class="fas fa-caret-down mr-1"></i></a>Name
+        </th>
+        <th scope="col">
+          <a (click)="SortBYEmailAsc()"> <i id="EmailAsc" style="  font-size: 20px;   "
+              class="fas fa-caret-up mr-1"></i></a>
+          <a (click)="SortBYEmailDesc()"><i id="EmailDesc" style="font-size: 20px; "
+              class="fas fa-caret-down mr-1"></i></a>Email
+        </th>
+        <th scope="col">Text</th>
+        <th scope="col">Send In</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Message of Messages" (click)="MessageDetails(Message.ID)">
+
+        <td>{{Message.ID}}</td>
+        <td>{{Message.FullName}}</td>
+        <td> {{Message.Email}}</td>
+        <td> {{Message.Text}}</td>
+        <td> {{Message.Time}}</td>
+
+        <td><a (click)="Delete(Message.ID)" style="color :#86c232"><i class="far fa-trash-alt "></i></a></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
+<nav aria-label="Page navigation example " style="color: #86c232; float: right;">
+  <ul class="pagination">
+    <li class="page-item"><a (click)="Prev()" class="page-link">Previous</a></li>
+    <li *ngFor="let key of  numbers" class="page-item">
+      <a (click)="MoveTo(key)" class="page-link"> {{key+1}}</a>
+    </li>
+    <li class="page-item "><a (click)="Next()" class="page-link">Next</a></li>
+  </ul>
+</nav>

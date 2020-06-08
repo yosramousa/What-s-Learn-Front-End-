@@ -8,10 +8,10 @@ export class ManageCategoryService {
 
   constructor(private apiService: ApiService) { }
 
-  Search(level,SearchBy,SearchText,PageIndex,PageSize):any
+  Search(SortBy,level,SearchBy,SearchText,PageIndex,PageSize):any
    {
     return this.apiService
-    .get(`ManageCategory/Search?SearchIn=${level}&SearchBy=${SearchBy}&SearchText=${SearchText}&PageIndex=${PageIndex}&PageSize=${PageSize}`);
+    .get(`ManageCategory/Search?SortBy=${SortBy}&SearchIn=${level}&SearchBy=${SearchBy}&SearchText=${SearchText}&PageIndex=${PageIndex}&PageSize=${PageSize}`);
    }
 
    Delete(level,ID):any

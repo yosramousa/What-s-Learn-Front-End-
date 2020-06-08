@@ -23,17 +23,23 @@ export class ManageuserComponent implements OnInit {
   ];
   SaerchText: String = " "
   SearchOp: number = 0
-
-
+  count
+  NumOfPages
+  numbers
+  SortBy = 0;
   constructor(private router: Router, private mangeUsersService: MangeUsersService) { }
 
   ngOnInit(): void {
     // console.log(this.pageNumber,this.pageSize)
-    this.GetAllsubscribe = this.mangeUsersService.Search(0, " ", this.pageNumber, this.pageSize).subscribe(response => {
+    this.GetAllsubscribe = this.mangeUsersService.Search(this.SortBy,0, " ", this.pageNumber, this.pageSize).subscribe(response => {
       if (response.Successed == true) {
 
         this.Users = response.Data;
         console.log(this.Users)
+        this.count = response.Count
+        this.NumOfPages = Math.round(this.count / this.pageSize)
+        this.numbers = Array(this.NumOfPages).fill(1).map((x, i) => i);
+
       } (err =>
         console.log(err)
       )
@@ -53,25 +59,17 @@ export class ManageuserComponent implements OnInit {
 
     this.Changesubscribe = this.mangeUsersService.ChangeStatus(id).subscribe(response => {
       console.log(response)
-      this.GetAllsubscribe = this.mangeUsersService.Search(0, " ", this.pageNumber, this.pageSize).subscribe(response => {
-        if (response.Successed == true) {
+      this.Search()
 
-          this.Users = response.Data;
-          console.log(this.Users)
-        }
-      })
-
-    })
-
-
-  }
+    });
+}
 
   Delete(id) {
 
     this.mangeUsersService.Delete(id).subscribe(res => {
       if (res) {
         document.getElementById("delalert").style.visibility = "visible";
-        this.Filter()
+        this.Search()
 
       }
 
@@ -81,19 +79,21 @@ export class ManageuserComponent implements OnInit {
   }
 
   Search() {
-    this.SaerchText=this.SaerchText.trim();
-    if (!this.SaerchText) 
-    {
+    this.SaerchText = this.SaerchText.trim();
+    if (!this.SaerchText) {
       this.SaerchText = " ";
-      this.SearchOp=0;
+      this.SearchOp = 0;
     }
- 
+
     console.log(this.SaerchText, this.SearchOp)
-    this.mangeUsersService.Search(this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(res => {
+    this.mangeUsersService.Search(this.SortBy,this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(res => {
 
       if (res.Successed == true) {
 
         this.Users = res.Data;
+        this.count = res.Count
+        this.NumOfPages = Math.round(this.count / this.pageSize)
+        this.numbers = Array(this.NumOfPages).fill(1).map((x, i) => i);
 
         console.log(this.Users)
       } else console.log("False")
@@ -105,25 +105,13 @@ export class ManageuserComponent implements OnInit {
   }
 
   Filter() {
-    this.GetAllsubscribe = this.mangeUsersService.Search(this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(response => {
-      if (response.Successed == true) {
-        //Data
-        //Successed
-        //Message
-        //response.json().Message
-        this.Users = response.Data;
-
-        console.log(this.Users)
-      }
-
-
-
-    })
+    this.Search();
   }
+
   Next() {
     this.pageNumber++;
     console.log(this.pageNumber);
-    this.Filter()
+    this.Search()
 
 
   }
@@ -131,69 +119,70 @@ export class ManageuserComponent implements OnInit {
     this.pageNumber--;
     console.log(this.pageNumber);
 
-    this.Filter()
+    this.Search()
 
 
   }
   details(id) {
     this.router.navigate(['/adminlayout/details/' + id]);
   }
+  SortBYNameAsc() {
+    this.pageNumber = 0;
 
-  SortBYNameAsc(Icon)
-  {
-    document.getElementById("desc").style.color="gainsboro";
-    document.getElementById("Asc").style.color="black";
-    this.mangeUsersService.SortByNameASc(this.pageNumber,this.pageSize).subscribe(res => {
-      if (res.Successed == true) {
-      
-        this.Users = res.Data;
-        console.log(this.Users)
-        
-      //  this.count=res.Count
-       // this.NumOfPages=Math.ceil( this.count/this.pageSize)
-        
-       //this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
-        console.log("numes",res.Data)
-      }
-    });
+    document.getElementById("NameAsc").style.color = "black";
+    document.getElementById("NameDesc").style.color = "gainsboro";
+    this.SortBy = 2;
+    this.Search()
   }
-  SortBYNameDesc(Icon)
-  {
-   
+  SortBYNameDesc() {
+    this.pageNumber = 0;
 
-    document.getElementById("Asc").style.color="gainsboro";
-    document.getElementById("desc").style.color="black";
-    //console.log( Icon)
-    this.mangeUsersService.SortByNameDesc(this.pageNumber,this.pageSize).subscribe(res => {
-      if (res.Successed == true) {
-      
-        this.Users = res.Data;
-        console.log(this.Users)
-        
-       // this.count=res.Count
-        //this.NumOfPages=Math.ceil( this.count/this.pageSize)
-        
-      // this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
-        console.log("numes",res.Data)
-      }
-    });
+    document.getElementById("NameAsc").style.color = "gainsboro";
+    document.getElementById("NameDesc").style.color = "black";
+    this.SortBy = 3
+    this.Search();
+
+
   }
-  SortBYStatus(Icon)
-  {
-    Icon.target.style.color="black"
-    this.mangeUsersService.SortByStatus(this.pageNumber,this.pageSize).subscribe(res => {
-      if (res.Successed == true) {
-      
-        this.Users = res.Data;
-        console.log(this.Users)
-        
-       // this.count=res.Count
-       // this.NumOfPages=Math.ceil( this.count/this.pageSize)
-        
-       //this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
-        console.log("numes",res.Data)
-      }
-    });
+  SortBYStatusAsc() {
+    this.pageNumber = 0;
+
+    document.getElementById("StatusAsc").style.color = "black";
+    document.getElementById("Statusdesc").style.color = "gainsboro";
+    this.SortBy = 6
+    this.Search();
+
+  }
+  SortBYStatusDesc() {
+    this.pageNumber = 0;
+
+    document.getElementById("StatusAsc").style.color = "gainsboro";
+    document.getElementById("Statusdesc").style.color = "black";
+    this.SortBy = 7
+    this.Search();
+
+  }
+  SortBYIDAsc() {
+    this.pageNumber = 0;
+    document.getElementById("IDAsc").style.color = "black";
+    document.getElementById("IDdesc").style.color = "gainsboro";
+    this.SortBy = 0
+    this.Search();
+
+  }
+  SortBYIDDesc() {
+    this.pageNumber = 0;
+
+    document.getElementById("IDAsc").style.color = "gainsboro";
+    document.getElementById("IDdesc").style.color = "black";
+    this.SortBy = 1
+    this.Search();
+
+  }
+  MoveTo(num) {
+    this.pageNumber = num;
+    this.Search();
+
   }
 }
 

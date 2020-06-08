@@ -1,0 +1,47 @@
+<div class="card testimonial-card">
+
+  <!-- Background color -->
+  <div class="card-up indigo lighten-1"></div>
+
+  <!-- Avatar -->
+  <div class="avatar mx-auto white">
+    <img src="{{Url}}/Uploads/{{Admin.Image}}" class="" alt="{{Admin.Name}}">
+  </div>
+
+  <!-- Content -->
+  <div class="card-body">
+    <!-- Name -->
+  
+    <h4 class="card-title">{{Admin.Name}} </h4>
+
+    <!-- <a class="btn btn-default float-center" (click)="editadminprofile()"><i
+      class="far fa-edit"></i></a> -->
+   <a style="position: relative;" href="#" [routerLink]="'/adminlayout/editadminprofile'"><i class="far fa-edit   styling edit"></i></a>
+    <p class="paragraph">
+      
+      <i class="fas fa-map-marker-alt styling"></i>
+      <label class="lbl">Address:</label>
+      {{Admin.Adress}}
+      <br />
+     
+      <i class="far fa-envelope styling"></i>
+      <label class="lbl" >Email:</label>
+      {{Admin.Email}}
+      <br />
+    
+      <i class="fas fa-mobile-alt styling"></i>
+      <label class="lbl">Phone:</label>
+      {{Admin.Phone}}
+      <br />
+      <label class="lbl">Age:</label>
+      {{Admin.Age}}
+      <br />
+      <label class="lbl">Gender:</label>
+      {{Admin.Gender}}
+      <br />
+   </p>
+      <!-- Quotation -->
+   
+  </div>
+
+</div>

@@ -48,7 +48,7 @@ export class EnrollmentrequestComponent implements OnInit {
       res => {
         if (res)
           console.log("Approved")
-        this.enrollRequestService.Search(this.SearchOption, this.SearchText, this.PageIndex, this.PageSize)
+        this.enrollRequestService.GetAllRequests(this.PageIndex, this.PageSize)
           .subscribe(res => {
             this.Messages = res.Data;
             console.log(this.Messages)

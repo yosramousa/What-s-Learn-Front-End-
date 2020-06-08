@@ -15,6 +15,8 @@ export class InboxComponent implements OnInit {
   Messages: []
   SearchOption = 0
   SearchText
+  PageNumber
+  SortBy =0;
   SerachOptions = [
     { ID: 0, name: "Chose Search Options" },
     { ID: 1, name: "Name" },
@@ -23,12 +25,11 @@ export class InboxComponent implements OnInit {
   ];
 
   shows: number[] = [10, 15, 20, 25]
-
+  NumOfPages
+  count
+  numbers
   ngOnInit(): void {
-    this.inboxService.GetMessages(this.PageIndex, this.PageSize)
-      .subscribe(res => {
-        this.Messages = res.Data
-      })
+    this.Search()
 
   }
   Search() {
@@ -36,10 +37,14 @@ export class InboxComponent implements OnInit {
       this.SearchOption = 0
       this.SearchText = " "
     }
-    this.inboxService.Search(this.SearchOption, this.SearchText, this.PageIndex, this.PageSize)
+    this.inboxService.Search(this.SortBy, this.SearchOption, this.SearchText, this.PageIndex, this.PageSize)
       .subscribe(res => {
         this.Messages = res.Data;
         console.log(this.Messages)
+        this.count = res.Count
+        this.NumOfPages = Math.round(this.count / this.PageSize)
+        this.numbers = Array(this.NumOfPages).fill(1).map((x, i) => i);
+
       })
   }
   Next() {
@@ -48,11 +53,7 @@ export class InboxComponent implements OnInit {
       this.SearchText = " "
     }
     this.PageIndex++;
-    this.inboxService.Search(this.SearchOption, this.SearchText, this.PageIndex, this.PageSize)
-      .subscribe(res => {
-        this.Messages = res.Data;
-        console.log(this.Messages)
-      })
+   this.Search()
 
   }
   Prev() {
@@ -63,11 +64,8 @@ export class InboxComponent implements OnInit {
     this.PageIndex--;
     console.log(this.PageIndex);
 
-    this.inboxService.Search(this.SearchOption, this.SearchText, this.PageIndex, this.PageSize)
-      .subscribe(res => {
-        this.Messages = res.Data;
-        console.log(this.Messages)
-      })
+    this.Search()
+
 
   }
 
@@ -76,11 +74,8 @@ export class InboxComponent implements OnInit {
       this.SearchOption = 0
       this.SearchText = " "
     }
-    this.inboxService.Search(this.SearchOption, this.SearchText, this.PageIndex, this.PageSize)
-      .subscribe(res => {
+    this.Search()
 
-        this.Messages = res.Data;
-      })
   }
 
   Delete(id) {
@@ -90,11 +85,8 @@ export class InboxComponent implements OnInit {
         this.SearchOption = 0
         this.SearchText = " "
       }
-      this.inboxService.Search(this.SearchOption, this.SearchText, this.PageIndex, this.PageSize)
-        .subscribe(res => {
+      this.Search()
 
-          this.Messages = res.Data;
-        })
     })
   }
 
@@ -104,6 +96,62 @@ export class InboxComponent implements OnInit {
       this.messageDatail = res.Data
       console.log(this.messageDatail)
     })
+  }
+
+  SortBYNameAsc() {
+    this.PageNumber = 0;
+
+    document.getElementById("NameAsc").style.color = "black";
+    document.getElementById("NameDesc").style.color = "gainsboro";
+    this.SortBy = 2;
+    this.Search()
+  }
+  SortBYNameDesc() {
+    this.PageNumber = 0;
+
+    document.getElementById("NameAsc").style.color = "gainsboro";
+    document.getElementById("NameDesc").style.color = "black";
+    this.SortBy = 3
+    this.Search()
+  }
+  SortBYEmailAsc() {
+    this.PageNumber = 0;
+
+    document.getElementById("EmailAsc").style.color = "black";
+    document.getElementById("EmailDesc").style.color = "gainsboro";
+    this.SortBy = 4
+    this.Search()
+
+  }
+  SortBYEmailDesc() {
+    this.PageNumber = 0;
+
+    document.getElementById("EmailAsc").style.color = "gainsboro";
+    document.getElementById("EmailDesc").style.color = "black";
+    this.SortBy = 5
+    this.Search()
+
+  }
+  SortBYIDAsc() {
+    this.PageNumber = 0;
+    document.getElementById("IDAsc").style.color = "black";
+    document.getElementById("IDdesc").style.color = "gainsboro";
+    this.SortBy = 1
+    this.Search()
+
+  }
+  SortBYIDDesc() {
+    this.PageNumber = 0;
+    document.getElementById("IDAsc").style.color = "gainsboro";
+    document.getElementById("IDdesc").style.color = "black";
+    this.SortBy = 0
+    this.Search()
+
+  }
+  MoveTo(num) {
+    this.PageNumber = num;
+    this.Search()
+
   }
 }
 

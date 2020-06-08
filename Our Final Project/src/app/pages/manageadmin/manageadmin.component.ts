@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ManageAdminService } from 'app/manage-admin.service';
 import { environment } from  './../../../environments/environment'
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-manageadmin',
@@ -30,18 +31,31 @@ export class ManageadminComponent implements OnInit {
   SerachOpts = [
     { ID: 0, name: "Chose Search Options" },
     { ID: 1, name: "Name" },
-    // {ID: 2, name: "Track Name"},
+    {ID: 2, name: "Email"},
 
   ];
   SaerchText: String
   SearchOp: number = 0
+SortBy:number=0
+adminID = localStorage.getItem('AdminID');
 
-
-  constructor(private router: Router, private manageAdminService: ManageAdminService) { }
+public CategoryFormControl = new FormControl("");
+popoverTitle :string; 
+popoverMessage :string
+confirmClicked :boolean;
+cancelClicked :boolean;
+  constructor(private router: Router, private manageAdminService: ManageAdminService) 
+  {
+    this.popoverTitle = 'Confirm';
+    this.popoverMessage = 'Are you sure to Delete ';
+    this.confirmClicked = false;
+     this.cancelClicked = false;
+ 
+   }
 
   ngOnInit(): void {
     console.log("Here")
-    this.GetAllsubscribe = this.manageAdminService.Search(0, " ", this.pageNumber, this.pageSize)
+    this.GetAllsubscribe = this.manageAdminService.Search(this.SortBy,0, " ", this.pageNumber, this.pageSize)
       .subscribe(
         response => {
           console.log(response)
@@ -68,7 +82,7 @@ export class ManageadminComponent implements OnInit {
   Change(id) {
     this.Changesubscribe = this.manageAdminService.ChangeStatus(id).subscribe(response => {
       console.log(response)
-      this.GetAllsubscribe = this.manageAdminService.Search(0, " ", this.pageNumber, this.pageSize).subscribe(response => {
+      this.GetAllsubscribe = this.manageAdminService.Search(this.SortBy,0, " ", this.pageNumber, this.pageSize).subscribe(response => {
         if (response.Successed == true) {
           this.Admins = response.Data;
           console.log(this.Admins)
@@ -82,12 +96,14 @@ export class ManageadminComponent implements OnInit {
     this.manageAdminService.Delete(id).subscribe(res => {
       if (res) {
         console.log("Deleted")
-        this.GetAllsubscribe = this.manageAdminService.Search(0, " ", this.pageNumber, this.pageSize).subscribe(response => {
+        this.GetAllsubscribe = this.manageAdminService.Search(this.SortBy,0, " ", this.pageNumber, this.pageSize).subscribe(response => {
           if (response.Successed == true) {
             this.Admins = response.Data;
             console.log(this.Admins)
           }
         })
+        document.getElementById("delalert").style.visibility = "visible";
+
       }
     });
   }
@@ -100,7 +116,7 @@ export class ManageadminComponent implements OnInit {
       this.SearchOp=0;
     }
     console.log(this.SaerchText, this.SearchOp)
-    this.manageAdminService.Search(this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(res => {
+    this.manageAdminService.Search(this.SortBy,this.SearchOp, this.SaerchText, this.pageNumber, this.pageSize).subscribe(res => {
       if (res.Successed == true) {
        // this.Filter();
         this.Admins = res.Data;
@@ -140,59 +156,62 @@ export class ManageadminComponent implements OnInit {
   }
   SortBYNameAsc()
   {
-    document.getElementById("desc").style.color="gainsboro";
-    document.getElementById("Asc").style.color="black";
+   this.pageNumber =0;
 
-    this.manageAdminService.SortByNameASc(this.pageNumber,this.pageSize).subscribe(res => {
-      if (res.Successed == true) {
-      
-        this.Admins = res.Data;
-        console.log(this.Admins)
-        
-        this.count=res.Count
-        this.NumOfPages=Math.ceil( this.count/this.pageSize)
-        
-       this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
-        console.log("numes",res.Data)
-      }
-    });
+    document.getElementById("NamAsc").style.color="black";
+    document.getElementById("namedesc").style.color="gainsboro";
+this.SortBy=2;
+  this.Search()
   }
   SortBYNameDesc()
   {
-   
-    document.getElementById("Asc").style.color="gainsboro";
-    document.getElementById("desc").style.color="black";
-
-    this.manageAdminService.SortByNameDesc(this.pageNumber,this.pageSize).subscribe(res => {
-      if (res.Successed == true) {
-      
-        this.Admins = res.Data;
-        console.log(this.Admins)
-        
-        this.count=res.Count
-        this.NumOfPages=Math.ceil( this.count/this.pageSize)
-        
-       this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
-        console.log("numes",res.Data)
-      }
-    });
+   this.pageNumber =0;
+    document.getElementById("NamAsc").style.color="gainsboro";
+    document.getElementById("namedesc").style.color="black";
+this.SortBy=3
+this.Search();
+  
+  
   }
-  SortBYStatus(Icon)
+  SortBYEmailAsc()
   {
-    Icon.target.style.color="black"
-    this.manageAdminService.SortByStatus(this.pageNumber,this.pageSize).subscribe(res => {
-      if (res.Successed == true) {
-      
-        this.Admins = res.Data;
-        console.log(this.Admins)
-        
-        this.count=res.Count
-        this.NumOfPages=Math.ceil( this.count/this.pageSize)
-        
-       this.numbers = Array(this.NumOfPages).fill(1).map((x,i)=>i);
-        console.log("numes",res.Data)
-      }
-    });
+    this.pageNumber =0;
+  
+    document.getElementById("emAsc").style.color="black";
+    document.getElementById("emdesc").style.color="gainsboro";
+    this.SortBy=4
+this.Search();
+
+  }
+  SortBYEmailDesc()
+  {
+    this.pageNumber =0;
+  
+    document.getElementById("emAsc").style.color="gainsboro";
+    document.getElementById("emdesc").style.color="black";
+    this.SortBy=5
+    this.Search();
+
+  }
+  SortBYIDAsc()
+  {
+    this.pageNumber =0;
+  
+    document.getElementById("IDAsc").style.color="black";
+    document.getElementById("IDdesc").style.color="gainsboro";
+    this.SortBy=0
+this.Search();
+
+  }
+  SortBYIDDesc()
+  {
+    this.pageNumber =0;
+    document.getElementById("IDAsc").style.color="gainsboro";
+    document.getElementById("IDdesc").style.color="black";
+    this.SortBy=1
+
+    this.Search();
+
   }
 
 }
