@@ -1,0 +1,112 @@
+<div class="container ">
+
+
+
+  <div class="col-md-5 mt-5 " style="margin:15px auto; margin-top: 8rem !important;">
+    <div class="card profile-card-5">
+      <div class="card-img-block">
+        <img  
+        class="card-img-top" src="{{Url}}/Uploads/{{User.Image}}" alt="Card image cap">
+      </div>
+      <div class="card-body pt-0">
+        <h5 class="card-title text-center" style="color: #626364;">{{User.Name}}</h5>
+        <p class="card-text"><i class="far fa-envelope-open icon "></i><label>Email : </label> {{User.Email}} </p>
+        <hr>
+        <p class="card-text"><i class="fas fa-mobile-alt icon"></i> <label>Phone :</label>
+          {{User.Phone}}
+        </p>
+        <hr>
+        <p class="card-text">
+        <i class="fa fa-male icon" *ngIf="User.Gender == 'Male'" aria-hidden="true"></i>
+        <i class="fa fa-female icon" *ngIf="User.Gender == 'Female'" aria-hidden="true"></i>
+      
+        <label>Gender:</label> {{User.Gender}}
+        </p>
+        <hr>
+        <p class="card-text"><i class="fas fa-map-marker-alt icon"></i><label>Address : </label> {{User.Adress}}
+        </p>
+        <hr>
+        <p class="card-text"><i class="fas fa-user icon"></i><label>Age : </label>
+          {{User.Age}}
+  
+        </p>
+        <hr>
+        <p class="card-text"><i class="fas fa-university icon"></i><label>Education : </label> 
+        
+        {{User.Education}}
+      </p>
+            <!-- <hr> -->
+        <!-- <p class="card-text"><i class="fas fa-file-alt icon"></i><label>Skills :</label> </p>
+         <hr>
+         <p class="card-text"><i class="fas fa-link icon"></i><label>Links :</label> </p>
+         <hr>
+         <p class="card-text"><i class="fas fa-link icon"></i><label>Links :</label> </p>
+   -->
+  
+      </div>
+    </div>
+  </div>
+
+
+  <div class="accordion" id="accordionExample">
+
+    <div *ngFor="let Track of User.Tracks" class="card">
+      <div class="card-header" id="{{Track.ID+1}}">
+        <h4 class="mb-0">
+          <button 
+        
+            [className]="User.Tracks[0].ID==Track.ID ? 'btn btn-link btn-block text-left' : 'btn btn-link btn-block text-left collapsed'"
+            type="button" data-toggle="collapse" attr.data-target="#collapse{{Track.ID}}"
+            attr.aria-expanded="collapse{{User.Tracks[0].ID==Track.ID}}" attr.aria-controls="collapse{{Track.ID}}">
+            {{Track.TrackName}}
+          </button>
+        </h4>
+      </div>
+   
+       
+      <div      [className]="User.Tracks[0].ID==Track.ID ? 'collapse show' : 'collapse'"   id="collapse{{Track.ID}}" attr.aria-labelledby="{{Track.ID+1}}" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="progress">
+
+            <div class="progress-bar " style="background-color: #86c232;" role="progressbar" [style.width.%]="Track.Progress"
+              [attr.aria-valuenow]="Track.Progress" aria-valuemin="0" aria-valuemax="100">{{Track.Progress}}%</div>
+          </div>
+
+
+
+          <table class="table w-100">
+
+            <tbody>
+              <tr style="width: 100%;">
+                <td>CuurentCourse</td>
+                <td>
+                  {{Track.CuurentCourse}}
+                </td>
+              </tr>
+
+              <tr scope="col">
+                <td>FinshedCourses</td>
+                <td *ngFor="let Course of Track.FinshedCourses">
+                  {{Course}}
+                </td>
+              </tr>
+
+
+              <tr scope="col">
+                <td>FutureCourses</td>
+                <td *ngFor="let Course of Track.FutureCourses">
+                  {{Course}}
+                </td>
+
+
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

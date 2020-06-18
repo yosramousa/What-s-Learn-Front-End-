@@ -1,0 +1,416 @@
+<div class="content">
+  <h4  style="color: grey; font-family: cursive;">{{Title}}</h4>
+
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active " id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab"
+        aria-controls="pills-description" aria-selected="true">General Data</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link " id="pills-Documents-tab" data-toggle="pill" href="#pills-Documents" role="tab"
+        aria-controls="pills-Documents" aria-selected="true">Documents</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link " id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+        aria-controls="pills-profile" aria-selected="true">Links</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link " id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+        aria-controls="pills-contact" aria-selected="true">Videos</a>
+    </li>
+
+
+  </ul>
+
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-description" role="tabpanel"
+      aria-labelledby="pills-description-tab">
+
+
+      <div class="form-group col-md-6">
+        <input [(ngModel)]="Name" #name="ngModel" name="Name" class="form-control" id="name" required>
+
+        <div class="alert alert-danger mt-1" *ngIf="name.touched && !name.valid">
+          <div *ngIf="name.errors.required">
+            Name is required
+          </div>
+
+        </div>
+
+
+
+
+
+        <label for="comment-des">Discription:</label>
+        <textarea [ngModel]="Description" #desc="ngModel" name="Description" class="form-control" rows="5"
+          id="comment-des" required></textarea>
+
+        <div class="alert alert-danger mt-1" *ngIf="desc.touched && !desc.valid">
+          <div *ngIf="desc.errors.required">
+            Description is required
+          </div>
+
+        </div>
+
+
+        <div class="row" style="width:567px; margin-left: 1px;">
+          <!-- <div class="form-group col-md-12">
+            <div class="custom-file">
+              <input (change)="onImageFileChange($event)" type="imag" class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="inputGroupFile02">Choose Image</label>
+
+            </div>
+            <div class="input-group-append">
+              <span (click)="uploadImage()" class="input-group-text" id="up">Upload</span>
+
+            </div>
+          </div>
+          <img style="max-width: 300px; max-height: 300px;" *ngIf="ImageSrc" [src]="ImageSrc">
+ -->
+
+          <div style="position: relative ; right: 105;" class="input-group   image col-md-9">
+            <div class="custom-file ">
+              <input style="cursor: pointer; margin-top: 20px!important" (change)="onImageFileChange($event)"
+                type="file" class="" id="inputGroupFile02">
+              <label class="custom-file-label" for="inputGroupFile02">Choose Image</label>
+            </div>
+
+            <div class="input-group-append">
+              <span (click)="uploadImage()" class="input-group-text" id="up">Upload</span>
+
+              <br>
+            </div>
+
+          </div>
+          <img style="margin-left: 15px; text-align: center;" *ngIf="ImageSrc" [src]="ImageSrc" width="150"
+            height="150">
+
+
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="tab-pane fade show active" id="pills-Documents" role="tabpanel" aria-labelledby="pills-Documents-tab">
+
+      <!-- //////////////////////////<input type="file" (change)="onDocFileChange()" value="test"> -->
+
+      <div *ngFor="let doc of Documents" class="form-group">
+
+
+        <div class="col-lg-6">
+          <label> Desription</label>
+          <textarea placeholder="Description " [(ngModel)]="doc.Description" class="form-control" rows="5"
+            id="comment"></textarea>
+          <span class="mt-5" style="font-family: cursive; cursor: pointer;" (click)="downloadFile(doc.File)">
+
+            <i style="color: #86c232; margin-top: 15px; font-size: 16px;" class="fas fa-folder-open"></i>
+            {{doc.File.split("_").splice(0,1)}}
+
+          </span>
+        </div>
+
+
+        <div class="row  fileUp">
+          <div class="input-group  image col-md-12">
+            <div class="custom-file ">
+              <input type="file" (change)="onDocFileChange($event)" class="hamada"
+                style="cursor: pointer; margin-left: 1px; width: 100%;">
+
+              <!-- <input style="cursor: pointer; margin-left: 1px; width: 100%;"
+              (change)="onDocFileChange()" onclick="this.value = null"
+                type="file" class="custom-file-input hamada" id="inputGroupFile02" value=" test"> -->
+
+              <label class="custom-file-label lab" for="inputGroupFile02">Choose File</label>
+            </div>
+
+            <div class="input-group-append" style="margin-right: 288px;
+            height: 41px;">
+              <span (click)="uploadFile(doc)" class="input-group-text" id="up">Upload</span>
+
+
+
+
+
+
+
+              <a data-toggle="modal" data-target="#deletAlert"
+                style="border: none; text-decoration: none; background-color: transparent;"><i
+                  style="font-size: 23px; margin: 10px; color: #86c232;" class="fas fa-trash-alt  "></i></a>
+
+
+
+
+              <!-- Modal -->
+              <div class="modal fade" id="deletAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      Are You Sure You Want to delete this document?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button data-dismiss="modal" (click)="Deletedoc(doc)" type="button" class="btn btn-primary">Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+              <br>
+            </div>
+
+
+          </div>
+
+
+
+          <!-- <div class="form-group col-md-6">
+           
+
+
+            <div class="custom-file">
+              <input (change)="onDocFileChange($event)" name="file" type="file" class="custom-file-input"
+                id="customFile">
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+            <button class="btn" (click)="uploadFile(doc)"><i style="font-size: 14px;"
+                class="fas fa-upload"></i></button><br>
+
+          </div> -->
+        </div>
+      </div>
+
+
+
+
+      <button style="margin-left: 35px;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"
+        class="btn">Add</button>
+
+
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New Document</h5>
+              <button type="button" style="background-color: transparent;
+              color: #86c232 !important;" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <div class="form-group">
+                <div class="col-lg-9">
+                  <label for="comment">Discription:</label>
+                  <textarea [(ngModel)]="NewDocDesc" class="form-control" rows="5" id="comment"></textarea>
+                </div>
+                <div class="row  fileUp">
+                  <div class="input-group  image col-md-12">
+                    <div class="custom-file col-lg-6">
+                      <input style="cursor: pointer; margin-left: 1px; width: 100%;" (change)="onDocFileChange($event)"
+                        type="file" class=" hamada" id="inputGroupFile02">
+
+                      <label class="custom-file-label lab" for="inputGroupFile02">Choose File</label>
+                    </div>
+
+
+
+
+
+                    <div class="input-group-append">
+                      <span (click)="uploadFile(null)" class="input-group-text NewDocup" id="up">Upload</span>
+
+
+                    </div>
+
+
+                  </div>
+                </div>
+
+              </div>
+
+
+              <button (click)="Adddoc()" type="button" class="btn " data-dismiss="modal">Save</button>
+
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <div *ngFor="let Link of links" class="form-group">
+
+        <div class="col-lg-6">
+          <label for="comment">Link Discription:</label>
+          <textarea name="Link.Description" [(ngModel)]="Link.Description" class="form-control" rows="5"
+            id="comment"></textarea>
+        </div>
+
+
+        <div class="row mt-3 ml-1">
+          <div class="form-group col-lg-6">
+            <label for="inputaddlink"> Link:</label>
+            <input style="width:361px;" name="link" [(ngModel)]="Link.Link" type="Link" class="form-control"
+              id="inputaddlink" required>
+
+
+          </div>
+          <div class="form-group col-lg-3 mt-2">
+            <!-- <label for="inputaddlink"> Add Link:</label> -->
+
+            <a (click)="DeleteLink(Link)"> <i style=" 
+            font-size: 20px;
+            color: #86c232;
+            position: relative;
+            right: 83px;
+            top: 36px;" class="fas fa-trash-alt "></i></a>
+
+
+          </div>
+        </div>
+
+      </div>
+      <button type="btn" class="btn " style="margin-left: 33px;" data-toggle="modal" data-target="#AddLInk"
+        data-whatever="@mdo">Add</button>
+
+      <div class="modal fade" id="AddLInk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New Link</h5>
+              <button type="button" style="background-color: transparent;
+              color: #86c232 !important; border: none; text-decoration: none;" class="close" data-dismiss="modal"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="comment">Link Discription:</label>
+                <textarea name="dec" [(ngModel)]="NewLinkDescription" class="form-control" rows="5"
+                  id="comment"></textarea>
+                <div class="form-group col-md-4">
+                  <label for="inputaddlink"> Add Link:</label>
+                  <input name="link" [(ngModel)]="NewLinkText" type="Link" class="form-control" id="inputaddlink"
+                    required>
+
+                </div>
+              </div>
+
+              <div class="modal-footer">
+
+                <button (click)="AddLInk()" type="button" class="btn " data-dismiss="modal">Save</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <div *ngFor="let Vedio of Vedios" class="form-group">
+        <div class="col-lg-6">
+          <label for="comment">Discription:</label>
+          <textarea name="videdesc" [(ngModel)]="Vedio.Description" class="form-control" rows="5"
+            id="comment"></textarea>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-3 ml-17" style="margin-left: 17px !important;">
+            <label for="inputaddlink">Video Link:</label>
+            <input style="width: 400px;" name="video" [(ngModel)]="Vedio.Vedio" type="Link" class="form-control"
+              id="inputaddlink" required>
+          </div>
+          <div class="col-lg-4">
+            <a (click)="DeleteVideo(Vedio)">
+              <i style="position: relative;
+            top: 45px !important;
+                margin-left: 175px !important;
+            font-size: 20px  !important ; color: #86c232;" class="fas fa-trash-alt "></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <button style="margin-left: 35px;" type="btn" class="btn " data-toggle="modal" data-target="#AddVedio"
+        data-whatever="@mdo">Add
+      </button>
+
+      <div class="modal fade" id="AddVedio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New Vedio</h5>
+              <button type="button" style="background-color: transparent;
+              color: #86c232 !important; border: none; text-decoration: none;" class="close" data-dismiss="modal"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="comment">Discription:</label>
+                <textarea name="videdesc" [(ngModel)]="NewVedioDescription" class="form-control" rows="5"
+                  id="comment"></textarea>
+                <div class="form-group col-md-5">
+                  <label for="inputaddlink"> Add Video Link:</label>
+                  <input style="width: 460px !important; position: relative; right: 13px;" name="video"
+                    [(ngModel)]="NewVedioLink" type="Link" class="form-control" id="inputaddlink" required>
+
+                </div>
+              </div>
+
+              <div class="modal-footer">
+
+                <button (click)="AddVedio()" type="button" class="btn " data-dismiss="modal">Save</button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button [disabled]="!desc.valid || !name.valid" class="btn Submit" (click)="SavAll()">Submit</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- -->

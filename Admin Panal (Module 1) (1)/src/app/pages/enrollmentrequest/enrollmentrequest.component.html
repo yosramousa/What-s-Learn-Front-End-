@@ -1,0 +1,87 @@
+<div class="row">
+ 
+  <div class="text-left">
+    <div class="col-lg-2">
+      <form>
+        <select name="Numbers" [(ngModel)]="PageSize" class="custom-select" (change)="Filter()">
+          <option selected value="5">show</option>
+          <option *ngFor="let show of shows" [ngValue]="show">{{show}}</option>
+        </select>
+      
+      </form>
+    </div>
+  </div>
+
+  <!------------>
+
+
+  <!------------>
+
+  <div class="col-lg-5 ">
+    <select  name="SearchOp" [(ngModel)]="SearchOption" class="custom-select change">
+      <option *ngFor="let op of SerachOptions" [ngValue]="op.ID">{{op.name}}</option>
+     </select>
+    <!-- <button type="submit" class="btn btn-default float-center search" >Search</button> -->
+  </div>
+
+
+
+  <div class="col-lg-5">
+
+    <div class="input-group">
+
+
+      <input name="Search" [(ngModel)]="SearchText" type="text" class="form-control" placeholder="Search">
+      <div class="input-group-append">
+        <button (click)="Search()" class="btn btn-secondary" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+</div>
+
+
+
+<!---begin the enrollment request--->
+
+<div *ngIf="Messages" class="mt-5">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Track</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Message of Messages">
+        <td>{{Message.ID}}</td>
+        <td>{{Message.UserName}}</td>
+        <td> {{Message.TrackName}}</td>
+        <td><a class="approve" (click)="ApproveRequest(Message.ID)"> <i class="fas fa-check"></i></a></td>
+        <td><a class="cancel" (click)="Cancel(Message.ID)"> <i class="fas fa-times"></i></a></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+<!---end the enrolment request- -->
+
+
+<nav class="pagntion">
+  <ul class="pagination ">
+    <li class="page-item"><a (click)="Prev()" class="page-link">Previous</a></li>
+    <li *ngFor="let key of  numbers" class="page-item">
+      <a [ngClass]="key == PageIndex ? ' page-link CurrentPage': 'page-link'" (click)="MoveTo(key)"> {{key+1}}</a>
+    </li>
+    <li class="page-item "><a (click)="Next()" class="page-link">Next</a></li>
+  </ul>
+</nav>

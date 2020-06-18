@@ -1,0 +1,169 @@
+.container{
+    margin-bottom: 23px;
+    margin-top: 98px;
+}
+.row
+{
+    position: relative;
+    top: 25px;
+}
+.form-control {
+    padding-left: 2.375rem;
+    height:29%;
+
+}
+
+ .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+.fa-user-plus{
+    font-size: 37px;
+    color: #86c232;
+    position: relative;
+    cursor: pointer;
+    left: 48px;
+}
+button
+{
+    background-color:#86c232;
+    position: relative;
+    bottom: 10px;
+
+    color: #F2F2F2;
+    font-weight: bold;
+    border-radius: 4px;
+}
+button:hover
+{
+    background-color: #F2F2F2!important;
+    color:  #86c232 !important;  
+    border:1px solid #F2F2F2; 
+    
+}
+
+.custom-select{
+    width: 90px;
+}
+.serchId{
+    position: relative;
+    right: 28px;
+    bottom: 13px;
+    padding: 9px;
+}
+
+table
+{
+    margin-top: 63px;
+    color:#a2a2a2;
+}
+tbody tr td a
+{
+    color: #86c230;
+    font-size: 19px;
+}
+
+
+select
+{
+    color: #a2a2a2;
+}
+table tr .disable
+{
+    color: red;
+}
+
+table tr .enable
+{
+    color:#86c232;
+}
+nav{
+
+    /* float: right; */
+    display: inline-block;
+    position: relative;
+    left: 705px;
+
+    
+}
+.page-link{
+    color:  #86c232 !important;  
+}
+.details{
+    cursor: pointer; 
+}
+.delete{
+
+    text-decoration: none;
+    /* border: none; */
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.change{
+    width: 280px !important;
+
+}
+.serach
+{
+    width: 300px !important;
+}
+th{
+    text-align: center;
+
+}
+td{
+    text-align: center;
+}
+a {
+    cursor: pointer;
+}
+.delete{
+
+    text-decoration: none;
+    /* border: none; */
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+.pagntion
+{
+  
+ position: absolute;
+ left: 0;
+margin-left:45px 
+;
+   
+}
+
+.pagination
+{
+
+    position: absolute;
+    left: 0;
+    margin-left:45px 
+}
+
+.CurrentPage
+{
+    background-color: #222629;
+    color: white !important;
+    font-weight: bold;
+   
+
+    
+}
+.page-link{
+    color:  #86c232 !important; 
+    font-size: 16px !important; 
+    cursor: pointer;
+}

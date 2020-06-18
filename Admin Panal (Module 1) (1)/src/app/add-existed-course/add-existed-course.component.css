@@ -1,0 +1,32 @@
+/* .btn:hover{
+   
+    color: white;
+    
+    }
+    .btn {
+  
+        border: 1px solid #76c232;
+    
+    } */
+    .myinput{
+        height: 38px;
+      /* position: relative; */
+      /* top: 10px; */
+      width: 82px;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .myinput2 {
+      height: 38px;
+      width: 155px;
+      text-align: center;
+      padding: 0 12px;
+    }
+   table td , th{
+      text-align: center !important;
+     
+    }
+    button
+    {
+        margin-bottom: 20px;
+    }

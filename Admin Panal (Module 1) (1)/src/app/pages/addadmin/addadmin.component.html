@@ -1,0 +1,148 @@
+<div class="container ">
+  <form #f="ngForm" (ngSubmit)="AddAdmin(f)">
+    <h2 class="text-center AddAdmin">Add New Admin</h2>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="inputEmail4">Name</label>
+        <input [ngModel]="Name" #name="ngModel" name="Name" type="text" class="form-control" id="inputName4 " required>
+        <div class="alert alert-danger mt-1" *ngIf="name.touched && !name.valid">
+          <div *ngIf="name.errors.required">
+            Name is required
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label for="inputEmail4">Email</label>
+        <input pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" [ngModel]="Email" #email="ngModel"
+          name="Email" type="email" class="form-control" id="inputEmail4" required>
+        <div class="alert alert-danger mt-1" *ngIf="email.touched && !email.valid">
+          <div *ngIf="email.errors.required">
+            Email is required
+          </div>
+          <div *ngIf="email.errors.pattern">
+            Email is Invalid
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Password</label>
+        <input #pass="ngModel" [ngModel]="Password" name="Password" type="password" class="form-control"
+          id="inputPassword4" required>
+        <div class="alert alert-danger mt-1" *ngIf="pass.touched && !pass.valid">
+          <div *ngIf="pass.errors.required">
+            Password is required
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4"> confirm Password</label>
+        <input [ngModel]="Password" #ConfirmPassword="ngModel" name="ConfirmPassword" type="Password"
+          class="form-control" id="inputPassword4" required>
+        <div class="alert alert-danger mt-1" *ngIf="ConfirmPassword.touched && !ConfirmPassword.valid">
+          <div *ngIf="ConfirmPassword.errors.required">
+            Confirm Password is required
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputAddress">Age</label>
+      <input name="Age" [ngModel]="Age" #age="ngModel" type="number" class="form-control" id="inputAge" placeholder=""
+        min="18" max="99" required>
+      <div class="alert alert-danger mt-1" *ngIf="age.touched && !age.valid">
+        <div *ngIf="age.errors.required">
+          Age is required
+        </div>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress2">Address</label>
+      <input [ngModel]="Adress" name="Adress" #adress="ngModel" type="text" class="form-control" id="inputAddress"
+        placeholder="Address" required>
+
+      <div class="alert alert-danger mt-1" *ngIf="adress.touched && !adress.valid">
+        <div *ngIf="adress.errors.required">
+          Adress is required
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Phone</label>
+        <input [ngModel]="Phone" name="Phone" #phone="ngModel" type="tel" pattern='^\+?\d{0,13}' title='Phone Number'
+          class="form-control" id="inputPhone" required>
+        <div class="alert alert-danger mt-1" *ngIf="phone.touched && !phone.valid">
+          <div *ngIf="phone.errors.required">
+            Phone is required
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputCity">Gender</label>
+        <br>
+
+        <select  (change)="vaildAge($event)"  name="Gender" ngModel="Gender" #gender="ngModel" class=" form-control custom-select"
+          id="gender1" required>
+          <option  class="option" value="M"  selected>Male</option>
+          <option   class="option" value="F" >Female</option>
+        </select>
+        <div class="alert alert-danger mt-1" *ngIf="gender.touched && !gender.valid">
+          <div *ngIf="gender.errors.required">
+            Ggender is required
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <div class="form-group col-md-6">
+      <label class="text-muted">Add Image</label>
+      <div class="custom-file">
+        <input  (change)="onImageFileChange($event)"  type="file" class="custom-file-input" id="exampleInputFile">
+        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+      </div>
+      <div class="input-group-append">
+        <span (click)="uploadImage()"  class="input-group-text" id="">Upload</span>
+      </div>
+  
+     
+    </div> -->
+
+      <div class="input-group  col-md-12">
+        <div class="custom-file ">
+          <input  (change)="onImageFileChange($event)" type="file" class="custom-file-input" id="inputGroupFile02">
+          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+        </div>
+
+        <div class="input-group-append">
+          <span (click)="uploadImage()" class="input-group-text" id="up">Upload</span>
+          <br>
+        </div>
+
+      </div>
+      <img style="margin-left: 15px; text-align: center;" *ngIf="ImageSrc" [src]="ImageSrc" width="150" height="150">
+
+
+    </div>
+    <div class="text-center">
+      <button [disabled]="!f.valid" type="submit" class="btn">Save</button>
+
+    </div>
+  </form>
+</div>

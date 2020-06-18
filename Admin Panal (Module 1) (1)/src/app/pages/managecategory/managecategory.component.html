@@ -1,0 +1,144 @@
+<!--manage category-->
+<div class="container">
+  <div class="row ">
+    <div class="text-left">
+      <div class="col-lg-2">
+        <form>
+
+          <select (change)="GetData()" class="custom-select " name="Numbers" [(ngModel)]="PageSize">
+            <option selected value="5">Show </option>
+
+            <option *ngFor="let show of shows" [ngValue]="show">{{show}}</option>
+
+          </select>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="input-group">
+        <select (change)="GetData()" [(ngModel)]="Level" class="custom-select " id="SearchIn"
+          aria-label="Example select with button addon" name="SearchIn">
+          <option *ngFor="let Level of Levels" [ngValue]="Level.id" selected>{{Level.name}} </option>
+        </select>
+
+      </div>
+    </div>
+    <div class="col-lg-3  text-left">
+      <div class="input-group ">
+        <select name="SearchOption" [(ngModel)]="searchOption" class="custom-select " id="SearchBy"
+          aria-label="Example select with button addon">
+          <option *ngFor="let option of SearcheOptions" [ngValue]="option.id" selected>{{option.name}} </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-4">
+
+      <div class="input-group">
+        <input name="searchText" [(ngModel)]="searchText" [formControl]="CategoryFormControl" type="text"
+          class="form-control" placeholder="Search">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" (click)="GetData()" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">
+          <a (click)="SortBYIDAsc()"> <i id="IDAsc" style="  font-size: 20px;   " class="fas fa-caret-up mr-1"></i></a>
+          <a (click)="SortBYIDDesc()"><i id="IDdesc" style="font-size: 20px; " class="fas fa-caret-down mr-1"></i></a>ID
+        </th>
+        <th scope="col">
+          <a (click)="SortBYNameAsc()"> <i id="NameAsc" style="  font-size: 20px;   "
+              class="fas fa-caret-up mr-1"></i></a>
+          <a (click)="SortBYNameDesc()"><i id="NameDesc" style="font-size: 20px; "
+              class="fas fa-caret-down mr-1"></i></a>Name
+        </th>
+        <th *ngIf="Level ==1" scope="col">SubCategories</th>
+
+        <th *ngIf="Level==4 || Level==2" scope="col">Tracks</th>
+        <th *ngIf="Level==3" scope="col">Courses</th>
+
+
+        <th *ngIf="Level==3" scope="col">Users</th>
+        <th *ngIf="Level==0" scope="col">Childs</th>
+
+
+        <th  *ngIf="Level!=4" scope="col">Parent</th>
+
+        <th>Image</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let cat of Data">
+
+        <td>{{cat.ID}}</td>
+        <td>{{cat.Name}}</td>
+        <td>
+          <select class="custom-select" name="example">
+            <option *ngFor="let child of cat.Childs">{{child}}</option>
+
+          </select>
+        </td>
+        <td *ngIf="Level==3" scope="col">
+
+          <select class="custom-select" name="example">
+            <option *ngFor="let User of cat.Users">{{User}}</option>
+
+          </select>
+        </td>
+
+        <td  *ngIf="Level!=4">{{cat.Parent?cat.Parent:""}}</td>
+        <td><img width="80" height="80" src="{{Url}}/Uploads/{{cat.Image}}" /></td>
+        <td *ngIf="(!cat.Parent && Level==1)">Main Category Parent</td>
+        <td><a (click)="editcategory(cat.ID)"><i class="far fa-edit"></i></a></td>
+
+        <!-- <td> <a (click)="Remove(cat.ID)"> <i class="fas fa-trash-alt"></i></a></td> -->
+
+        <td> <a class="delete" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage"
+            placement="top" (confirm)="Remove(cat.ID)" (cancel)="cancelClicked = true">
+            <i class="fas fa-trash-alt "></i></a>
+        </td>
+
+        <td><a class="delete" (click)="addcourse(cat.ID)" *ngIf="Level==3">
+
+            <i class="fas fa-plus"></i></a></td>
+
+        <td><a *ngIf="Level == 1 || Level == 2 " (click)="addcategory(cat.ID)"><i class="fas fa-plus"></i></a></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <nav class="pagntion">
+    <ul class="pagination ">
+      <li class="page-item"><a (click)="Prev()" class="page-link">Previous</a></li>
+      <li *ngFor="let key of  numbers" class="page-item">
+        <a [ngClass]="key == PageNumber ? ' page-link CurrentPage': 'page-link'" (click)="MoveTo(key)"> {{key+1}}</a>
+      </li>
+      <li class="page-item "><a (click)="Next()" class="page-link">Next</a></li>
+    </ul>
+  </nav>
+</div>

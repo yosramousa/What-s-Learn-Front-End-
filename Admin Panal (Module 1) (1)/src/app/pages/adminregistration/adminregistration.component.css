@@ -1,0 +1,78 @@
+
+.box
+{
+
+    height: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    padding: 25px 50px 50px 50px ;
+    background-color: rgba(0,0,0,.8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 15px;
+
+}
+
+.box h2
+{
+    margin: 0 0 30px;
+    padding: 0px;
+    color: #fff;
+    text-align: center;
+}
+
+.box .inputbox
+{
+    position: relative;
+}
+.box .inputbox input
+{
+    
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px ;
+    border: none;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background-color: transparent;
+}
+.box .inputbox label
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding:10px 0 ;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: -8s;
+
+}
+.box .inputbox input:focus ~ label,
+.box .inputbox input:valid ~ label 
+{
+    top: -18px;
+    left: 0;
+    color:#86c232; ;
+    font-size: 12px;
+
+}
+ .submit
+{
+    background: transparent;
+    border: none;
+    outline: none;
+    /* color: #86c232; */
+    background-color :#86c232; ;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;;
+    margin-top: 10px;
+    margin-bottom: 10px !important;
+}
