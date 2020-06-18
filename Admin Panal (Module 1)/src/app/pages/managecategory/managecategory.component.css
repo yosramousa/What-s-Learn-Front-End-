@@ -1,0 +1,133 @@
+.container{
+    margin-bottom: 23px;
+    margin-top: 98px;
+}
+
+.form-control {
+    padding-left: 2.375rem;
+    height:29%;
+
+}
+.CurrentPage
+{
+    background-color: teal;
+    
+}
+.pagntion
+{
+  
+position: relative;
+left: 21%; 
+
+   
+}
+
+#SearchBy{
+    left: 3px;
+    top: 0px;
+    }
+ .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.custom-select{
+    width: 64px;
+}
+button
+{
+    background-color:#86c232;
+    position: relative;
+    bottom: 10px;
+ 
+    color: #F2F2F2;
+    font-weight: bold;
+    border-radius: 4px;
+}
+button:hover
+{
+    background-color: #F2F2F2!important;
+    color:  #86c232 !important;  
+    border:1px solid #F2F2F2; 
+    
+}
+.lab{
+    position: relative;
+    left: 42px;
+    font-size: 14px;
+    top: 5px;
+}
+.search{
+    position: relative;
+    top: 4px;
+    left: 47px;
+}
+.by{
+    width: 150px;
+}
+.selection{
+    width: 229px;
+    position: relative;
+    left: 47px;
+    top: 4px;
+}
+.in{
+    position: relative;
+    left: 46px;
+    height: 37px;
+    top: 6px;
+    /* border: 1px solid #AAA; */
+    border: 1px solid #e0dddd;
+   border-radius: 3px;
+}
+
+table
+{
+    margin-top: 63px;
+    color:#a2a2a2;
+}
+
+tbody tr td a
+{
+    color: #86c230;
+    font-size: 19px;
+}
+
+
+select
+{
+    color: #a2a2a2;
+}
+nav{
+
+    /* float: right; */
+    display: inline-block;
+    position: relative;
+    left: 705px;
+
+    
+}
+.page-link{
+    color:  #86c232 !important;  
+}
+ .edit{
+    cursor: pointer;
+ }
+ .add{
+    cursor: pointer;
+ }
+.delete{
+
+    text-decoration: none;
+    /* border: none; */
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}

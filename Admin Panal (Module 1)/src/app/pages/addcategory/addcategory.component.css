@@ -1,0 +1,30 @@
+
+textarea{
+    width: 100%;
+}
+
+.nav-pills .nav-link.active{
+  background-color: #86c232 !important; 
+  color: #eee !important;
+}
+/* button
+{
+  float: right;
+
+  right: 69%;
+  top: 24px;
+
+} */
+
+  button
+{
+    background-color: #86c232  !important; 
+    color: #eee !important;
+    border-radius: 20px;
+    position: relative;
+}
+.nav-link {
+  color: #86c232 !important;
+
+}
+

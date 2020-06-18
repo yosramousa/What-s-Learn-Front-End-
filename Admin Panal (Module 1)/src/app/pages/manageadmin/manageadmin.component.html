@@ -1,0 +1,150 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-4">
+      <div class="input-group">
+        <select class="custom-select" id="SearchIn" name="SearchOp" [(ngModel)]="SearchOp"
+          aria-label="Example select with button addon">
+          <option *ngFor="let op of SerachOpts" [ngValue]="op.ID">{{op.name}}</option>
+          <!-- <option  *ngFor="let category of categories" [ngValue]="category"selected>{{category.name}} </option> -->
+
+        </select>
+
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="input-group">
+
+
+        <input name="Search" [(ngModel)]="SaerchText" type="text" class="form-control" placeholder="Search">
+        <div class="input-group-append">
+          <button (click)="Search()" class="btn btn-secondary" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="col-lg-4">
+      <div class="input-group">
+        <a (click)="AddAdmin()"> <i class="fas fa-user-plus"></i></a>
+
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="row">
+    <div class="text-left">
+      <div class="col-lg-2">
+        <form>
+          <label for="cars">show</label>
+          <select class="custom-select" [(ngModel)]="pageSize" (change)="Filter()" name="Numbers">
+            <option *ngFor="let show of shows" [ngValue]="show">{{show}}</option>
+            <!-- <option  *ngFor="let show of shows" [ngValue]="show">{{show.number}}</option> -->
+
+          </select>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+    <!-- <div class="col-lg-3">
+      <select class="custom-select">
+        <option *ngFor="let number of numbers" [ngValue]="number">{{number.id}}</option>
+      </select>
+    </div> -->
+
+
+    <div *ngIf="Admins">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <!-- <th><a (click)="SortBYIDAsc()"> <i id="IDAsc" style="  font-size: 20px;   "
+                  class="fas fa-caret-up mr-1"></i></a>
+              <a (click)="SortBYIDDesc()"><i id="IDdesc" style="font-size: 20px; "
+                  class="fas fa-caret-down mr-1"></i></a>ID
+            </th> -->
+            <th scope="col">
+              <a (click)="SortBYNameAsc()"> <i id="NamAsc" style="  font-size: 20px;   "
+                  class="fas fa-caret-up mr-1"></i></a>
+              <a (click)="SortBYNameDesc()"><i id="namedesc" style="font-size: 20px; "
+                  class="fas fa-caret-down mr-1"></i></a>Name
+            </th>
+            <th>
+              <a (click)="SortBYEmailAsc()"> <i id="emAsc" style="  font-size: 20px;   "
+                  class="fas fa-caret-up mr-1"></i></a>
+              <a (click)="SortBYEmailDesc()"><i id="emdesc" style="font-size: 20px; "
+                  class="fas fa-caret-down mr-1"></i></a>Email
+            </th>
+
+            <th>Image</th>
+            <th scope="col">
+
+              Status
+
+            </th>
+            <th scope="col">Change Status</th>
+
+            <th scope="col">Details</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let admin of Admins">
+            <!-- <td>{{admin.ID}}</td> -->
+            <td>{{admin.Name}}</td>
+            <td>{{admin.Email}}</td>
+            <td><img width="80" height="80" src="{{Url}}/Uploads/{{admin.Image}}" /></td>
+            <td>{{admin.Status}}</td>
+            
+            <td>
+              <input *ngIf="!(adminID==admin.ID)" (click)="Change(admin.ID)" type="button"
+                class="btn btn-success ml-1 p-2" value="Change">
+            </td>
+              <!-- <td><a class="delete"
+            mwlConfirmationPopover
+            [popoverTitle]="popoverTitle"
+            [popoverMessage]="popoverMessage"
+            placement="top" (confirm)="Delete(admin.ID)"  (cancel)="cancelClicked = true"><i class="far fa-trash-alt"></i></a></td> -->
+
+           
+ 
+             <td>
+              <a *ngIf="!(adminID==admin.ID)" class="not-active" (click)="adminDetails(admin.ID)"><i
+                  class="fas fa-info"></i></a></td>
+          
+                  <td><a *ngIf="!(adminID==admin.ID)" class="not-active" (click)="Delete(admin.ID)">
+                    <i class="far fa-trash-alt "></i></a></td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a (click)="Prev()" class="page-link">Previous</a></li>
+        <li *ngFor="let key of  numbers" class="page-item">
+          <a (click)="MoveTo(key)" class="page-link"> {{key+1}}</a>
+        </li>
+        <li class="page-item "><a (click)="Next()" class="page-link">Next</a></li>
+      </ul>
+    </nav>
+     </div>

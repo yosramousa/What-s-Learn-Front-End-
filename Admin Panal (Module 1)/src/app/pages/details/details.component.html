@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-md-12">
+
+
+    <div class="card testimonial-card">
+
+      <!-- Background color -->
+      <div class="card-up indigo lighten-1"></div>
+
+      <!-- Avatar -->
+      <div class="avatar mx-auto white">
+        <img src="{{Url}}/Uploads/{{User.Image}}" class="" alt="{{User.Name}}">
+      </div>
+
+      <!-- Content -->
+      <div class="card-body">
+        <!-- Name -->
+
+        <h4 class="card-title">{{User.Name}} </h4>
+
+
+        <p class="paragraph">
+
+          <i class="fas fa-map-marker-alt styling"></i>
+          <label class="lbl">Address:</label>
+          {{User.Adress}}
+          <br />
+
+          <i class="far fa-envelope styling"></i>
+          <label class="lbl">Email:</label>
+          {{User.Email}}
+          <br />
+          <i class="fas fa-university styling"></i>
+
+          <label class="lbl">Education:</label>
+          {{User.Education}}
+          <br />
+
+          <i class="fas fa-mobile-alt styling"></i>
+          <label class="lbl">Phone:</label>
+          {{User.Phone}}
+          <br />
+          <label class="lbl">Age:</label>
+          {{User.Age}}
+          <br />
+          <label class="lbl">Gender:</label>
+          {{User.Gender}}
+          <br />
+        </p>
+        <!-- Quotation -->
+
+      </div>
+
+    </div>
+    <div class="accordion" id="accordionExample">
+
+      <div *ngFor="let Track of User.Tracks" class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left Tracking" type="button" data-toggle="collapse"
+              data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              {{Track.TrackName}}
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="progress">
+
+              <div class="progress-bar" role="progressbar" [style.width.%]="Track.Progress"
+                [attr.aria-valuenow]="Track.Progress" aria-valuemin="0" aria-valuemax="100">{{Track.Progress}}%</div>
+            </div>
+
+
+
+            <table class="table w-100">
+
+              <tbody>
+                <tr style="width: 100%;">
+                  <td>CuurentCourse</td>
+                  <td>
+                    {{Track.CuurentCourse}}
+                  </td>
+                </tr>
+
+                <tr scope="col">
+                  <td>FinshedCourses</td>
+                  <td *ngFor="let Course of Track.FinshedCourses">
+                    {{Course}}
+                  </td>
+                </tr>
+
+
+                <tr scope="col">
+                  <td>FutureCourses</td>
+                  <td *ngFor="let Course of Track.FutureCourses">
+                    {{Course}}
+                  </td>
+
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+</div>
