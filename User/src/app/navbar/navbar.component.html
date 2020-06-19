@@ -1,0 +1,126 @@
+<!--Begin the Slider--->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <img src="{{Url}}logo5.png" alt="What's Learn"  routerLink="/home" 
+  width="100" height="44" style="margin-left: 20px; margin-right: 20px; " >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link  " routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " routerLink="/about" routerLinkActive="active">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contactus" routerLinkActive="active">Contact Us</a>
+        </li>
+        <!-------------------------------------------------------------------------------------------------------->
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Categories
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+  
+  
+            <ul class=" top-level-menu">
+              <li *ngFor="let cat of Categories"><a (click)="CatDetails(cat.ID)">{{cat.Name}}</a>
+                <ul class="second-level-menu">
+                  <li *ngFor="let  sub of cat.Childs"><a (click)="SubDetails(sub.ID)">{{sub.Name}}</a>
+                    <ul class="third-level-menu">
+                      <li *ngFor="let  track   of sub.Childs"><a (click)="TrackDetails(track.ID)">{{track.Name}}</a>
+                      </li>
+                    </ul>
+                  </li>
+  
+                </ul>
+              </li>
+  
+            </ul>
+  
+          </div>
+        </li>
+   -->
+  
+        <!-------------------------------------------------------------------------------------------------->
+              
+          <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        [matMenuTriggerFor]="menu" 
+          aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
+           <mat-menu #menu="matMenu">
+            <div *ngFor="let cat of Categories">
+              <button mat-menu-item [matMenuTriggerFor]='subMenu'
+              (click)="CatDetails(cat.ID)">
+                {{cat.Name}}
+              </button>
+
+              <mat-menu #subMenu="matMenu" >
+                <div *ngFor="let  sub of cat.Childs">
+                <button mat-menu-item (click)="SubDetails(sub.ID)" [matMenuTriggerFor]='sub2Menu'>{{sub.Name}}</button>
+
+                <mat-menu #sub2Menu="matMenu">
+                  <div *ngFor="let track of sub.Childs">
+                  <button mat-menu-item (click)="TrackDetails(track.ID)">{{track.Name}}</button>
+                  </div>
+                </mat-menu>
+
+                </div>
+              </mat-menu>
+
+             
+             
+              
+              <!-- <ul class="second-level-menu">
+                <li *ngFor="let  sub of cat.Childs"><a (click)="SubDetails(sub.ID)">{{sub.Name}}</a>
+                  <ul class="third-level-menu">
+                    <li *ngFor="let  track   of sub.Childs"><a (click)="TrackDetails(track.ID)">{{track.Name}}</a>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul> -->
+            </div>
+       </mat-menu>
+
+      </li>
+
+        
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+        <!-- <button class="Search" type="submit"><i class="fas fa-search Search"></i></button> -->
+  
+        <li *ngIf="IsUser" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon far fa-bell " style="font-size: 22x;" aria-hidden="true"></i>
+          </a>
+          
+          <div style="height: 100px  ; overflow-y: auto;  "  class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" >
+            <a  *ngFor="let notif of notifiactions " style="color: gray;" class="dropdown-item" >{{notif}}
+            
+              <hr>
+            </a>
+           
+          </div>
+        </li>
+  
+        <a class="nav-link" name="Profile" *ngIf="IsUser" routerLink="/profile" routerLinkActive="active">
+          <i class="icon fas fa-user"></i></a>
+        <a class="nav-link" name="LogOut" *ngIf="IsUser" (click)="SignOut()"><i class="icon fas fa-sign-out-alt"></i></a>
+  
+        <a class="nav-link" name="sign-up" *ngIf="IsVisitor" routerLink="/sign-up" routerLinkActive="active">
+          <i class="icon fas fa-user-plus"></i></a>
+  
+        <a class="nav-link" name="sign-in" *ngIf="IsVisitor" routerLink="/sign-in" routerLinkActive="active">
+          <i class="icon fas fa-sign-in-alt"></i></a>
+      </form>
+    </div>
+  </nav>

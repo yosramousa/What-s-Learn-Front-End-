@@ -1,0 +1,37 @@
+<div class="row" style="    float: right !important; position: relative;
+bottom: 13px; color:#bf3636; font-size:18px">
+  <a  mat-button mat-dialog-close> <i class="fas fa-times"></i></a>
+</div> 
+    <div class="top container-fluid">
+    <h3 style=" color: #61892f;"> Add Your Social Links </h3>
+    <div class="row " >
+
+
+
+        <div class="col-lg-4 text-center">
+
+            <div class="input-group " style="width: 195px !important;">
+                <input [(ngModel)]="Link" name="Link" name="Text" type="text" class="form-control myinput"
+                    placeholder="Enter">
+
+            </div>
+
+        </div>
+
+    
+       
+        <div class="col-lg-4 " style="margin-left: 100px !important;">
+            <!-- <button (click)="AddLink()"><span  style=" height: 27px !important;"
+             class="input-group-text" id="inputGroupFileAddon02">ADD</span></button> -->
+
+             <button  style="position: relative;
+             right: 16px;"  (click)="AddLink()" class="input-group-text" for="inputGroupSelect02">Add</button>
+
+
+
+        </div>
+   
+    
+    </div>
+
+</div>

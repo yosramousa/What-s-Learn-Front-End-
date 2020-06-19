@@ -1,3 +1,5 @@
+import { SidebarModule } from './../../sidebar/sidebar.module';
+import { NavbarModule } from './../../shared/navbar/navbar.module';
 import { NgModule, OnInit } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -47,7 +49,7 @@ export const AppRoutes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-   
+    
 
    
   

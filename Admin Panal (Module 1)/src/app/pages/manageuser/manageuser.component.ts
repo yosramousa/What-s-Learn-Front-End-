@@ -3,6 +3,7 @@ import { MangeUsersService } from './../../../Services/mange-users.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-manageuser',
@@ -18,7 +19,7 @@ export class ManageuserComponent implements OnInit {
   name: string;
   email:string;
   shows: number[] = [10, 15, 20, 25]
-  pageSize=10
+  pageSize=5
   pageNumber=0
   Users: []
   GetAllsubscribe;
@@ -33,7 +34,7 @@ export class ManageuserComponent implements OnInit {
   SearchOp:number=0
 
 
-  constructor( private router: Router ,private mangeUsersService: MangeUsersService) { 
+  constructor( private router: Router ,private mangeUsersService: MangeUsersService ,private toastr :ToastrService) { 
 
     this.popoverTitle = 'Confirm';
     this.popoverMessage = 'Are you sure to Delete ';
@@ -53,8 +54,10 @@ export class ManageuserComponent implements OnInit {
         console.log(this.Users)
         this.count = response.Count
         this.NumOfPages = Math.round(this.count / this.pageSize)
-        this.numbers = Array(this.NumOfPages).fill(1).map((x, i) => i);
-
+        this.numbers = Array(this.NumOfPages).fill(1).map((x, i) => i).splice(0, 5)
+        console.log(this.numbers)
+        console.log(this.pageNumber)
+       
       } (err =>
         console.log(err)
       )
@@ -75,6 +78,10 @@ export class ManageuserComponent implements OnInit {
     this.Changesubscribe = this.mangeUsersService.ChangeStatus(id).subscribe(response => {
       console.log(response)
       this.Search()
+      this.toastr.success("User Activation Change Successfully","Done",{
+        easeTime:500,
+        timeOut:4000
+      })
 
     });
 }
@@ -83,9 +90,12 @@ export class ManageuserComponent implements OnInit {
 
     this.mangeUsersService.Delete(id).subscribe(res => {
       if (res) {
-        document.getElementById("delalert").style.visibility = "visible";
+       
         this.Search()
-
+        this.toastr.success("User Deleted Successfully","Done",{
+          easeTime:500,
+          timeOut:4000
+        })
       }
 
     });
@@ -108,7 +118,7 @@ export class ManageuserComponent implements OnInit {
         this.Users = res.Data;
         this.count = res.Count
         this.NumOfPages = Math.round(this.count / this.pageSize)
-        this.numbers = Array(this.NumOfPages).fill(1).map((x, i) => i);
+        this.numbers = Array(this.NumOfPages).fill(1).map((x, i) => i).splice(0, 5)
 
         console.log(this.Users)
       } else console.log("False")

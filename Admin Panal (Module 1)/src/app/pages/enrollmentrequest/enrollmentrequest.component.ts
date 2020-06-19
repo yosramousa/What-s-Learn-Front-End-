@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { ManageAdminService } from './../../../Services/manage-admin.service';
 import { EnrollRequestService } from 'Services/enroll-request.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-enrollmentrequest',
@@ -13,28 +14,24 @@ export class EnrollmentrequestComponent implements OnInit {
   number: number;
   name: string;
   subsciption;
-  constructor(private router: Router, private enrollRequestService: EnrollRequestService) { }
-  PageSize = 10
+  constructor(private router: Router,
+     private enrollRequestService: EnrollRequestService,
+     private toastr :ToastrService) { }
+  PageSize = 5
   PageIndex = 0
   SearchOption = 0
-  SearchText
+  SearchText=" "
   Messages: []
+  count: number
+  numbers
+  NumOfPages
   ngOnInit(): void {
-    this.enrollRequestService.GetAllRequests(this.PageIndex, this.PageSize).subscribe
-      (res => {
-
-        if (res.Successed) {
-          console.log(res)
-          this.Messages = res.Data;
-          console.log(this.Messages)
-        }
-      }
-      )
+   this.Search()
   }
   shows: number[] = [10, 15, 20, 25]
 
   SerachOptions = [
-    { ID: 0, name: "Chose Search Options" },
+    { ID: 0, name: "Choose Search Options" },
     { ID: 1, name: "Name" },
     { ID: 2, name: "Track Name" },
 
@@ -51,7 +48,10 @@ export class EnrollmentrequestComponent implements OnInit {
         this.enrollRequestService.GetAllRequests(this.PageIndex, this.PageSize)
           .subscribe(res => {
             this.Messages = res.Data;
-            console.log(this.Messages)
+            this.toastr.success("Request Approved Successfully","Done",{
+              easeTime:500,
+              timeOut:4000
+            })
           })
       }
     )
@@ -66,9 +66,14 @@ export class EnrollmentrequestComponent implements OnInit {
       res => {
         if (res)
           console.log("Canceled")
+
         this.enrollRequestService.Search(this.SearchOption, this.SearchText, this.PageIndex, this.PageSize)
           .subscribe(res => {
             this.Messages = res.Data;
+          })
+          this.toastr.success("Request Canceled Successfully","Done",{
+            easeTime:500,
+            timeOut:4000
           })
       }
     )
@@ -84,7 +89,11 @@ export class EnrollmentrequestComponent implements OnInit {
     this.enrollRequestService.Search(this.SearchOption, this.SearchText, this.PageIndex, this.PageSize)
       .subscribe(res => {
         this.Messages = res.Data;
-        console.log(this.Messages)
+        console.log(res)
+        this.count = res.Count
+        this.NumOfPages = Math.round(this.count / this.PageSize)
+        this.numbers = Array(this.NumOfPages).fill(1).map((x, i) => i).splice(0, 5)
+
       })
   }
 
@@ -121,5 +130,11 @@ export class EnrollmentrequestComponent implements OnInit {
   Filter() {
    
   this.Search()
+  }
+  MoveTo(num) {
+    this.PageIndex = num;
+
+    this.Search();
+
   }
 }

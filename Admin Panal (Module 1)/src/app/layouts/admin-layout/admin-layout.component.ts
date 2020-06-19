@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 export class AdminLayoutComponent implements OnInit {
  constructor(private router:Router){}
   ngOnInit() { 
-    if(!localStorage.getItem("Token")){
+    if(!localStorage.getItem("AdminToken")){
+      
       this.router.navigate(['/adminregistration'])
     }
   }

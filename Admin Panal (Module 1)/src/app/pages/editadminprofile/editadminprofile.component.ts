@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfileAdminService } from './../../../Services/profile-admin.service';
 import { environment } from './../../../environments/environment'
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,7 +14,24 @@ import { environment } from './../../../environments/environment'
 export class EditadminprofileComponent implements OnInit {
 
 
-  constructor(private router: Router, private profileAdminService: ProfileAdminService) { }
+  ID
+ Name
+  Password
+  Age
+  Email
+  Adress
+  Phone
+  Gender:string="m"
+  Image
+  test="m"
+  Genders = [
+    { value: "Male", name: "Male" },
+    { value: "Female", name: "Female" }
+  ]
+  Images: FileList;
+  ImageSrc
+  ConfirmedPassword
+  constructor(private router: Router, private profileAdminService: ProfileAdminService ,private toastr:ToastrService) { }
 
   ngOnInit(): void {
 
@@ -33,49 +51,34 @@ export class EditadminprofileComponent implements OnInit {
         this.Gender = "m"
       }
       else this.Gender = "f"
-
+     console.log(this.Gender)
     })
   }
-  Genders = [
-    { value: "m", name: "Male" },
-    { value: "f", name: "Female" }
-  ]
+  
 
   Subscribe
 
-  ID
-  Name
-  Password
-  Age
-  Email
-  Adress
-  Phone
-  Gender
-  Image
+  vaildAge(e)
+  {
+    if(e.target.selectedIndex==0)
+    this.Gender="M";
+    else this.Gender="F"
+  }
+  EditAdmin(f) {
+   
+    f.value.ID=this.ID
+    f.value.Image=this.Image
+    console.log(f.value.Image)
 
-  Images: FileList;
-  ImageSrc
-  ConfirmedPassword
-
-  EditAdmin() {
-    let Admin = {
-      ID: this.ID,
-      Name: this.Name,
-      Password: this.Password,
-      Age: this.Age,
-      Email: this.Email,
-      Adress: this.Adress,
-      Phone: this.Phone,
-      Gender: this.Gender,
-      Image:this.Image
-    }
-
-    this.Subscribe = this.profileAdminService.Update(Admin).subscribe(
+    this.Subscribe = this.profileAdminService.Update(f.value).subscribe(
       res => {
         if (res.Successed) {
           console.log(res.Data.Name)
           localStorage.setItem("AdminName", res.Data.Name)
-
+          this.toastr.success("Your Information Updated Successfully","Done",{
+            easeTime:500,
+            timeOut:4000
+          })
           console.log("res")
 
           this.router.navigate(['adminlayout/profile'])
@@ -87,8 +90,10 @@ export class EditadminprofileComponent implements OnInit {
       }
       ,
       err => {
-        console.log(err);
-      }
+        this.toastr.error("Something Went Wrong Please try again","Error",{
+          easeTime:500,
+          timeOut:4000
+        })      }
 
     );
 
@@ -111,7 +116,6 @@ export class EditadminprofileComponent implements OnInit {
           res => {
             if (res.Successed) {
               this.Image = res.Data[0].Path;
-              console.log('DDSDSDSDSDSDSSDS', res.Data)
               this.ImageSrc = `${environment.api_url}Uploads/${this.Image}`
             }
           },

@@ -16,7 +16,6 @@ import { ManageadminComponent } from '../../pages/manageadmin/manageadmin.compon
 import { AdmindetailsComponent } from '../../pages/admindetails/admindetails.component';
 import { AddcategoryComponent } from '../../pages/addcategory/addcategory.component';
 import { DetailsComponent } from '../../pages/details/details.component';
-import { EdituserdetailsComponent } from '../../pages/edituserdetails/edituserdetails.component';
 import { EditskillComponent } from '../../pages/editskill/editskill.component';
 // import { NotificationComponent } from '../../pages/notification/notification.component';
 
@@ -39,7 +38,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'Admindetails', component: AdmindetailsComponent },
     { path: 'Addcategory', component: AddcategoryComponent },
     { path: 'details/:ID', component: DetailsComponent},
-    { path: 'edituserdetails', component: EdituserdetailsComponent },
+    {path: '',redirectTo: '/adminlayout/dashboard',pathMatch: 'full'},
+
     // { path: 'editskill', component: EditskillComponent },
     // { path: 'notification', component: NotificationComponent },
 

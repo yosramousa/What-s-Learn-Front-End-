@@ -13,14 +13,13 @@ export class MangeUsersService {
   }
 
   ChangeStatus(id):any {
-
+ 
     return this.apiService.get(`ManageUsers/ChangeStatus?id=${id}`);
   }
-  Details
   GetByID(id): any {
     return this.apiService.get(`ManageUsers/Details?id=${id}`);
   }
-
+ 
   Delete(id) {
     return this.apiService.get(`ManageUsers/Delete?id=${id}`);
   }

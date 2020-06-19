@@ -1,47 +1,38 @@
-<div class="card testimonial-card">
+<div class="col-md-6 mt-5 " style="margin: 15px auto;">
+  <div class="card profile-card-5">
+    <a (click)="EditAdminProfile()"><i class="far fa-edit icons"></i></a>
+    <div class="card-img-block">
+      <img  
+      class="card-img-top" src="{{Url}}/Uploads/{{Admin.Image}}" alt="Card image cap">
+    </div>
+    <div class="card-body pt-0">
+      <h5 class="card-title text-center" style="color: #626364;">{{Admin.Name}}</h5>
+      <p class="card-text"><i class="far fa-envelope-open icon "></i><label>Email : </label> {{Admin.Email}} </p>
+      <hr>
+      <p class="card-text"><i class="fas fa-mobile-alt icon"></i> <label>Phone :</label>
+        {{Admin.Phone}}
+      </p>
+      <hr >
+      <p class="card-text" >
+        <i class="fa fa-male icon" *ngIf="Admin.Gender == 'Male'" aria-hidden="true"></i>
+        <i class="fa fa-female icon" *ngIf="Admin.Gender == 'Female'" aria-hidden="true"></i>
+        <label>Gender:</label> {{Admin.Gender}}
+      </p>
+      <hr>
+      <p class="card-text"><i class="fas fa-map-marker-alt icon"></i><label>Address : </label> {{Admin.Adress}}
+      </p>
+      <hr>
+      <p class="card-text"><i class="fas fa-user icon"></i><label>Age : </label>
+        {{Admin.Age}}
 
-  <!-- Background color -->
-  <div class="card-up indigo lighten-1"></div>
+      </p>
+      <!-- <p class="card-text"><i class="fas fa-university icon"></i><label>Education : </label> </p>
+          <hr> -->
+      <!-- <p class="card-text"><i class="fas fa-file-alt icon"></i><label>Skills :</label> </p> -->
+      <!-- <hr> -->
+      <!-- <p class="card-text"><i class="fas fa-link icon"></i><label>Links :</label> </p> -->
 
-  <!-- Avatar -->
-  <div class="avatar mx-auto white">
-    <img src="{{Url}}/Uploads/{{Admin.Image}}" class="" alt="{{Admin.Name}}">
+
+    </div>
   </div>
-
-  <!-- Content -->
-  <div class="card-body">
-    <!-- Name -->
-  
-    <h4 class="card-title">{{Admin.Name}} </h4>
-
-    <!-- <a class="btn btn-default float-center" (click)="editadminprofile()"><i
-      class="far fa-edit"></i></a> -->
-   <a style="position: relative;" href="#" [routerLink]="'/adminlayout/editadminprofile'"><i class="far fa-edit   styling edit"></i></a>
-    <p class="paragraph">
-      
-      <i class="fas fa-map-marker-alt styling"></i>
-      <label class="lbl">Address:</label>
-      {{Admin.Adress}}
-      <br />
-     
-      <i class="far fa-envelope styling"></i>
-      <label class="lbl" >Email:</label>
-      {{Admin.Email}}
-      <br />
-    
-      <i class="fas fa-mobile-alt styling"></i>
-      <label class="lbl">Phone:</label>
-      {{Admin.Phone}}
-      <br />
-      <label class="lbl">Age:</label>
-      {{Admin.Age}}
-      <br />
-      <label class="lbl">Gender:</label>
-      {{Admin.Gender}}
-      <br />
-   </p>
-      <!-- Quotation -->
-   
-  </div>
-
 </div>

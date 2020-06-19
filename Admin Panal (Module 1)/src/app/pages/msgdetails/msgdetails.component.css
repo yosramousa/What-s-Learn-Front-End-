@@ -2,22 +2,22 @@
 
     transform: none;
     font-size:15px;
-    width: 450px;
-    height: 50px;
+    width: 380px;
     text-align: center;
     position: relative;
-    top: 34px;
+    top: 5px;
     color: gray !important;
+    padding: 5px !important;
 
 
 }
-button{
+.btn{
     
-    font-size:15px !important;
+    font-size:13px !important;
     padding: 8px;
-    width: 74px;
+    width: 65px;
     border-radius: 11px;
-
+   margin-bottom: 10px !important;
     left: 549px;
     background-color: #86c232 !important;
     /* bottom: 59px; */

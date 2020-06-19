@@ -1,0 +1,29 @@
+.top
+{
+  margin-top:80px
+}
+.Add
+{
+  
+    padding: 6px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    border: 1px solid #CED4DA
+}
+.model
+{
+  border:none;
+font-size: 21px;
+color: #86c232;
+}
+
+label{
+  margin-right: 3px;
+    font-size: 21px;
+}
+
+.delete{
+  color: #86c232;
+  font-size:21px ;
+}

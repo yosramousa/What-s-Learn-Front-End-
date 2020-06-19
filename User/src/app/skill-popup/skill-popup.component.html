@@ -1,0 +1,46 @@
+<div class="row" style="    float: right !important; position: relative;
+bottom: 13px; color:#bf3636; font-size:18px">
+  <a  mat-button mat-dialog-close> <i class="fas fa-times"></i></a>
+</div>
+
+<div class="container Top m-0">
+
+<div class=" row ">
+    <div class="col-lg-6 text-center">
+<div>
+        <div class="input-group " style="width: 120px;">
+            <h4 class="lbl">Edit Skill</h4>
+            
+        </div>
+        <div class="input-group " style="width: 180px;">
+           
+            <h5>{{UserSkill.SkillName}}</h5>
+        </div>
+    </div>
+     
+
+     
+    
+        
+        <div class="input-group mb-3" style="width: 300px;">
+
+            <select class="custom-select" [(ngModel)]="UserSkill.Level" id="inputGroupSelect02">
+                <option selected>{{UserSkill.Level}}</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="row">
+            
+        <button  style="position: relative;
+      
+        left: 16px;" (click)="UpdateSkill()" class="input-group-text" for="inputGroupSelect02">Update</button>
+       
+    </div>
+    </div>
+  
+</div>
+</div>

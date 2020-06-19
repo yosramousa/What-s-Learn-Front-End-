@@ -12,4 +12,9 @@ export class DashBordService {
   {
      return this.apiService.get("DashBoard/GatAllData");
   }
+
+  GetLineChartData():any
+  {
+     return this.apiService.get("DashBoard/GetDataForChart");
+  }
 }

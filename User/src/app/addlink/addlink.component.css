@@ -1,0 +1,25 @@
+h3{
+    color: #61892f !important; 
+    font-size: 18px !important;
+}
+.Add
+{
+    background-color: #86c232 !important;
+    padding: 6px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    /* color: #86c232; */
+
+    /* border: 1px solid #CED4DA */
+    
+
+}
+
+img{
+    height: 30%;
+    width:30%;
+}
+.styling{
+    border:none !important;
+}

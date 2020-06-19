@@ -1,0 +1,43 @@
+<div class="row" style="    float: right !important; position: relative;
+bottom: 13px; color:#bf3636; font-size:18px">
+  <a  mat-button mat-dialog-close> <i class="fas fa-times"></i></a>
+</div>
+
+
+<div class="top container-fluid">
+ 
+    
+<div *ngIf="UserSkill">
+
+    <table class="table table-striped text-center" style="margin-top: 72px;">
+        <thead>
+            <tr>
+                <th scope="col">Number</th>
+                <th scope="col">Your Skils</th>
+                <th scope="col">Level</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let skill of UserSkill">
+                <th scope="row">{{skill.ID}}</th>
+                <td>{{skill.SkillName}}</td>
+                <td>{{skill.Level}}</td>
+               
+                <td><a (click)="EditSkill(skill)" ><i class="far fa-edit model" style="margin-top: 7px;"></i></a>
+                </td>
+                <td> <a class="delete" mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle" 
+                    [popoverMessage]="popoverMessage"
+                   placement="top" (confirm)="DeleteSkill(skill)"
+                    (cancel)="cancelClicked = true">
+                   <i class="fas fa-trash-alt "></i></a>
+               </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+    </div>
+</div>

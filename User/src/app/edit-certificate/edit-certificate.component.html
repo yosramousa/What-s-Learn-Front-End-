@@ -1,0 +1,81 @@
+<div class="top container-fluid">
+    <h3> Edit Your Certificates</h3>
+    <div class="row ">
+
+
+        <div class="col-lg-4 text-center">
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input (change)="onImageFileChange($event)" type="file" class="custom-file-input"
+                        id="inputGroupFile02">
+                    <label class="custom-file-label" for="inputGroupFile02"
+                        aria-describedby="inputGroupFileAddon02">Choose Image</label>
+                </div>
+                <div class="input-group-append">
+                    <button (click)="uploadImage()"><span class="input-group-text"
+                            id="inputGroupFileAddon02">Upload</span></button>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="col-lg-4 text-center">
+
+            <div class="input-group ">
+                <input [(ngModel)]="Title" name="Title" name="Text" type="text" class="form-control myinput"
+                    placeholder="Enter">
+
+            </div>
+
+        </div>
+        <div class="col-lg-4 ">
+            <button (click)="AddCertificate()"><span class="input-group-text"
+                id="inputGroupFileAddon02">ADD</span></button>
+
+        </div>
+
+
+        <table class="table table-striped text-center" style="margin-top: 72px;">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cert of UserCerts">
+                    <th scope="row">{{cert.ID}}</th>
+                    <td>{{cert.Title}}</td>
+                    <td>
+                        <img src="{{Url+cert.Image}}" alt="{{cert.Title}}" style="height: 40px; width: 40px;
+                        ">
+
+                    
+                    <td>
+                        <a (click)="EditCertificate(cert)"><i class="far fa-edit model" style="margin-top: 7px;">
+                        </i></a>
+                  </td>
+
+                    
+            
+                    <td> <a class="delete" mwlConfirmationPopover
+                            [popoverTitle]="popoverTitle" 
+                            [popoverMessage]="popoverMessage"
+                            placement="top" (confirm)="DeleteCert(cert)"
+                            (cancel)="cancelClicked = true">
+                        <i class="fas fa-trash-alt "></i></a>
+                    </td>
+            
+                    <!-- <td> <a class="delete" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage"
+            placement="top" (confirm)="Remove(cat.ID)" (cancel)="cancelClicked = true">
+            <i class="fas fa-trash-alt "></i></a>
+        </td> -->
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>

@@ -28,7 +28,6 @@ import { ManageadminComponent } from './pages/manageadmin/manageadmin.component'
 import { AdmindetailsComponent } from './pages/admindetails/admindetails.component';
 import { AddcategoryComponent } from './pages/addcategory/addcategory.component';
 import { DetailsComponent } from './pages/details/details.component';
-import { EdituserdetailsComponent } from './pages/edituserdetails/edituserdetails.component';
 import { EditskillComponent } from './pages/editskill/editskill.component';
 import { NotificationComponent } from './pages/notification/notification.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -38,139 +37,145 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 
 export const AppRoutes: Routes = [
-  
-    {path: 'adminregistration',component: AdminregistrationComponent },
-      {path: 'dashboard',component: DashboardComponent },
 
-    {path: 'adminlayout',component: AdminLayoutComponent,
-      children: [
-          
-         
-            { path: 'dashboard', component: DashboardComponent, },
-           
-                {
-                      path: 'managecategory',
-                      component: ManagecategoryComponent,
-                      
-                      },
-                     {path: 'addcategory/:ID/:Level',component: AddcategoryComponent,},
-                     { path: 'editcategory/:ID/:Level', component: EditcategoryComponent },
-                        
-                      {
-                      path: 'inbox',
-                            component:InboxComponent,
-                            },
-                            {
-                      path: 'userdetail',
-                             component:UserdetailComponent,
-                                    },
-                                    {
-                                    path: 'details/:ID',
-                              component:DetailsComponent,
-                              
-                               
-                                    },
-                           
-                              {
-                       path: 'editadminprofile', 
-                              component: EditadminprofileComponent },
+  { path: 'adminregistration', component: AdminregistrationComponent },
+  { path: 'dashboard', component: DashboardComponent },
 
-          
-                               { 
+  {
+    path: 'adminlayout', component: AdminLayoutComponent,
+    children: [
 
-                                path: 'manageuser', 
-                                component: ManageuserComponent},
-                        
-                       
-                               
-                        {
-                      path: 'profile', 
-                                component: ProfileComponent,
-                        children: [
-                        { path: 'editadminprofile', component: EditadminprofileComponent },]},
-                        {
-                          path: 'manageuser', 
-                                    component: ManageuserComponent,
-                            children: [
-                            { path: 'details/:id', component: DetailsComponent },]},
 
-  
-    { path: 'managecategory', component: ManagecategoryComponent },
-    { path: 'manageadmin', component: ManageadminComponent },
-    { path: 'addadmin', component: AddadminComponent },
-    { path: 'manageuser', component: ManageuserComponent },
-    { path: 'enrollmentrequest', component: EnrollmentrequestComponent },
-    { path: 'manageskill', component: ManageskillComponent },
-     { path: 'editskill/:id', component: EditskillComponent, },
-    { path: 'adminregistration', component: AdminregistrationComponent },
-    { path: 'admindetails/:ID', component: AdmindetailsComponent },
-    { path: 'editcategor/:id/:Level', component: EditcategoryComponent },
-    { path: 'Addcategory', component: AddcategoryComponent },
-    { path: 'Inbox', component: InboxComponent },
-    { path: 'userdetail/:id', component: UserdetailComponent },
-    { path: 'details', component: DetailsComponent },
-    { path: 'edituserdetails', component: EdituserdetailsComponent },
-    // { path: 'editskill', component: EditskillComponent },
-    { path: 'notification', component: NotificationComponent },
-    { path: 'msgdetails', component: MsgdetailsComponent },
-    { path: 'notfound', component: NotFoundComponent },
-    {path: '',redirectTo: 'adminregistratin',pathMatch: 'full'},
+      { path: 'dashboard', component: DashboardComponent, },
 
-    
-             ]
-            },
-             { path: '**', redirectTo: '/adminlayout/notfound',},
-             
+      {
+        path: 'managecategory',
+        component: ManagecategoryComponent,
 
-            ];
+      },
+      { path: 'addcategory/:ID/:Level', component: AddcategoryComponent, },
+      { path: 'editcategory/:ID/:Level', component: EditcategoryComponent },
 
-            
+      {
+        path: 'inbox',
+        component: InboxComponent,
+      },
+      {
+        path: 'userdetail',
+        component: UserdetailComponent,
+      },
+      {
+        path: 'details/:ID',
+        component: DetailsComponent,
+
+
+      },
+
+      {
+        path: 'editadminprofile',
+        component: EditadminprofileComponent
+      },
+
+
+      {
+
+        path: 'manageuser',
+        component: ManageuserComponent
+      },
+
+
+
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        children: [
+          { path: 'editadminprofile', component: EditadminprofileComponent },]
+      },
+      {
+        path: 'manageuser',
+        component: ManageuserComponent,
+        children: [
+          { path: 'details/:id', component: DetailsComponent },]
+      },
+
+
+      { path: 'managecategory', component: ManagecategoryComponent },
+      { path: 'manageadmin', component: ManageadminComponent },
+      { path: 'addadmin', component: AddadminComponent },
+      { path: 'manageuser', component: ManageuserComponent },
+      { path: 'enrollmentrequest', component: EnrollmentrequestComponent },
+      { path: 'manageskill', component: ManageskillComponent },
+      { path: 'editskill/:id', component: EditskillComponent, },
+      { path: 'adminregistration', component: AdminregistrationComponent },
+      { path: 'admindetails/:ID', component: AdmindetailsComponent },
+      { path: 'editcategor/:id/:Level', component: EditcategoryComponent },
+      { path: 'Addcategory', component: AddcategoryComponent },
+      { path: 'Inbox', component: InboxComponent },
+      { path: 'userdetail/:id', component: UserdetailComponent },
+      { path: 'details', component: DetailsComponent },
+      // { path: 'editskill', component: EditskillComponent },
+      { path: 'notification', component: NotificationComponent },
+      { path: 'msgdetails', component: MsgdetailsComponent },
+      { path: 'notfound', component: NotFoundComponent },
+
+      {path: '',redirectTo: 'dashboard',pathMatch: 'full'},
+
+    ]
+  },
+  {path: '',redirectTo: 'adminlayout/dashboard',pathMatch: 'full'},
+
+
+  { path: '**', redirectTo: '/adminlayout/notfound'},
+
+
+];
+
+
 @NgModule({
   declarations: [
-    AppComponent,
-    AdminLayoutComponent,
-    EditadminprofileComponent,
-    AdminregistrationComponent,
-    EditcategoryComponent,
-   
-    InboxComponent,
-    UserdetailComponent,
-     MsgdetailsComponent,
-    ProfileComponent,
-    ManageadminComponent,
-    AddcategoryComponent,
-    DetailsComponent,
-    EdituserdetailsComponent,
-    NotFoundComponent
-   
+    //AppComponent,
+    //AdminLayoutComponent,
+   // EditadminprofileComponent,
+  //  AdminregistrationComponent,
+   // EditcategoryComponent,
+
+    //InboxComponent,
+   // UserdetailComponent,
+   // MsgdetailsComponent,
+    //ProfileComponent,
+   // ManageadminComponent,
+   // AddcategoryComponent,
+    //DetailsComponent,
+    //EdituserdetailsComponent,
+    //NotFoundComponent
+
   ],
 
-            imports: [
-              BrowserAnimationsModule,
-              BrowserModule,
-              HttpClientModule,
-              FormsModule,
-              CommonModule,
-              RouterModule.forRoot(AppRoutes,{
-                useHash: true
-              }),
-              SidebarModule,
-              NavbarModule,
-              ToastrModule.forRoot()
-           
-             
-            ],
-            providers: [],
-            bootstrap: [AppComponent]
-          })
-          export class AppModule { }
-          
-
-            
-    
- 
- 
-            
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    CommonModule,
+    RouterModule.forRoot(AppRoutes, {
+      useHash: true
+    }),
+    SidebarModule,
+    NavbarModule,
+    ToastrModule.forRoot()
 
 
-  
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+
+
+
+
+
+
+

@@ -131,4 +131,13 @@ export class ManageCategoryService {
   SortByNameASc(Level,Pageindex, pagesize):any{
     return this.apiService.get(`ManageCategory/SortByNameAsc?level=${Level}&PageIndex=${Pageindex}&PageSize=${pagesize}`)
   }
+
+  GetCourses():any{
+    return this.apiService.get("ManageCategory/GetCourses");
+  }
+
+  ADD(courses):any{
+    return  this.apiService.post("TrackCourse/Add",JSON.stringify(courses))
+
+  }
 }

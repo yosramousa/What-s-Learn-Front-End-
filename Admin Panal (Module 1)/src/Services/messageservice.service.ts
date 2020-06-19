@@ -1,3 +1,4 @@
+import { ApiService } from 'Services/api.service';
 import { Injectable } from '@angular/core';
 
 import { HttpClient} from '@angular/common/http';
@@ -7,29 +8,30 @@ import { HttpClient} from '@angular/common/http';
 })
 export class MessageserviceService {
   [x: string]: any;
-  readonly URL = "http://localhost:3000/";
-  constructor(private myHttp :HttpClient) { }
+  constructor(private apiService :ApiService) { }
   
-  GetAdminDetails(){
-    return this.myHttp.get(`${this.URL}admins`)
-  }
-  GetAdminByID(id){
-    return this.myHttp.get(`${this.URL}admins/${id}`)
-  }
+//   GetAdminDetails(){
+//     return this.apiService.get(`${this.URL}admins`)
+//   }
+//   GetAdminByID(id){
+//     return this.apiService.get(`${this.URL}admins/${id}`)
+//   }
  
-  addAdmin(admin){
-   return this.myHttp.post(`${this.URL}admins`,admin)
- }
+//   addAdmin(admin){
+//    return this.apiService.post(`${this.URL}admins`,admin)
+//  }
  //  GetAdmineDetails(username,password){
  // return this.Http.post(' http://localhost:3000/admins',{username,password});
 
  //  }
   GetAllAdmin(){
-   return this.myHttp.get('http://localhost:3000/admins');
+   return this.apiService.get('http://localhost:3000/admins');
   }
-
-  //https://localhost:44319/ManageUsers/GetList
-    
- 
   AdminLogin(){}
+
+  Seen(id)
+  {
+    return this.myHttp.get('http://localhost:3000/admins');
+
+  }
 }

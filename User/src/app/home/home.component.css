@@ -1,0 +1,125 @@
+.About
+{
+    background-color: #e8e8e8;
+    border-radius: 23px;
+    /* padding: 28px; */
+    margin-top: 35px;
+  
+    @media (min-width: 576px) {background-color:#75aa2c }
+}
+ a{
+   cursor: pointer;
+ }
+
+.About h2
+{
+    font-size: 35px;
+    color: #75aa2c;
+   
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 11px;
+}
+
+.About p
+{
+    color: #6B6E70;
+    font-size: 23px;
+    font-family: 'Forum';
+    line-height: 42px;
+   
+}
+
+
+.About a
+{
+    font-size: 22px;
+    color: #797676;
+    text-align: center;
+    text-decoration: underline;
+
+}
+
+
+#demo
+{
+    margin-top: 55px;
+}
+#demo .carousel
+{
+  margin-top: 234px;
+}
+.col-md-3{
+    display: inline-block;
+    margin-left:-4px;
+    margin-bottom: 89px;
+  }
+  .col-md-3 .maincategory{
+    width:100%;
+    height:300px;
+    padding:77px 12px;
+    text-align: center;
+  }
+ 
+ 
+  .card-title
+  {
+    color:#61892f;
+    font-weight: 600;
+
+  }
+  .card-text
+  {
+    font-size: 15px;
+  }
+ .btn-primary
+  {
+    margin:2px auto !important;
+    text-align: center !important;
+  }
+
+ 
+  .col-md-3
+  {
+    font-size: 20px;
+    transition: all .5s ease-in-out;
+  }
+  .col-md-3:hover
+  {
+    transform: scale(1.1); 
+  }
+
+.carousel-indicators li{
+  background-color: #7ec232;
+  height: 15px;
+  border-radius: 50%;
+  width: 15px;
+  }
+
+  .no-padding{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .card
+  {
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.2);
+
+  }
+  .btn
+  {
+    font-size: 26px;
+    transition: all .5s ease-in-out;
+    color: #75aa2c;
+  }
+  .btn:hover
+  {
+    width: 123px;
+    color: #75aa2c;
+  }
+  .card-title
+{
+  font-size: 20px;
+}
+.card-text
+{
+  color: #6B6E70 !important;
+}

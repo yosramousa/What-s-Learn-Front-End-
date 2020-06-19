@@ -1,0 +1,34 @@
+.head
+{
+color: #61892F;
+}
+label
+{
+color:#222629
+}
+
+h6
+{
+color: #474b4f;
+
+}
+.pic
+{
+border: none !important;
+color: #9d9d9d !important;
+
+}
+.form-control
+{
+border: none;
+border-bottom: 1px solid  #9d9d9d;
+background-color:#ececec;
+}
+.icons
+{
+color:#86c832;
+cursor: pointer;
+margin-left: 5px;
+}
+
+

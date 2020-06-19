@@ -20,23 +20,14 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router, private adminProfileService: ProfileAdminService) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem("Token")){
+    if(localStorage.getItem("AdminToken")){
     this.subscribtion = this.adminProfileService.GetAdminProfile().subscribe(response =>
     {
       if (response.Successed ) 
       {
 
         this.Admin = response.Data;
-        if(response.Data.Gender=='\u0000')
-        {
-          this.Admin.Gender="Female";
-//
-//
-        }
-        else
-        this.Admin.Gender="Male";
-
-        console.log(this.Admin)
+       
 
       }
     });
@@ -44,6 +35,6 @@ export class ProfileComponent implements OnInit {
   }
 
   EditAdminProfile(){
-      this.router.navigate(['/editadmin'])
+      this.router.navigate(['/adminlayout/editadminprofile'])
     }
 }

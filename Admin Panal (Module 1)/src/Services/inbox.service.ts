@@ -26,4 +26,8 @@ export class InboxService {
     return this.apiService.get(`Inbox/GetByID?id=${id}`)
     
   }
+  Seen(ID):any{
+
+     return this.apiService.get(`Inbox/IsSeen?id=${ID}`)
+  }
 }

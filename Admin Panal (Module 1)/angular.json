@@ -26,7 +26,11 @@
               "src/assets/scss/paper-dashboard.scss",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+
+              "src/assets/scripts/jquery-1.6.4.min.js",
+              "src/assets/scripts/jquery.signalR-2.4.1.min.js"
+            ]
           },
           "configurations": {
             "production": {

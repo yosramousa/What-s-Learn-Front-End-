@@ -1,21 +1,20 @@
 
-  <div class="row">
+  <div class="row mt-5" >
     <div class="col-lg-3 col-md-6 col-sm-6">
       <div class="card card-stats">
         <div class="card-body ">
           <div class="row">
             <div class="col-5 col-md-4">
               <div class="icon-big text-center icon-warning">
-  
-                <i class=" nc-icon nc-globe text-warning far fa-heart"></i>
+                <i class=" nc-icon nc-globe text-warning fas fa-users"></i>
+
               </div>
-              
             </div>
             <div class="col-7 col-md-8">
               <div class="numbers">
-                <p class="card-title">{{visitors}} </p>
+                <p class="card-title">{{Visitors}} </p>
   
-                <p class="card-category">Visitors</p>
+                <p class="card-category mt-1">Visitors</p>
   
               </div>
             </div>
@@ -42,7 +41,7 @@
               <div class="numbers">
                 <p class="card-title">{{Users}}
                 </p>
-                <p class="card-category">Users</p>
+                <p class="card-category mt-1">Users</p>
   
               </div>
             </div>
@@ -65,7 +64,7 @@
               <div class="numbers">
                 <p class="card-title">{{Maincategory}}
                 </p>
-                <p class="card-category">MainCategory </p>
+                <p class="card-category mt-1">Categories </p>
   
               </div>
             </div>
@@ -92,7 +91,7 @@
               <div class="numbers">
                 <p class="card-title">{{Roadmap}}
                 </p>
-                <p class="card-category">RoadMaps</p>
+                <p class="card-category mt-1">Tracks</p>
   
               </div>
             </div>
@@ -109,8 +108,8 @@
     <div class="col-md-12">
       <div class="card ">
         <div class="card-header ">
-          <h5 class="card-title">Visitors</h5>
-          <p class="card-category">{{visitors}} </p>
+          <h5 class="card-title">Users</h5>
+          <p class="card-category">{{Users}} </p>
         </div>
         <div class="card-body ">
           <canvas id=chartHours width="400" height="100"></canvas>
@@ -118,7 +117,7 @@
         <div class="card-footer ">
           <hr>
           <div class="stats">
-            <i class="fa fa-history"></i> Updated 3 minutes ago
+            <i class="fa fa-history"></i> Last Update  {{LastUpdate}} 
           </div>
         </div>
       </div>
@@ -127,23 +126,26 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="card ">
-        <div class="card-header ">
-          <h5 class="card-title">Users of Each Track</h5>
+        <div class="card-header  ">
+          <h5 class="card-title " style="font-family: sans-serif; font-size: 15px;">Users of Each Track</h5>
   
         </div>
         <div class="card-body ">
           <canvas id="chartEmail"></canvas>
         </div>
         <div class="card-footer ">
-          <div class="legend">
-  
-            <i *ngIf="this.PieChaertTracks[0]" class="fa fa-circle " style="color: #e3e3e3;"></i>{{this.PieChaertTracks[0]}}
+          <div class="legend   " >
+                 
+            <i *ngIf="this.PieChaertTracks[0]" class="fa fa-circle " style="color: #e3e3e3; ;"></i>{{this.PieChaertTracks[0]}}
             <i *ngIf="this.PieChaertTracks[1]" class="fa fa-circle " style="color: #4acccd;"></i> {{this.PieChaertTracks[1]}}
             <i *ngIf="this.PieChaertTracks[2]"class="fa fa-circle " style="color: #fcc468;"></i> {{this.PieChaertTracks[2]}}
             <i *ngIf="this.PieChaertTracks[3]" class="fa fa-circle " style="color: #ef8157;"></i> {{this.PieChaertTracks[3]}}
   
           </div>
           <hr>
+          <div class="stats">
+            <i class="fa fa-history"></i> Last Update  {{PieLastUpdate}} 
+          </div>
           <!-- <div class="stats">
             <i class="fa fa-calendar"></i> Number of emails sent
           </div> -->

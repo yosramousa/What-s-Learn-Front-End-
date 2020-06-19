@@ -1,0 +1,131 @@
+
+
+
+.styling
+{
+    margin-top:120px ;
+}
+
+
+.img-fluid
+{
+    border-radius: 23px;
+}
+
+
+
+h1{
+    font-size:24px;
+    color:#333;
+    text-align: center;
+  ;
+}
+.profile_card .profile_inner{
+    perspective:1000px;
+    position: relative;
+}
+.profile_card .profile_img{
+    transform:rotateY(0deg);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition:  all 0.50s ease 0s;
+}
+.profile_card:hover .profile_img{
+    visibility:hidden;
+    transform:rotateY(180deg);
+}
+.profile_card .profile_img img{
+    width:100%;
+    height:auto;
+}
+.profile_card .over_layer{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    padding:30px 20px;
+    background-color: #86c232;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transform:rotateY(-180deg);
+    transition:  all 0.50s ease 0s;
+}
+.profile_card:hover .over_layer{
+    visibility: visible;
+    transform:rotateY(0deg);
+}
+.profile_card .over_layer .social_links{
+    margin:0 0 20px 0;
+    padding:0;
+}
+.profile_card .over_layer .social_links li{
+    list-style: none;
+    display: inline-block;
+}
+.profile_card .over_layer .social_links li a{
+    color:#333;
+    width:30px;
+    height:30px;
+    background:#eeeeee;
+    line-height:30px;
+    text-align:center;
+}
+.profile_card .over_layer .social_links li a:hover{
+    text-decoration: none;
+}
+.profile_card .over_layer p{
+    color:#fff;
+    font-size:14px;
+}
+.profile_card .profile_contact{
+    color:#fff;
+    text-align: center;
+    padding:15px 10px;
+    background: #86c232;
+    margin-bottom:15px;
+}
+.profile_card .profile_contact h3{
+    margin: 0;
+    font-size:20px;
+    text-transform: capitalize;
+}
+.profile_card .profile_contact h3 > span{
+    font-size:15px;
+    margin: 10px 0;
+    display: block;
+    text-transform: uppercase;
+}
+.ParagraphStyle
+{
+    background-color: #eeeeee;
+    border-radius: 23px;
+}
+.ParagraphStyle h4
+{
+    padding-top: 25px;
+    font-size: 25px;
+    color: #75aa2c;
+   
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 11px;
+}
+.ParagraphStyle .subheading
+{
+    padding:12px 0 ;
+    font-size: 18px;
+    color: #222629;
+}
+
+/*OurTeamStyle*/
+.our-team
+{
+    margin-top: 50px;
+}
+
+
+
+
+
+
+

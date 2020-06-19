@@ -1,0 +1,222 @@
+<div class="container mb-5">
+    <div class="content-wrapper">
+        <div class="form-check">
+
+        </div>
+
+        <section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <!-- Profile Image -->
+                        <div class="card card-primary card-outline">
+                            <div class="card-body box-profile">
+                                <div class="text-center">
+                                    <img style=" border-radius: 50%;" class="profile-user-img img-fluid img-circle "
+                                        width="150px" height="150px" src="{{Url+User.Image}}"
+                                        alt="User profile picture">
+                                </div>
+                                <a style="position: relative;" (click)="EditProfile()"><i
+                                        class="far fa-edit   stylingedit"></i></a>
+                                <h2 style="color:gray ;" class="profile-username text-center">{{User.Name}}</h2>
+
+                                <p class="text-muted text-center">{{User.Email}}</p>
+
+
+
+
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+
+                        <!-- About Me Box -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">About Me</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+
+                                <strong><i class='fa fa-user icon'></i> Age</strong>
+
+                                <p class="text-muted">{{User.Age}}</p>
+
+                                <hr>
+
+
+                                <strong><i class='fa fa-user icon'></i> Gender</strong>
+
+                                <p class="text-muted">{{User.Gender}}</p>
+
+                                <hr>
+
+                                <strong><i class="fas fa-book mr-1 icon"></i> Education</strong>
+
+                                <p class="text-muted">
+                                    {{User.Education}}
+                                </p>
+
+                                <hr>
+
+                                <strong><i class="fas fa-map-marker-alt mr-1 icon"></i> Location</strong>
+
+                                <p class="text-muted">{{User.Adress}}</p>
+
+                                <hr>
+                                <strong><i class='fa fa-phone
+                                    icon'></i> Phone</strong>
+
+                                <p class="text-muted">{{User.Phone}}</p>
+
+                                <hr>
+
+                                <strong><i class='fa fa-link icon'></i> Social Links</strong>
+                                <a style="position: relative;" (click)="AddLink()" style="margin-left: 10px;">
+                                    <i class="fa fa-plus" aria-hidden="true stylingedit"></i>
+                                </a>
+                                <p class="text-muted">
+                                    <span *ngFor="let Link of User.Links" class="tag tag-danger">{{Link.Link}}
+
+                                        <a (click)=" EditLink(Link)"> <i class="far fa-edit   stylingedit"></i></a>
+                                        <a class="delete" mwlConfirmationPopover [popoverTitle]="popoverTitle"
+                                            [popoverMessage]="popoverMessage" placement="top"
+                                            (confirm)="DeleteLink(Link)" (cancel)="cancelClicked = true">
+                                            <i class="fas fa-trash-alt "></i></a>
+                                        <br></span>
+                                </p>
+                                <hr>
+                                <strong ><i
+                                        class='fa fa-graduation-cap icon'></i> Certificates</strong>
+                                <a style="position: relative;" (click)="AddCertificate()" style="margin-left: 10px;">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+
+                                </a>
+                                <p class="text-muted">
+                                   <span   *ngFor="let cert of User.Certificates" class="tag tag-danger">
+                                       
+                                    <span style="cursor: pointer;"  (click)="AddImgCertificate(cert.Image)" >{{cert.Title}}</span>
+
+                                        <a  (click)=" EditCertificate(cert)"> <i
+                                                class="far fa-edit   stylingedit ml-1"></i></a>
+                                        <a class="delete" mwlConfirmationPopover [popoverTitle]="popoverTitle"
+                                            [popoverMessage]="popoverMessage" placement="top"
+                                            (confirm)="DeleteCertificate(cert)" (cancel)="cancelClicked = true">
+                                            <i class="fas fa-trash-alt "></i></a>
+
+                                        <br></span> <br>
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-pencil-alt mr-1 icon   "></i> Skills</strong>
+                                <a style="position: relative;" (click)="AddSkill()" style="margin-left: 10px;">
+
+                                    <i class="fa fa-plus" aria-hidden="true stylingedit"></i>
+
+
+                                </a>
+
+
+                                <p class="text-muted">
+                                    <span *ngFor="let skill of User.Skills" class="tag tag-danger">{{skill.SkillName}}
+                                        <a (click)=" EditSkill(skill)"> <i class="far fa-edit stylingedit"></i></a>
+                                        <a class="delete" mwlConfirmationPopover [popoverTitle]="popoverTitle"
+                                            [popoverMessage]="popoverMessage" placement="top"
+                                            (confirm)="DeleteSkill(skill)" (cancel)="cancelClicked = true">
+                                            <i class="fas fa-trash-alt "></i></a>
+                                        <br>
+                                    </span>
+                                    <br>
+
+                                </p>
+                                <hr>
+                                <strong><i class="fa fa-archive mr-1 icon"></i> Archive</strong>
+                                <p class="text-muted">
+                                    <a *ngFor="let track of User.FinishedTracks" (click)="GoToTrack(track.TrackID)"
+                                        style="cursor: pointer;"><span
+                                            class="tag tag-danger">{{track.TrackName}}<br></span> <br>
+                                    </a>
+                                </p>
+                                <hr>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-lg-9">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li *ngFor="let track of User.Tracks" class="nav-item">
+                                <a [className]="User.Tracks[0].ID==track.ID ? 'nav-link active' : 'nav-link '"
+                                    id="pills-{{track.ID}}" data-toggle="pill" href="#pills-{{track.ID}}{{User.ID}}"
+                                    role="tab" attr.aria-controls="pills-{{track.ID}}{{User.ID}}"
+                                    attr.aria-selected="{{User.Tracks[0].ID==track.ID}}">{{track.Name}}</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div *ngFor="let track of User.Tracks"
+                                [className]="User.Tracks[0].ID==track.ID ? 'tab-pane fade show active' : 'tab-pane fade '"
+                                id="pills-{{track.ID}}{{User.ID}}" role="tabpanel"
+                                attr.aria-labelledby="pills-{{track.ID}}">
+                                <div class="progress">
+                                    <div *ngIf="track.Progess" class="progress-bar" role="progressbar"
+                                        style="width:{{track.Progess}}%;" aria-valuenow="track.Progess"
+                                        aria-valuemin="0" aria-valuemax="100">{{track.Progess}}%</div>
+                                    <div *ngIf="!track.Progess" class="progress-bar" role="progressbar"
+                                        style="width:0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%
+                                    </div>
+
+                                </div>
+                                <div style="overflow-y: auto ;height: 800px;" class="mt-5">
+                                    <div *ngFor="let course of track.Courses" class="container-fluid">
+                                        <div class="row "
+                                            style="margin-left: 0; margin-right: 0; height:200px; overflow: auto;">
+                                            <div class="col-lg-3">
+                                                <a routerLink="/course-details/{{course.ID}}"> <img
+                                                        src="{{Url+course.Image}}" width="133px" height="130px"></a>
+                                            </div>
+                                            <div class="col-lg-9">
+
+                                                <div class="text">
+                                                    <a routerLink="/course-details/{{track.ID}}/{{course.ID}}">
+                                                        <h3 class="heading">
+                                                            {{course.Name}}
+                                                        </h3>
+                                                    </a>
+                                                    <p class="paragraphing">
+                                                        {{course.Discription}}
+
+                                                    </p>
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <div class="col-lg-12" style="margin-left: -17px;">
+                                                                <label class="checking">Please Check If you finished
+                                                                    This
+                                                                    course</label>
+                                                                <input [disabled]="course.IsFinshed"
+                                                                    [checked]="course.IsFinshed" type="checkbox"
+                                                                    id="{{course.ID}}/{{track.ID}}" name="subscribe"
+                                                                    value="newsletter" style="margin-left: 5px;"
+                                                                    mwlConfirmationPopover [popoverTitle]="popoverTitle"
+                                                                    [popoverMessage]="popoverMessage" placement="right"
+                                                                    (confirm)="Finished(course.ID,track.ID ,$event)"
+                                                                    (cancel)="cancelClicked = true">
+
+
+
+                                                                <hr>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

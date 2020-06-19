@@ -1,0 +1,30 @@
+<div class="row" style="    float: right !important; position: relative;
+bottom: 13px; color:#bf3636; font-size:18px">
+  <a  mat-button mat-dialog-close> <i class="fas fa-times"></i></a>
+</div>
+
+<div class="container" style="margin-top: 5px;">
+
+    <div class="row " >
+        <h3 class="lbl">Edit Your Link</h3>
+    </div>
+
+    <div class="row " style="margin-top: 5px !important;" >
+        <div class="col-lg-9 text-center">
+
+            <div class="input-group ">
+                <input [(ngModel)]="UserLink.Link" name="Link" name="Text" type="text" class="form-control myinput"
+                    placeholder="Enter">
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row " style="margin-top: 20px !important;">
+
+        <div class="col-lg-12 ">
+            <button (click)="UpdateLink()" class="input-group-text btn  " 
+                    id="inputGroupFileAddon02">Update</button>
+        </div>
+    </div>
+</div>

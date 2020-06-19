@@ -14,7 +14,7 @@ export class ApiService {
 		let headersConfig = {
 			'Content-Type': 'application/json',
 			'Accept': 'application/json',
-			'Authorization': 'Bearer '+localStorage.getItem("Token")
+			'Authorization': 'Bearer '+localStorage.getItem("AdminToken")
 		};
 		return new HttpHeaders(headersConfig);
 	}

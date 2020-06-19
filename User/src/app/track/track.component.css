@@ -1,0 +1,101 @@
+.choose
+{
+    margin-top: 123px;
+}
+.nav-pills .nav-link
+{
+    color: #474b4F;
+    border-bottom: 1px solid #76c232;
+    font-size: 18px;
+    padding: 19px;
+    font-weight: bolder;
+    background-color:  #EBEBEB;
+}
+.nav-pills .nav-link.active
+{
+    background-color: #76c232;
+    color: aliceblue;
+}
+.StyleHead
+{
+    color: #61892F;
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+.styleParagraph
+{
+    color: #6e6b70;
+    text-align: justify;
+}
+
+
+/*CourseStyle*/
+.toping
+{
+    margin-top: 20px;
+}
+.toping img
+{
+    width: 80%;
+}
+.toping .heading
+{
+    color: #86c232;
+    margin-bottom: 15px;
+}
+.toping .paragraphe
+{
+    color: #6B6E70;
+    font-size: 18px;
+    text-align: justify;
+}
+.toping .icon
+{
+    color: #86c232;
+    margin-right: 6px;
+}
+.btn-rounded
+{
+    color: white;
+    padding: 7px;
+    float: right;
+    width: 115px;
+    margin-bottom: 10px;
+    border-radius: 69px;
+    text-decoration: none;
+    background-color: #76c232;
+    border: 1px solid #76C232;
+    height: 48px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    bottom:  60px !important;
+}
+.MainHeader{
+    color: #61892f; 
+    font-size: 24px; 
+    margin-bottom:20px ; 
+    font-weight: 501;
+  }
+.header{
+    font-size: 24px;
+    font-weight: 510;
+    font-size: 27px;
+    color: #61892f;
+    margin-bottom: 20px;
+  }
+
+ .btn-rounded:hover
+{
+    background-color:white ;
+    color: #76C232;
+    border: 1px solid #76c232;
+}
+
+.my-pagination /deep/ .ngx-pagination .current {
+    background-color: #7ec232;
+    color: white;
+    text-align: center;
+
+  }

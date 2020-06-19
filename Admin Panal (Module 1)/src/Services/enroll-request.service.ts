@@ -25,5 +25,9 @@ export class EnrollRequestService {
 
     return this.apiService.get(`EnrollemntRequest/Approve?id=${id}`);
   }
+  GetAll() :any {
+    return this.apiService.get(`EnrollemntRequest/GetList`);
+   }
+
 
 }

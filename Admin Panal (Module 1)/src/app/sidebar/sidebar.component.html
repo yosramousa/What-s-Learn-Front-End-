@@ -5,10 +5,19 @@
         <img src="">
       </div>
     </a>
-    <h2 class="simple-text logo-normal">
+    <!-- <h2 class="simple-text logo-normal mt-3 mb-0" style="color: #86c232; font-size: 25px;">
    {{AdminName}}
-    </h2>
-  </div>
+  
+ 
+  </h2> -->
+  <div class="m-2">
+  <img src="../../../assets/img/logo.png" width="115" height="45">
+</div>
+  <div style="text-align: center;">
+  <!--  -->
+</div>
+
+</div>
     <ul class="nav">
         <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
             <a [routerLink]="[menuItem.path]">

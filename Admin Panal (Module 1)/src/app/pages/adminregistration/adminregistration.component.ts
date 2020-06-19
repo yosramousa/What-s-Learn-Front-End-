@@ -26,10 +26,12 @@ export class AdminregistrationComponent implements OnInit {
     this.subsciption = this.authService.LogIn(admin).subscribe(res => {
       console.log(res)
       if (res.Successed) {
-        localStorage.setItem("Token", res.Data.Token)
+        localStorage.setItem("AdminToken", res.Data.Token)
         localStorage.setItem("AdminID", res.Data.ID)
         localStorage.setItem("AdminName", res.Data.Name)
         localStorage.setItem("AdminEmail", res.Data.Email)
+        localStorage.setItem("AdminImage", res.Data.Image)
+
         this.IsValid = false;
         this.router.navigate(['adminlayout/profile'])
       } else {

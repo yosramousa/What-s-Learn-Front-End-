@@ -3,6 +3,11 @@
     margin-top: 98px;
 }
 
+.row
+{
+    position: relative;
+    top: 25px;
+}
 .form-control {
     padding-left: 2.375rem;
     height:29%;
@@ -10,15 +15,20 @@
 }
 .CurrentPage
 {
-    background-color: teal;
+    background-color: #222629;
+    color: white !important;
+    font-weight: bold;
+   
+
     
 }
 .pagntion
 {
   
-position: relative;
-left: 21%; 
-
+ position: absolute;
+ left: 0;
+margin-left:45px 
+;
    
 }
 
@@ -39,7 +49,7 @@ left: 21%;
 }
 
 .custom-select{
-    width: 64px;
+    width: 100px !important;
 }
 button
 {
@@ -115,7 +125,9 @@ nav{
     
 }
 .page-link{
-    color:  #86c232 !important;  
+    color:  #86c232 !important; 
+    font-size: 16px !important; 
+    cursor: pointer;
 }
  .edit{
     cursor: pointer;
@@ -130,4 +142,16 @@ nav{
     border-radius: 10px;
     background-color: transparent;
     cursor: pointer;
+}
+a i {
+    cursor: pointer;
+}
+td{
+    text-align: center !important; 
+    font-size: 16px !important;
+}
+th{
+    text-align: center !important; 
+    font-size: 15px !important;
+   
 }

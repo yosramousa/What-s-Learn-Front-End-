@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { MessageserviceService } from './../../../Services/messageservice.service';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { Location } from '@angular/common';
+// import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Location} from '@angular/common';
 import { EditskillComponent } from '../../pages/editskill/editskill.component';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { MsgdetailsComponent } from '../msgdetails/msgdetails.component';
 import { InboxService } from 'Services/inbox.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-inbox',
@@ -14,15 +17,32 @@ import { InboxService } from 'Services/inbox.service';
 })
 export class InboxComponent implements OnInit {
 
-  constructor(private inboxService: InboxService) { }
+  public CategoryFormControl = new FormControl("");
+  popoverTitle: string;
+  popoverMessage: string
+  confirmClicked: boolean;
+  cancelClicked: boolean;
+    constructor(
+      private toastr :ToastrService,
+      private inboxService: InboxService,
+       private dialog: MatDialog, location: Location, 
+       private renderer: Renderer2, 
+       private element: ElementRef, 
+       private router: Router) {
+      this.popoverTitle = 'Confirm';
+      this.popoverMessage = 'Are you sure to Delete ';
+      this.confirmClicked = false;
+      this.cancelClicked = false;
+  
+    }
 
-  PageSize = 10
+  PageSize = 5
   PageIndex = 0
-  Messages: []
+  Messages: {}
   SearchOption = 0
-  SearchText=" "
-  PageNumber
-  SortBy =0;
+  SearchText = " "
+  PageNumber = 0
+  SortBy = 0;
   SerachOptions = [
     { ID: 0, name: "Chose Search Options" },
     { ID: 1, name: "Name" },
@@ -43,8 +63,8 @@ export class InboxComponent implements OnInit {
       this.SearchOption = 0
       this.SearchText = " "
     }
-   // this.SearchOption = 0
-    console.log("asas",this.SearchOption)
+    // this.SearchOption = 0
+    console.log("asas", this.SearchOption)
     this.inboxService.Search(this.SortBy, this.SearchOption, this.SearchText, this.PageIndex, this.PageSize)
       .subscribe(res => {
         this.Messages = res.Data;
@@ -61,7 +81,7 @@ export class InboxComponent implements OnInit {
       this.SearchText = " "
     }
     this.PageIndex++;
-   this.Search()
+    this.Search()
 
   }
   Prev() {
@@ -89,20 +109,17 @@ export class InboxComponent implements OnInit {
   Delete(id) {
     this.inboxService.Delete(id).subscribe(res => {
       if (res) console.log("Deleted")
+      this.toastr.success("Message Deleted Successfully","Done",{
+        easeTime:500,
+        timeOut:4000
+      })
       if (!(this.SearchText || this.SearchOption)) {
         this.SearchOption = 0
         this.SearchText = " "
+       
       }
       this.Search()
 
-    })
-  }
-
-  messageDatail: any
-  MessageDetails(id) {
-    this.inboxService.GetByID(id).subscribe(res => {
-      this.messageDatail = res.Data
-      console.log(this.messageDatail)
     })
   }
 
@@ -161,22 +178,31 @@ export class InboxComponent implements OnInit {
     this.Search()
 
   }
+
+  GetMessage(ID) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    let result = this.dialog.open(MsgdetailsComponent, {
+      data: { ID: ID },
+    });
+    result.afterClosed().subscribe(result => { 
+          
+       this.inboxService.Seen(ID).subscribe(res=>{
+         if(res.Successed)
+         {
+          this.Search()
+
+         }
+       })
+    });
+
+  }
+
+  Seen(id) {
+
+  }
 }
-
-
-
-
-
-
-  //   MsgDetails(id){
-// // alert("msa msa yara2oof");
-// const dialogConfig =new MatDialogConfig();
-// dialogConfig.autoFocus =true;
-// dialogConfig.disableClose = true;
-// // dialogConfig.width ="400px";
-// dialogConfig.height ="150px";
-// this.dialog.open(MsgdetailsComponent,dialogConfig);
-//   }
 
 
 

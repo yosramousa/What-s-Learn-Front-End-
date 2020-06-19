@@ -1,59 +1,17 @@
-.content{
-    overflow:hidden !important;
-    width:300px;
-    height:100px;
-    margin:auto;
-}
+
+   .form-control{
+       margin-top: 17px;
+   }
 
 button
 {
-   
-    background-color: #86c232 !important;
-    position: relative;
     border-radius: 5px;
-    width: 100px;
-   
-  
-  
-   
+    width: 80px !important;
 }
-
-label{
-   
-   
-    position: relative;
-    top: 10px;
-    font-size: 25px;
-   
-    left: 0px;
-}
-
-input{
-    bottom: 20px;
-    left: 0px;
-    position: relative;
-    /* height: 42px; */
-    width: 200px;
-}
-.save{
-  
-    font-size: 20px;
- 
-    /* position: relative; */
-    text-align:center;
-
+.lbl
+{
+    text-align: center;
+    font-family: cursive;
+    color:#222629;
     
-
 }
-.cancel{
-       color:red !important;
-       font-size: 20px;
-
-       position: relative;
-    bottom: -1px;
-  
-    left: 272px;
-    bottom: 0px;
-      
-    }
-    

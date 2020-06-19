@@ -1,0 +1,75 @@
+.top
+{
+  margin-top:80px;
+  /* height:1000px; */
+}
+
+.Add
+{
+  
+    padding: 6px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    border: 1px solid #CED4DA
+}
+img{
+    height: 30%;
+    width:30%;
+}
+.styling{
+    border:none !important;
+}
+.model
+{
+  border:none !important;
+font-size: 21px;
+color: #86c232;
+}
+/* .far
+{
+  color: #86c232;
+  font-size:21px ;
+} */
+label{
+  margin-right: 3px;
+    font-size: 21px;
+}
+.myinput{
+    height: 46px !important;
+}
+/* .form-control{
+    height: 46px !important;
+} */
+.input-group-text{
+ height: 46px !important;
+ background-color: #e9ecef;
+
+}
+th{
+
+    color: gray !important;
+    
+}
+
+
+.btnsave{
+    border: none!important;
+        color: white;
+    background-color:#86c232 !important;
+}
+.btnclose{
+    border: none !important;
+    color: white;
+    background-color:rgb(211, 31, 31) !important;
+}
+button{
+    text-decoration: none ;
+    border: none;
+    background-color: transparent;
+}
+
+.delete{
+    color: #86c232;
+    font-size:21px ;
+}

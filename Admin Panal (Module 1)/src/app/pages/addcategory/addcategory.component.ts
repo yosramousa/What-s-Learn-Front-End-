@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ManageCategoryService } from 'Services/manage-category.service';
-import { environment } from  './../../../environments/environment'
+import { environment } from './../../../environments/environment'
 @Component({
   selector: 'app-addcategory',
   templateUrl: './addcategory.component.html',
   styleUrls: ['./addcategory.component.css']
 })
 export class AddcategoryComponent implements OnInit {
+  Title
   files: FileList;
   Images: FileList;
   ImageSrc
-  File:string
+  File: string
   ID: number
   ParentId: number
   level: number
@@ -42,12 +43,25 @@ export class AddcategoryComponent implements OnInit {
   constructor(private router: Router, private myActivatedRoute: ActivatedRoute, private manageCategoryService: ManageCategoryService) { }
 
   ngOnInit(): void {
-
-   
-
+    
     this.ParentId = this.myActivatedRoute.snapshot.params['ID'];
-    console.log("ParentID",this.ParentId)
+    console.log("ParentID", this.ParentId)
     this.level = this.myActivatedRoute.snapshot.params['Level'];
+console.log(this.level)
+
+    //switch (this.level) {
+      if( this.level== 1)
+        this.Title = " Add  Sub Category"
+      
+     else if(this.level==2)
+     this.Title = " Add  Track"
+     
+     else if(this.level==3)
+     this.Title = " Add  Course"
+     
+     else if(this.level==0)
+     this.Title = " Add  Main Category"
+
     // // console.log(this.myActivatedRoute.snapshot.params['ID'])
     // this.subscripber = this.manageCategoryService.GetByID(this.level, this.ID).subscribe(res => {
     //   if (res.Successed) {
@@ -72,43 +86,39 @@ export class AddcategoryComponent implements OnInit {
     // })
 
   }
-  SaveDescribtion() {
-    // console.log("any thing")
-
-    // let admin= {
-    //   description : this.description,
-    //   image :this.image,
-    //   link :this.link,
-    // video :this.video,
-    //   file :this.file,
-    // };
-
-    // this.router.navigate(['managecategory'])
-
-  }
+  
   Adddoc() {
-    console.log(this.NewDocDesc);
-    var NewDoc = { ID: 0, Description: this.NewDocDesc, File: this.File, ParentID: 0 };
-    this.Documents.push(NewDoc)
-    console.log(this.Documents)
+    if (this.NewDocDesc && this.File) {
+      var NewDoc = { ID: 0, Description: this.NewDocDesc, File: this.File, ParentID: 0 };
+      this.Documents.push(NewDoc)
+    }
+
   }
   AddLInk() {
+
     console.log(this.NewLinkText);
-    var NewLink = { ID: 0, link: this.NewLinkText, Description: this.NewLinkDescription, ParentID: 0 };
-    this.links.push(NewLink)
+    if (this.NewLinkText && this.NewLinkDescription) {
+      var NewLink = { ID: 0, link: this.NewLinkText, Description: this.NewLinkDescription, ParentID: 0 };
+      this.links.push(NewLink)
+    }
     console.log(this.links)
   }
   AddVedio() {
-    let vedio = {
-      ID: 0,
-      Vedio: this.NewVedioLink, Description: this.NewVedioDescription, ParentID: 0
+    console.log(this.NewLinkText);
+    if (this.NewVedioLink && this.NewVedioDescription) {
+
+      let vedio = {
+        ID: 0,
+        Vedio: this.NewVedioLink, Description: this.NewVedioDescription, ParentID: 0
+      }
+      this.Vedios.push(vedio)
     }
-    this.Vedios.push(vedio)
     console.log(this.Vedios)
 
   }
 
   onImageFileChange(event) {
+
     this.Images = event.target.files;
   }
   onDocFileChange(event) {
@@ -124,11 +134,11 @@ export class AddcategoryComponent implements OnInit {
       }
       this.manageCategoryService
         .upload(formData).subscribe(
-          res => { 
-            if(res.Successed){
-                this.image = res.Data[0].Path ;
-                console.log('DDSDSDSDSDSDSSDS',res.Data)
-                this.ImageSrc=`${environment.api_url}Uploads/${this.image}`
+          res => {
+            if (res.Successed) {
+              this.image = res.Data[0].Path;
+              console.log('DDSDSDSDSDSDSSDS', res.Data)
+              this.ImageSrc = `${environment.api_url}Uploads/${this.image}`
             }
           },
           err => { }
@@ -137,7 +147,7 @@ export class AddcategoryComponent implements OnInit {
     }
   }
   uploadFile(doc) {
-  
+
     if (this.files.length > 0) {
       let formData: FormData = new FormData();
       for (var j = 0; j < this.files.length; j++) {
@@ -145,14 +155,14 @@ export class AddcategoryComponent implements OnInit {
       }
       this.manageCategoryService
         .upload(formData).subscribe(
-          res => { 
-            if(res.Successed){
-              if(doc)
-              doc.File = res.Data[0].Path ;
+          res => {
+            if (res.Successed) {
+              if (doc)
+                doc.File = res.Data[0].Path;
               else
-                this.File = res.Data[0].Path ;
-                console.log('DDSDSDSDSDSDSSDS',res.Data)
-               
+                this.File = res.Data[0].Path;
+              console.log('DDSDSDSDSDSDSSDS', res.Data)
+
             }
           },
           err => { }
@@ -161,40 +171,41 @@ export class AddcategoryComponent implements OnInit {
     }
   }
   downloadFile(url) {
-   window.open(`${environment.api_url}Uploads/${url}`);
+    window.open(`${environment.api_url}Uploads/${url}`);
   }
 
   SaveLink(link) {
 
     this.links[this.links.indexOf(link)] = link
 
-    alert("Link Saved Sucessfully")
+    // alert("Link Saved Sucessfully")
 
 
   }
-  Savedoc(doc) { 
+  Savedoc(doc) {
 
     this.Documents[this.Documents.indexOf(doc)] = doc
-    alert("Document Saved Sucessfully")
+    //  alert("Document Saved Sucessfully")
 
 
   }
   SaveVideos(vedio) {
     this.Vedios[this.Vedios.indexOf(vedio)] = vedio
 
-    alert("Vedio Saved Sucessfully")
+    //  alert("Vedio Saved Sucessfully")
   }
-  SavAll() {
+  SavAll(f) {
+
 
     this.Data = {
       ID: 0,
       ParentID: this.ParentId,
-      Name: this.Name,
-      Discription: this.Description,
+      Name: f.value.Name,
+      Discription: f.value.Description,
       Links: this.links,
       Documents: this.Documents,
       Vedios: this.Vedios,
-      Image:this.image
+      Image: this.image
     }
     console.log(this.ParentId)
 

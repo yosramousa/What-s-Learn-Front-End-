@@ -1,0 +1,102 @@
+<!--Begining  Tabs--->
+<div class="container">
+<div class="container">
+    <div class="choose">
+      <h2 class="text-center MainHeader" style="color: #61892f; font-size: 28px;">{{Category.Name}}</h2>
+      <div class="row" style="margin-left: 0; margin-right: 0; height: 266px;">
+        <div class="col-3" style="padding: 0; height: 100%;">
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+              aria-controls="v-pills-home" aria-selected="true">Description</a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+              aria-controls="v-pills-profile" aria-selected="false">Documents</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+              aria-controls="v-pills-messages" aria-selected="false">Links</a>
+            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+              aria-controls="v-pills-settings" aria-selected="false">Videos</a>
+          </div>
+        </div>
+        <div class="col-9" style="padding: 28px; height: 89%; background-color:#F2F2F2;overflow:auto;">
+          <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+              <h5 class="StyleHead"> {{Category.Name}}</h5>
+              <p class="styleParagraph">{{Category.Discription}}</p>
+            
+             
+            </div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+              <h5 class="StyleHead"></h5>
+  
+              <div *ngFor="let doc of Documents">
+                <p class="styleParagraph">{{doc.Description}}
+                  <a (click)="OpenFile(doc.File)"><i class="fa fa-download ml-2" aria-hidden="true"
+                      style="color: #76c232;"></i></a>
+                </p>
+  
+              </div>
+  
+            </div>
+  
+  
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+              <div *ngFor="let link of Links">
+                <h6 class="StyleHead"><a href="{{link.Link}}" target="_blank"> {{link.Link}}</a></h6>
+                <p class="styleParagraph">{{link.Description}}</p>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+              <div *ngFor="let vedio of Vedios">
+                <h6 class="StyleHead"><a href="{{vedio.Vedio}}" target="_blank">{{vedio.Vedio}}</a></h6>
+                <p class="styleParagraph">{{vedio.Description}}</p>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <!--Begining Card-->
+    <div id="demo">
+      <!-- The slideshow -->
+      <div class="container no-padding ">
+        <div class="row">
+          <div class="col-5"><hr></div>
+        
+          <div class="col-2">
+            <div class=" header text-center">
+            <h3 >Sub Category</h3>
+          </div>
+        </div>
+        <div class="col-5"><hr></div>
+      </div>
+        <div class=" active">
+    
+          <a   *ngFor="let child of Childs.slice(0,3) | paginate : options;let index=index" (click)="SubDetails(child.ID)" routerLinkActive="active" >
+            <div class="col-md-3">
+              <div class="card mb-2">
+                <img class="card-img-top " 
+                 src="{{Url+child.Image}}" 
+    
+                  alt="Card image cap" width="155px" height="160px">
+                <div class="card-body">
+                  <h4 class="card-title">{{child.Name}}</h4>
+                  <p class="card-text">{{child.Discription}}</p>
+                  <a class="btn "><i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+            </a>
+  
+        </div>
+  
+  
+      </div>
+      <div class="col-xs-12 text-center margin-top-15" *ngIf="options.totalItems>=options.itemsPerPage">
+        <pagination-controls  class="my-pagination"   (pageChange)="getNextPrevData($event)" id='pagination' maxSize="5" directionLinks="true" autohide="true" previousLabel="" nextLabel="">
+       
+        </pagination-controls>
+      </div>
+    </div>
+  </div> 

@@ -1,0 +1,47 @@
+
+    .body
+    {
+      background-color: #d7d7d7;
+    }
+    
+    .Text
+    {
+      color: #474b4f;
+      font-size: 40px;
+    }
+    .Num
+    {
+      color:#86c832;
+      font-size: 300px;
+      margin-bottom: -60px;
+      
+    }
+    button
+    {
+      background-color: #222629;
+      color: #86c832;
+      width: 79px;
+      font-size: 21px;
+      border: none;
+      border-radius: 7px;
+      font-weight: bold;
+      height: 37px;
+      margin-top: 200px;
+    }
+    .footer
+    {
+      text-align: center;
+      color: #222629;
+      font-size: 18px; 
+      position: relative;
+      bottom: 20px;
+    }
+    .div
+    {
+      margin-top: 210px !important;
+    } 
+    .oops
+    {
+      margin-top: 35px !important;
+
+    }

@@ -3,7 +3,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MangeUsersService } from '../../../Services/mange-users.service';
 import { ManageAdminService } from '../../../Services/manage-admin.service';
-import { environment } from  './../../../environments/environment'
+import { environment } from './../../../environments/environment'
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-addadmin',
   templateUrl: './addadmin.component.html',
@@ -11,13 +12,16 @@ import { environment } from  './../../../environments/environment'
 })
 export class AddadminComponent implements OnInit {
 
-  constructor(private router: Router, private manageAdminService: ManageAdminService) { }
+  constructor(private router: Router, 
+    private manageAdminService: ManageAdminService,
+    private toastr :ToastrService
+    ) { }
 
   ngOnInit(): void {
   }
   Genders = [
-    { value: "m", name: "Male" },
-    { value: "f", name: "Female" }
+    { value: "Male", name: "Male" },
+    { value: "Female", name: "Female" }
   ]
   Subscribe
 
@@ -34,27 +38,35 @@ export class AddadminComponent implements OnInit {
   Images: FileList;
   ImageSrc
   ConfirmedPassword
+  Admin
 
-  AddAdmin() {
-    let Admin = {
-      ID: 0,
-      Name: this.Name,
-      Image:this.Image,
-      Password: this.Password,
-      Age: this.Age,
-      Email: this.Email,
-      Adress: this.Adress,
-      Phone: this.Phone,
-      Gender: this.Gender
-    }
-
-    this.Subscribe = this.manageAdminService.Add(Admin).subscribe(
+  AddAdmin(f) {
+    // let Admin = {
+    //   ID: 0,
+    //   Name: this.Name,
+    //   Image:this.Image,
+    //   Password: this.Password,
+    //   Age: this.Age,
+    //   Email: this.Email,
+    //   Adress: this.Adress,
+    //   Phone: this.Phone,
+    //   Gender: this.Gender
+    // }
+    this.Admin = f.value
+    this.Admin.Image = this.Image
+    this.Admin.ID = 0
+    console.log(f.value)
+    this.Subscribe = this.manageAdminService.Add(f.value).subscribe(
       res => {
         if (res.Successed) {
           console.log("Done")
           console.log(res)
+          
           this.router.navigate(['/adminlayout/manageadmin'])
-
+          this.toastr.success("Admin Added Successfully","Done",{
+            easeTime:500,
+            timeOut:4000
+          })
         }
       }
       ,
@@ -68,7 +80,11 @@ export class AddadminComponent implements OnInit {
   onImageFileChange(event) {
     this.Images = event.target.files;
   }
- 
+  vaildAge(e) {
+    if (e.target.selectedIndex == 0)
+      this.Gender = "M";
+    else this.Gender = "F"
+  }
 
   uploadImage() {
 
@@ -79,11 +95,11 @@ export class AddadminComponent implements OnInit {
       }
       this.manageAdminService
         .upload(formData).subscribe(
-          res => { 
-            if(res.Successed){
-                this.Image = res.Data[0].Path ;
-                console.log('DDSDSDSDSDSDSSDS',res.Data)
-                this.ImageSrc=`${environment.api_url}Uploads/${this.Image}`
+          res => {
+            if (res.Successed) {
+              this.Image = res.Data[0].Path;
+              console.log('DDSDSDSDSDSDSSDS', res.Data)
+              this.ImageSrc = `${environment.api_url}Uploads/${this.Image}`
             }
           },
           err => { }

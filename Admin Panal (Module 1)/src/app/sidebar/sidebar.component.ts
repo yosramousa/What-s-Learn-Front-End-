@@ -30,8 +30,10 @@ export class SidebarComponent implements OnInit {
 
     AdminName:string
     public menuItems: any[];
+    AdminImage:string
     ngOnInit() {
-        this.AdminName=localStorage.getItem("AdminName")
         this.menuItems = ROUTES.filter(menuItem => menuItem);
+        this.AdminName=localStorage.getItem("AdminName");
+        console.log(this.AdminImage)
     }
 }

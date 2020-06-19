@@ -1,0 +1,96 @@
+<div class="limiter">
+	<div class="container-login100">
+		<div class="wrap-login100">
+			<form #f="ngForm" (ngSubmit)="UserLogin(f)" class="login100-form validate-form">
+				<span class="login100-form-title " style="padding-bottom: 43px;">
+					<img src="{{Url}}logo4.png" style="width: 150px; height:100% ;">
+				</span>
+
+
+				<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+					<input pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" #email="ngModel" ngModel
+						name="Email" class="input100" name="email" placeholder="Email" required>
+					<span class="focus-input100"></span>
+
+				</div>
+				<div *ngIf=" email.touched && !email.valid" class=" alert-danger">
+					<div *ngIf="email.errors.required">
+						Email is required
+
+					</div>
+					<div *ngIf="email.errors.pattern">
+						Enter Valid Email
+
+					</div>
+				</div>
+
+
+
+
+				<div class="wrap-input100 validate-input" data-validate="Password is required">
+					<input #password="ngModel" ngModel name="Password" class="input100" type="password"
+						placeholder="Password" required>
+					<span class="focus-input100"></span>
+
+				</div>
+				<div *ngIf=" password.touched && !password.valid" class=" alert-danger">
+					<div *ngIf="password.errors.required">
+						password is required
+
+					</div>
+
+				</div>
+
+				<div class="alert alert-danger" *ngIf="!IsValid">
+					Invalid Email Or Password
+
+				</div>
+				<br>
+
+
+				<!-- <div class="flex-sb-m w-full p-t-3 p-b-32">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<label class="label-checkbox100" for="ckb1">
+								Remember me
+							</label>
+						</div>
+
+						<div>
+							<a href="#" class="txt1">
+								Forgot Password?
+							</a>
+						</div>
+					</div> -->
+
+
+				<div class="container-login100-form-btn">
+					<button type="submit" [disabled]="!f.valid" style="font-size: 20px;;" class="login100-form-btn">
+						login
+					</button>
+				</div>
+				<div class="text-center " style="padding-bottom: 20px; padding-top: 46px; margin-top: 10px;">
+					<span class="txt2">
+						<a style="font-size: 21px !important; color:gray ; " class="nav-link" routerLink="/sign-up"
+							routerLinkActive="active"> sign up </a>
+					</span>
+				</div>
+
+				<!-- <div class="login100-form-social flex-c-m">
+					<a href="#" class="login100-form-social-item flex-c-m bg1 " style="margin-right: 5px;">
+						<i class="fab fa-facebook" aria-hidden="true"></i>
+					</a>
+
+					<a href="#" class="login100-form-social-item flex-c-m bg2 " style="margin-right: 5px;">
+						<i class="fab fa-twitter" aria-hidden="true"></i>
+					</a>
+				</div> -->
+
+			</form>
+
+			<div class="login100-more" style="background-image: url('{{Url}}pic.png');">
+				<img src="{{Url}}pic.png" width="100%" style="margin-bottom: 0px; margin-top :60px;height: 100%;"> 
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,189 @@
+<div class="container" style="margin-top: 60px;">
+
+    <form #f="ngForm" (ngSubmit)="AddUser(f)">
+        <h1 class="head">Sign Up</h1>
+
+        <!-- <hr> -->
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-3">
+                <div class="text-center">
+                    <img src="{{URL+Image}}" class="avatar img-circle" alt="Image" width="100px" height="100px">
+                    <h6>Upload Your photo...</h6>
+                    <input type="file" (change)="onImageFileChange($event)" name="Image" class="form-control pic">
+                    <button class="btn save" (click)="uploadImage()" type="button" style="background-color: #86c832; color: floralwhite;" >Save</button>
+
+                </div>
+            </div>
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+                <!-- <div class="alert alert-info alert-dismissable">
+                    <a class="panel-close close" data-dismiss="alert" style="cursor: pointer;">×</a>
+                    <i class="fa fa-coffee"></i>
+                    Your <strong>Edit</strong> Already Done.
+                </div> -->
+                <h3 class="head">Personal info</h3>
+
+                <div class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label" for="inputname">Full Name:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control"  #Name="ngModel" ngModel type="text" name="Name" maxlength="250"
+                                type="text" class="form-control" id="inputname" placeholder="Name" required>
+                            <div *ngIf=" Name.touched && !Name.valid" class=" alert-danger">
+                                <div *ngIf="Name.errors?.required">
+                                    Name is required
+
+                                </div>
+                                <div *ngIf="Name.errors?.maxlength">
+                                    Name Maximum legth = {{Name.errors.maxlength.requiredLength}}
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                     <div class="form-group">
+                        <label class="col-lg-3 control-label" for="inputAge">Age:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" ngModel #Age="ngModel" name="Age" type="Number"
+                                class="form-control" id="inputAge" placeholder="Age" min="18" max="99">
+                                <div *ngIf=" Age.touched && !Age.valid" class=" alert-danger">
+
+                                <div *ngIf="Age.errors?.required">
+                                Age is required
+
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label" for="inputEducation">Education:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" ngModel #Education="ngModel" name="Education" type="text"
+                                class="form-control" id="inputEducation" placeholder="Education" required>
+                                <div *ngIf=" Education.touched && !Age.valid" class=" alert-danger">
+
+                                <div *ngIf="Education.errors?.required">
+                                Education is required
+
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label" for="inputGender">Gender:</label>
+                        <div class="col-lg-8">
+                            <div class="input-group mb-3">
+
+                                <select name="Gender" [(ngModel)]="Gender" class="custom-select" id="inputGender">
+                                    <option name="Gender" *ngFor="let Gender of Genders" [ngValue]="Gender.Value">
+                                        {{Gender.Name}}
+                                    </option>
+                                </select>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label" for="inputAddress">Address:</label>
+                        <div class="col-lg-8">
+                            <input ngModel #adress="ngModel" name="Adress" type="text"
+                                class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+                            <div *ngIf=" adress.touched && !adress.valid" class=" alert-danger">
+                                <div *ngIf="adress.errors?.required">
+                                    Adress is required
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label" for="inputPhone">Phone:</label>
+                        <div class="col-lg-8">
+                            <input ngModel #phone="ngModel" name="Phone" type="tel" pattern='^\+?\d{0,13}'
+                                title='Phone Number' class="form-control" id="inputPhone" placeholder="Phone">
+                        <div *ngIf=" phone.touched && !phone.valid" class=" alert-danger">
+                            <div *ngIf="phone.errors?.required">
+                                Phone is required
+
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label" for="inputEmail">Email:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control"
+                            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" #email="ngModel"
+                                ngModel name="Email" name="Email" placeholder="Email" type="Email" id="inputEmail"
+                                required>
+                        <div *ngIf=" email.touched && !email.valid" class=" alert-danger">
+                            <div *ngIf="email.errors?.required">
+                                Email is required
+                            </div>
+                            <div *ngIf="email.errors?.pattern">
+                                Enter Valid Email
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="inputPassword">Password:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" #password="ngModel" ngModel name="Password" type="password"
+                                placeholder="Password" id="inputPassword" required>
+                            <span class="focus-input100"></span>
+                        <div *ngIf=" password.touched && !password.valid" class=" alert-danger">
+                            <div *ngIf="password.errors?.required">
+                                password is required
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="col-md-3 control-label" for="inputPassword4">Confirm password:</label>
+                        <div class="col-md-8">
+                            <input class="form-control" [(ngModel)]="ConfirmedPassword" name="confirmedPassword"
+                                type="password" class="form-control" id="inputPassword4" placeholder="Confirm Password"
+                                required>
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-8">
+                         <input  [disabled]="!f.valid" type="submit" class="btn save" style="background-color: #86c832; color: floralwhite;"
+                                 value="Sign Up">
+                                 
+                            <input   (click)="Cancel()" class="btn btn-default" value="Cancel">
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<hr>
+
+<!-- [disabled]="!f.valid" -->
+<!--  -->

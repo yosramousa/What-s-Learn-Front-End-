@@ -1,6 +1,7 @@
 .container{
-    margin-bottom: 23px;
-    margin-top: 98px;
+     margin-bottom: 0px !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 .form-control {
     padding-left: 2.375rem;
@@ -74,8 +75,25 @@ nav{
 
     
 }
+.change{
+    width: 90px;
+}
 .page-link{
-    color:  #86c232 !important;  
+    color:  #86c232 !important; 
+    font-size: 16px !important; 
+    cursor: pointer;
+}
+
+
+th{
+    text-align: center;
+
+}
+td{
+    text-align: center;
+}
+a {
+    cursor: pointer;
 }
 .delete{
 
@@ -84,4 +102,39 @@ nav{
     border-radius: 10px;
     background-color: transparent;
     cursor: pointer;
+}
+.CurrentPage 
+{
+    background-color: #222629;
+    color:  #86c232 !important; 
+    font-weight: bold;
+   
+
+    
+}
+.pagntion
+{
+  
+ position: absolute;
+ left: 0;
+margin-left:45px 
+;
+   
+}
+
+.search{
+    position: relative;
+    top: 4px;
+    left: 47px;
+}
+.row
+{
+    position: relative;
+    top: 25px;
+}
+
+.pagination
+{
+
+   margin-top: 0px;
 }

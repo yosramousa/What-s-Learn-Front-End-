@@ -1,22 +1,34 @@
 <div class="container">
   <div class="row">
+    <div class="text-left">
+      <div class="col-lg-2">
+        <form>
+      
+          <select class="custom-select" [(ngModel)]="pageSize" (change)="Filter()" name="Numbers">
+            <option  selected   value="5"  >Show </option>
+            <option *ngFor="let show of shows" [ngValue]="show">{{show}}</option>
+            <!-- <option  *ngFor="let show of shows" [ngValue]="show">{{show.number}}</option> -->
 
-    <div class="col-lg-4">
-      <div class="input-group">
-        <select class="custom-select" id="SearchIn" name="SearchOp" [(ngModel)]="SearchOp"
+          </select>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-4  " >
+      
+        <select class="custom-select change " id="SearchIn" name="SearchOp" [(ngModel)]="SearchOp"
           aria-label="Example select with button addon">
           <option *ngFor="let op of SerachOpts" [ngValue]="op.ID">{{op.name}}</option>
           <!-- <option  *ngFor="let category of categories" [ngValue]="category"selected>{{category.name}} </option> -->
 
         </select>
 
-      </div>
+     
     </div>
 
     <div class="col-lg-4">
 
-      <div class="input-group">
-
+      <div class="input-group serach">
 
         <input name="Search" [(ngModel)]="SaerchText" type="text" class="form-control" placeholder="Search">
         <div class="input-group-append">
@@ -30,7 +42,7 @@
     </div>
 
 
-    <div class="col-lg-4">
+    <div class="col-lg-2">
       <div class="input-group">
         <a (click)="AddAdmin()"> <i class="fas fa-user-plus"></i></a>
 
@@ -41,21 +53,7 @@
 
   </div>
 
-  <div class="row">
-    <div class="text-left">
-      <div class="col-lg-2">
-        <form>
-          <label for="cars">show</label>
-          <select class="custom-select" [(ngModel)]="pageSize" (change)="Filter()" name="Numbers">
-            <option *ngFor="let show of shows" [ngValue]="show">{{show}}</option>
-            <!-- <option  *ngFor="let show of shows" [ngValue]="show">{{show.number}}</option> -->
-
-          </select>
-        </form>
-      </div>
-    </div>
-
-  </div>
+ 
 
 
 
@@ -113,23 +111,26 @@
             <td>{{admin.Status}}</td>
             
             <td>
-              <input *ngIf="!(adminID==admin.ID)" (click)="Change(admin.ID)" type="button"
-                class="btn btn-success ml-1 p-2" value="Change">
+              <a  *ngIf="!(adminID==admin.ID)" (click)="Change(admin.ID)" style="position: relative;" >
+                <i class="far fa-edit styling edit"></i></a>
+
+  
             </td>
-              <!-- <td><a class="delete"
+               <td><a class="delete"
             mwlConfirmationPopover
             [popoverTitle]="popoverTitle"
             [popoverMessage]="popoverMessage"
-            placement="top" (confirm)="Delete(admin.ID)"  (cancel)="cancelClicked = true"><i class="far fa-trash-alt"></i></a></td> -->
-
-           
- 
+            placement="top" *ngIf="!(adminID==admin.ID)" (confirm)="Delete(admin.ID)"  (cancel)="cancelClicked = true"><i class="far fa-trash-alt"></i></a></td> 
              <td>
-              <a *ngIf="!(adminID==admin.ID)" class="not-active" (click)="adminDetails(admin.ID)"><i
+              <a  class="not-active" (click)="adminDetails(admin.ID)"><i
                   class="fas fa-info"></i></a></td>
-          
-                  <td><a *ngIf="!(adminID==admin.ID)" class="not-active" (click)="Delete(admin.ID)">
-                    <i class="far fa-trash-alt "></i></a></td>
+           
+                  <!-- <td > <a  class="delete"  [attr.popoverTitle]="popoverTitle" [attr.popoverMessage]="popoverMessage"
+                    placement="top" (confirm)="Delete(admin.ID)" (cancel)="cancelClicked = true">
+                    <i class="fas fa-trash-alt "></i></a>
+                </td> -->
+                  <!-- <td><a *ngIf="!(adminID==admin.ID)" class="not-active" (click)="Delete(admin.ID)">
+                    <i class="far fa-trash-alt "></i></a></td> -->
           </tr>
 
 
@@ -137,14 +138,14 @@
       </table>
     </div>
 
-
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
+    <nav class="pagntion">
+      <ul class="pagination ">
         <li class="page-item"><a (click)="Prev()" class="page-link">Previous</a></li>
         <li *ngFor="let key of  numbers" class="page-item">
-          <a (click)="MoveTo(key)" class="page-link"> {{key+1}}</a>
+          <a [ngClass]="key == pageNumber ? ' page-link CurrentPage': 'page-link'" (click)="MoveTo(key)"> {{key+1}}</a>
         </li>
         <li class="page-item "><a (click)="Next()" class="page-link">Next</a></li>
       </ul>
     </nav>
      </div>
+     

@@ -2,6 +2,11 @@
     margin-bottom: 23px;
     margin-top: 98px;
 }
+.row
+{
+    position: relative;
+    top: 25px;
+}
 .form-control {
     padding-left: 2.375rem;
     height:29%;
@@ -45,7 +50,7 @@ button:hover
 }
 
 .custom-select{
-    width: 64px;
+    width: 90px;
 }
 .serchId{
     position: relative;
@@ -100,5 +105,65 @@ nav{
     /* border: none; */
     border-radius: 10px;
     background-color: transparent;
+    cursor: pointer;
+}
+.change{
+    width: 280px !important;
+
+}
+.serach
+{
+    width: 300px !important;
+}
+th{
+    text-align: center;
+
+}
+td{
+    text-align: center;
+}
+a {
+    cursor: pointer;
+}
+.delete{
+
+    text-decoration: none;
+    /* border: none; */
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+.pagntion
+{
+  
+ position: absolute;
+ left: 0;
+margin-left:45px 
+;
+   
+}
+
+.pagination
+{
+
+    position: absolute;
+    left: 0;
+    margin-left:45px 
+}
+
+.CurrentPage
+{
+    background-color: #222629;
+    color: white !important;
+    font-weight: bold;
+   
+
+    
+}
+.page-link{
+    color:  #86c232 !important; 
+    font-size: 16px !important; 
     cursor: pointer;
 }

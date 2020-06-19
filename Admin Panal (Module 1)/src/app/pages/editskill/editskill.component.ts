@@ -10,62 +10,56 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./editskill.component.css']
 })
 export class EditskillComponent implements OnInit {
-  skill
+  skill: string
 
-  
-Data
+
+  Data
   constructor(
-    //  private fb: FormBuilder,
-    // private dialogRef: MatDialogRef<EditskillComponent>,
-     //@Inject(MAT_DIALOG_DATA) public  data :any, 
+    private fb: FormBuilder,
+    public  dialogRef: MatDialogRef<EditskillComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private ManagSkillServis: ManageSillService
-     //,private dialog: MatDialog,
-     ,private myActivatedRoute: ActivatedRoute,
-     private route :Router
+    , private dialog: MatDialog,
+    
+    private myActivatedRoute: ActivatedRoute,
+    private route: Router
 
-     ) {
-     // this.description = data.description;
-    }
-ID 
+  ) {
+    // this.description = data.description;
+  }
+  ID
+  Isupdated = false
   ngOnInit(): void {
-  //   const dialogConfig =new MatDialogConfig();
-  //  this.Data = this.dialog.open(EditskillComponent, dialogConfig);
-  //  console.log(this.Data)
-  //  console.log()
-  //  console.log(this.Data.id)
-  // this.ID =this.data.ID;
-  // console.log(this.ID)
-  this.ID = this.myActivatedRoute.snapshot.params['id'];
 
-  this.ManagSkillServis.GetByID(this.ID).subscribe(res=>{
-    this.skill = res.Data.skill;
-    console.log(this.skill)
-  })
+    this.ID = this.data.ID
+ 
+    this.ManagSkillServis.GetByID(this.ID).subscribe(res => {
+      this.skill = res.Data.skill;
+      console.log(this.skill)
+    })
 
-  
+
 
 
   }
-  
-  Isupdated
-  
+
+
+
   Update() {
-    //this.id = this.myActivatedRoute.snapshot.params['ID'];
 
-       this.ManagSkillServis.Update({ ID :this.ID, skill: this.skill }).subscribe(res => {
-         if (res.Successed) {
-           console.log(this.ID,this.skill)
-           console.log("ok")
-           this.Isupdated = true
-           setTimeout(() => {
-             this.Isupdated = false
-             this.route.navigate(["adminlayout/manageskill"])
-           }, 1000);
-           // this.GetAll();
-         }
-       }, err => {
+    console.log(this.skill)
+    this.ManagSkillServis.Update({ ID: this.ID, skill: this.skill }).subscribe(res => {
+      if (res.Successed) {
 
-       })
-     }
+        console.log("ok")
+      
+       /// this.Isupdated = true
+       this.dialogRef.close();
+
+      }
+    }, err => {
+
+    })
+  }
 
 }

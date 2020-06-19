@@ -19,5 +19,10 @@
       "dom"
     ],
     "module": "esnext"
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": false
   }
+
 }

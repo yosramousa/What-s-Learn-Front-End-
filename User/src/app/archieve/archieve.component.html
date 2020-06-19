@@ -1,0 +1,113 @@
+<div class="container">
+    <div class="choose">
+        <h4 class="text-center MainHeader">{{Track.Name}}</h4>
+
+        <div class="row" style="margin-left: 0; margin-right: 0; height: 266px;">
+            <div class="col-3" style="padding: 0; height: 100%;">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                        aria-controls="v-pills-home" aria-selected="true">Description</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false">Documents</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                        aria-controls="v-pills-messages" aria-selected="false">Links</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                        aria-controls="v-pills-settings" aria-selected="false">Videos</a>
+                </div>
+            </div>
+            <div class="col-9" style="padding: 28px; height: 100%; background-color:#f7f7f7;">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                        aria-labelledby="v-pills-home-tab">
+                        <h5 class="StyleHead"> {{Track.Name}}</h5>
+                        <p class="styleParagraph">{{Track.Discription}}</p>
+
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab">
+                        <h5 class="StyleHead"></h5>
+
+                        <div *ngFor="let doc of Documents">
+                            <p class="styleParagraph">{{doc.Description}}
+                                <a (click)="OpenFile(doc.File)"><i class="fa fa-download ml-2" aria-hidden="true"
+                                        style="color: #76c232;"></i></a>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                        aria-labelledby="v-pills-messages-tab">
+                        <div *ngFor="let link of Links">
+                            <h5 class="StyleHead"> {{link.Link}}</h5>
+                            <p class="styleParagraph">{{link.Description}}</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                        aria-labelledby="v-pills-settings-tab">
+                        <div *ngFor="let vedio of Vedios">
+                            <h5 class="StyleHead">{{vedio.Vedio}}</h5>
+                            <p class="styleParagraph">{{vedio.Description}}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <hr style="margin-top: 90px;">
+    <!-- #regionCourses -->
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <hr>
+            </div>
+
+            <div class="col-2  header text-center">
+
+                <h4>COURSES</h4>
+            </div>
+
+            <div class="col-5">
+                <hr>
+            </div>
+
+        </div>
+
+        <div *ngFor="let C of Courses | paginate : options;let index=index " class="row toping">
+
+            <div class="col-lg-3">
+                <img src="{{Url+C.Image}}">
+            </div>
+            <div class="col-lg-9">
+                <div class="text">
+                    <a routerLink="/course-details/{{C.ID}}">
+
+                        <h3 class="heading">
+                            {{C.Name}}
+                        </h3>
+                    </a>
+
+                    <p class="paragraphe">
+                        {{C.Discription}} </p>
+                    <br>
+                    <br>
+                    <span><i class="far fa-calendar icon"></i>Started On 06/04/2020 </span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xs-12 text-center margin-top-15" *ngIf="options.totalItems>=options.itemsPerPage">
+            <pagination-controls class="my-pagination" (pageChange)="getNextPrevData($event)" id='pagination'
+                maxSize="5" directionLinks="true" autohide="true" previousLabel="" nextLabel="">
+            </pagination-controls>
+
+        </div>
+        <!-- #endregionCourses -->
+    </div>

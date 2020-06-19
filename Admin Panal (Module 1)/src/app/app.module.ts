@@ -2,7 +2,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from "ngx-toastr";
 import { NgModule } from '@angular/core';
@@ -19,9 +19,9 @@ import { ManageadminComponent } from './pages/manageadmin/manageadmin.component'
 import { ManageskillComponent } from './pages/manageskill/manageskill.component';
 import { ManageuserComponent } from './pages/manageuser/manageuser.component';
 import { EnrollmentrequestComponent } from './pages/enrollmentrequest/enrollmentrequest.component';
- 
+
 import { SidebarModule } from './sidebar/sidebar.module';
-import { NavbarModule} from './shared/navbar/navbar.module'; 
+import { NavbarModule } from './shared/navbar/navbar.module';
 
 import { EditadminprofileComponent } from './pages/editadminprofile/editadminprofile.component';
 import { AddadminComponent } from './pages/addadmin/addadmin.component';
@@ -34,7 +34,6 @@ import { AdmindetailsComponent } from './pages/admindetails/admindetails.compone
 import { AddcategoryComponent } from './pages/addcategory/addcategory.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DetailsComponent } from './pages/details/details.component';
-import { EdituserdetailsComponent } from './pages/edituserdetails/edituserdetails.component';
 import { MangeUsersService } from 'Services/mange-users.service';
 import { ApiService } from 'Services/api.service';
 import { EditskillComponent } from './pages/editskill/editskill.component';
@@ -47,6 +46,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AddchildcategoryComponent } from './pages/addchildcategory/addchildcategory.component';
 import { MsgdetailsComponent } from './pages/msgdetails/msgdetails.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddExistedCourseComponent } from './add-existed-course/add-existed-course.component';
 
 @NgModule({
   declarations: [
@@ -69,14 +70,15 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     AdmindetailsComponent,
     AddcategoryComponent,
     DetailsComponent,
-    EdituserdetailsComponent,
+
     EditskillComponent,
     NotificationComponent,
     MsgdetailsComponent,
     NotFoundComponent,
-    
+    AddExistedCourseComponent,
+
   ],
-  
+
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -84,27 +86,43 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
+    NgbModule,
     NgxPaginationModule,
     HttpModule,
     ReactiveFormsModule,
     // AngularMaterialModuleModule,
     MatDialogModule,
     ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger', 
+      confirmButtonType: 'danger',
     }),
     SidebarModule,
     NavbarModule,
-    // ToastrModule.forRoot(),
+    ToastrModule.forRoot(
+      {
+
+        timeOut: 3000,
+        easeTime: 5000
+      }
+
+    ),
     RouterModule.forRoot([
-      { path: '', children:AdminLayoutRoutes },
-      { path: '', children:AppRoutes },
-  
-   
-  ])],
-  entryComponents:[ EditskillComponent, NotificationComponent],
+      { path: '', children: AdminLayoutRoutes },
+      { path: '', children: AppRoutes },
+
+
+    ])],
+  entryComponents: [EditskillComponent, NotificationComponent],
   providers: [
+
     MangeUsersService,
-    ApiService
+    ApiService,
+    {
+         provide:
+
+        LocationStrategy
+      , useClass: HashLocationStrategy
+
+    }
   ],
   bootstrap: [AppComponent]
 })
